@@ -22,15 +22,14 @@ namespace SRIMS
 
         item x = new item();
 
+        List <item> inv = new List<item>();
+
         private void init()
         {
 
             Console.WriteLine(x);
 
         }
-
-
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
