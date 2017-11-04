@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SRIMS
+﻿namespace SRIMS
 {
-	public class item
+	public class Item
 	{
 		int id = 0;
 		string loc = "Location";
@@ -15,12 +9,12 @@ namespace SRIMS
 		string desc = "Item Description";
 		int qt = 0;
 
-		public item()
+		public Item()
 		{
 
 		}
 
-		public item(int id, string loc, string cat, string name, string desc, int qt)
+		public Item(int id, string loc, string cat, string name, string desc, int qt)
 		{
 			this.id = id;
 			this.loc = loc;

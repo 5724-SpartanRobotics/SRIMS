@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -23,11 +17,11 @@ namespace SRIMS
 
 		//Real Code Begins Here:
 
-		item x = new item();
+		Item x = new Item();
 
-		public List<item> inv = new List<item>();
+		public List<Item> inv = new List<Item>();
 
-		private void init()
+		private void Init()
 		{
 			dbloc = Properties.Settings.Default.dbloc;
 			if (dbloc == null || dbloc == "")
@@ -37,37 +31,38 @@ namespace SRIMS
 			}
 			try
 			{
-				StreamReader sr = new StreamReader(dbloc);
-				string head = sr.ReadLine();
-
-				//Console.WriteLine(head);
-
-				string headId = head.Split(',')[0];
-				//Console.WriteLine(headId);
-				headId = headId.Remove(0, 2);
-				//Console.WriteLine(headId);
-				int itemcount = Int32.Parse(headId);
-				//Console.WriteLine(itemcount);
-
-				for (int i = 0; i < itemcount; i++)
+				// using statements automatically close disposible objects
+				using (StreamReader sr = new StreamReader(dbloc))
 				{
-					string currentitem = sr.ReadLine();
+					string head = sr.ReadLine();
 
-					string[] parts = currentitem.Split(',');
+					//Console.WriteLine(head);
 
-					//Console.WriteLine(parts[0] + "," + parts[1] + "," + parts[2] + "," + parts[3] + "," + parts[4] + "," + parts[5]);
+					string headId = head.Split(',')[0];
+					//Console.WriteLine(headId);
+					headId = headId.Remove(0, 2);
+					//Console.WriteLine(headId);
+					int itemcount = Int32.Parse(headId);
+					//Console.WriteLine(itemcount);
 
-					inv.Add(new item((Int32.Parse(parts[0])), parts[1], parts[2], parts[3], parts[4], Int32.Parse(parts[5])));
+					for (int i = 0; i < itemcount; i++)
+					{
+						string currentitem = sr.ReadLine();
+
+						string[] parts = currentitem.Split(',');
+
+						//Console.WriteLine(parts[0] + "," + parts[1] + "," + parts[2] + "," + parts[3] + "," + parts[4] + "," + parts[5]);
+
+						inv.Add(new Item((Int32.Parse(parts[0])), parts[1], parts[2], parts[3], parts[4], Int32.Parse(parts[5])));
+
+					}
+
+					foreach (Item x in inv)
+					{
+						// Console.WriteLine(x);
+					}
 
 				}
-
-				foreach (item x in inv)
-				{
-					// Console.WriteLine(x);
-				}
-
-
-				sr.Close();
 			}
 			catch (Exception ex)
 			{
@@ -84,16 +79,16 @@ namespace SRIMS
 
 		private void Settings_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			init();
+			Init();
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			init();
-			dehighlightSelectors();
+			Init();
+			DehighlightSelectors();
 		}
 
-		private void dehighlightSelectors()
+		private void DehighlightSelectors()
 		{
 			CheckOutSelected.Visible = false;
 			CheckInSelected.Visible = false;
@@ -119,7 +114,7 @@ namespace SRIMS
 		// CheckOut
 		private void button1_Click(object sender, EventArgs e)
 		{
-			dehighlightSelectors();
+			DehighlightSelectors();
 			CheckOutSelected.Visible = true;
 			checkout1.Visible = true;
 
@@ -127,7 +122,7 @@ namespace SRIMS
 		// CheckIn
 		private void button2_Click(object sender, EventArgs e)
 		{
-			dehighlightSelectors();
+			DehighlightSelectors();
 			CheckInSelected.Visible = true;
 			checkin1.Visible = true;
 
@@ -135,7 +130,7 @@ namespace SRIMS
 		// ViewDB
 		private void button3_Click(object sender, EventArgs e)
 		{
-			dehighlightSelectors();
+			DehighlightSelectors();
 			ViewDatabaseSelected.Visible = true;
 			viewDB1.Visible = true;
 
@@ -145,18 +140,18 @@ namespace SRIMS
 		// Search
 		private void button4_Click(object sender, EventArgs e)
 		{
-			dehighlightSelectors();
+			DehighlightSelectors();
 			SearchSelected.Visible = true;
 			search1.Visible = true;
 
 			search1.popdb(inv);
-			search1.reset();
+			search1.Reset();
 
 		}
 		// AddItem
 		private void button5_Click(object sender, EventArgs e)
 		{
-			dehighlightSelectors();
+			DehighlightSelectors();
 			AddItemSelected.Visible = true;
 			addItem1.Visible = true;
 
@@ -170,7 +165,7 @@ namespace SRIMS
 		// CheckOutLog
 		private void button6_Click(object sender, EventArgs e)
 		{
-			dehighlightSelectors();
+			DehighlightSelectors();
 			CheckOutLogSelected.Visible = true;
 			checkoutLog1.Visible = true;
 
@@ -180,6 +175,17 @@ namespace SRIMS
 		{
 			Settings settings = new Settings();
 			settings.Show();
+		}
+
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			using (StreamWriter writer = new StreamWriter(dbloc))
+			{
+				// Is the space before Quality intended?
+				writer.WriteLine("Id" + inv.Count + ",Location,Category,Item,Item Description, Quantity");
+				foreach (Item item in inv)
+					writer.WriteLine(item.ToString());
+			}
 		}
 	}
 }

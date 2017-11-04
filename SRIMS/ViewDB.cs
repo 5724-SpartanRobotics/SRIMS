@@ -13,7 +13,7 @@ namespace SRIMS
     public partial class ViewDB : UserControl
     {
 
-        List<item> inv;
+        List<Item> inv;
 
         public ViewDB()
         {
@@ -25,11 +25,11 @@ namespace SRIMS
 
         }
 
-        public void ext(List<item> x)
+        public void ext(List<Item> x)
         {
             clear();
             inv = x;
-            foreach (item y in inv)
+            foreach (Item y in inv)
             {
 
                 listBox1.Items.Add(y);

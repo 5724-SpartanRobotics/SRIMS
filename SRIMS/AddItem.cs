@@ -13,14 +13,14 @@ namespace SRIMS
     public partial class AddItem : UserControl
     {
 
-        List<item> inv;
+        List<Item> inv;
 
         public AddItem()
         {
             InitializeComponent();
         }
 
-        public void setDB(List<item> x)
+        public void setDB(List<Item> x)
         {
             inv = x;
         }
@@ -36,7 +36,7 @@ namespace SRIMS
             int scat = Category.SelectedIndex;
 
 
-            inv.Add(new item(id, ItemLocation.Text, cat[scat] , ItemName.Text, Description.Text,qt));
+            inv.Add(new Item(id, ItemLocation.Text, cat[scat] , ItemName.Text, Description.Text,qt));
 
             label1.Visible = true;
 

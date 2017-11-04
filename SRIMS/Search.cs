@@ -1,36 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SRIMS
 {
-    public partial class Search : UserControl
+	public partial class Search : UserControl
     {
         public Search()
         {
             InitializeComponent();
         }
 
-        List<item> inv;
-        List<item> resultsList = new List<item>();
+        List<Item> inv;
+        List<Item> resultsList = new List<Item>();
         private void Search_Load(object sender, EventArgs e)
         {
 
         }
 
-        public void popdb(List<item> x)
+        public void popdb(List<Item> x)
         {
             inv = x;
             //Console.WriteLine("dbpopulated");
         }
 
-        private List<item> search()
+        private List<Item> search()
         {
             
             int tp = comboBox1.SelectedIndex;
@@ -45,7 +39,7 @@ namespace SRIMS
                 sa = sa.ToLower();
                 if (tp == 0)
                 {
-                    foreach (item x in inv)
+                    foreach (Item x in inv)
                     {
                         // Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
                         if (x.getName().ToLower().Contains(sa))
@@ -59,7 +53,7 @@ namespace SRIMS
                 if (tp == 1)
                 {
                     //Search by Loc
-                    foreach (item x in inv)
+                    foreach (Item x in inv)
                     {
                         // Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
                         if (x.getLoc().ToLower().Contains(sa))
@@ -76,7 +70,7 @@ namespace SRIMS
 
                     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Add Dropdown For Category <<<<<<<<<<<<<<<<<<<<<<<<<<<<\\
 
-                    foreach (item x in inv)
+                    foreach (Item x in inv)
                     {
                         // Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
                         if (x.getCat().ToLower().Contains(sa))
@@ -93,7 +87,7 @@ namespace SRIMS
             return null;
         }
 
-        public void reset()
+        public void Reset()
         {
             try { resultsList.Clear(); } catch { }
             comboBox1.Text = "Type";
@@ -106,7 +100,7 @@ namespace SRIMS
             //reset();
             results.Items.Clear();
             resultsList.Clear();
-            foreach (item x in search())
+            foreach (Item x in search())
             {
                 results.Items.Add(x);
             }
