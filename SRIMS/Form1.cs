@@ -14,21 +14,79 @@ namespace SRIMS
     public partial class Form1 : Form
     {
 
+        string dbloc = Properties.Settings.Default.dbloc;
+        // Heloo
+
         // help 
         public Form1()
         {
             InitializeComponent();
         }
 
+        //Real Code Begins Here
+
         item x = new item();
 
-        List <item> inv = new List<item>();
+        public List <item> inv = new List<item>();
 
         private void init()
         {
+            dbloc = Properties.Settings.Default.dbloc;
+            while (dbloc == null || dbloc == "")
+            {
+                Settings settings = new Settings();
+                settings.Show();
+            }
+            try
+            {
+                StreamReader sr = new StreamReader(dbloc);
+                string head = sr.ReadLine();
 
-            Console.WriteLine(x);
+                //Console.WriteLine(head);
 
+                string headId = head.Split(',')[0];
+                //Console.WriteLine(headId);
+                headId = headId.Remove(0, 2);
+                //Console.WriteLine(headId);
+                int itemcount = Int32.Parse(headId);
+                //Console.WriteLine(itemcount);
+
+                for (int i = 0; i < itemcount; i++)
+                {
+                    string currentitem = sr.ReadLine();
+
+                    string[] parts = currentitem.Split(',');
+
+                    //Console.WriteLine(parts[0] + "," + parts[1] + "," + parts[2] + "," + parts[3] + "," + parts[4] + "," + parts[5]);
+
+                    inv.Add(new item((Int32.Parse(parts[0])),parts[1],parts[2],parts[3],parts[4],Int32.Parse(parts[5])));
+
+                }
+
+                foreach (item x in inv)
+                {
+                   // Console.WriteLine(x);
+                }
+
+
+                sr.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Settings settings = new Settings();
+                settings.Show();
+                settings.FormClosed += Settings_FormClosed;
+                
+            }
+
+            //StreamReader sr = new StreamReader(dbloc);
+
+        }
+
+        private void Settings_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            init();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -83,6 +141,8 @@ namespace SRIMS
             ViewDatabaseSelected.Visible = true;
             viewDB1.Visible = true;
 
+            viewDB1.ext(inv);
+
         }
         // Search
         private void button4_Click(object sender, EventArgs e)
@@ -91,6 +151,9 @@ namespace SRIMS
             SearchSelected.Visible = true;
             search1.Visible = true;
 
+            search1.popdb(inv);
+            search1.reset();
+
         }
         // AddItem
         private void button5_Click(object sender, EventArgs e)
@@ -98,6 +161,11 @@ namespace SRIMS
             dehighlightSelectors();
             AddItemSelected.Visible = true;
             addItem1.Visible = true;
+
+            addItem1.reload(true);
+
+            addItem1.setDB(inv);
+
 
 
         }
@@ -108,6 +176,13 @@ namespace SRIMS
             CheckOutLogSelected.Visible = true;
             checkoutLog1.Visible = true;
 
+        }
+
+        // Settings
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
         }
 
     }

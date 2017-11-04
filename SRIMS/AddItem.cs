@@ -12,9 +12,61 @@ namespace SRIMS
 {
     public partial class AddItem : UserControl
     {
+
+        List<item> inv;
+
         public AddItem()
         {
             InitializeComponent();
+        }
+
+        public void setDB(List<item> x)
+        {
+            inv = x;
+        }
+
+        private void Submit_Click(object sender, EventArgs e)
+        {
+            int id = inv[inv.Count()-1].getid() + 1;
+
+            int qt = (int) Quantity.Value;
+
+            string[] cat = { "Mech", "Elec", "Code", "Misc" };
+
+            int scat = Category.SelectedIndex;
+
+
+            inv.Add(new item(id, ItemLocation.Text, cat[scat] , ItemName.Text, Description.Text,qt));
+
+            label1.Visible = true;
+
+            reload();
+        }
+
+        private void reload()
+        {
+            ItemName.Text = "Item Name";
+            ItemLocation.Text = "Location";
+            Description.Text = "Item Description";
+            Quantity.Value = 0;
+            Category.Text = "Choose Category";
+        }
+
+        public void reload(bool x)
+        {
+            reload();
+            label1.Visible = false;
+        }
+
+        private void ItemLocation_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void Category_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(Category.SelectedIndex);
         }
     }
 }

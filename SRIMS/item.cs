@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SRIMS
 {
-    class item
+    public class item
     {
         int id = 0;
         string loc = "Location";
@@ -35,6 +35,22 @@ namespace SRIMS
         {
             //return null;
             return this.id + "," + this.loc + "," + this.cat + "," + this.name + "," + this.desc + "," + this.qt;
+        }
+        public int getid()
+        {
+            return id;
+        }
+        public string getName()
+        {
+            return name;
+        }
+        public string getLoc()
+        {
+            return loc;
+        }
+        public string getCat()
+        {
+            return cat;
         }
     }
 

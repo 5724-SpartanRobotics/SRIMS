@@ -42,12 +42,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.checkoutLog1 = new SRIMS.CheckoutLog();
             this.search1 = new SRIMS.Search();
             this.addItem1 = new SRIMS.AddItem();
-            this.checkoutLog1 = new SRIMS.CheckoutLog();
-            this.viewDB1 = new SRIMS.ViewDB();
-            this.checkin1 = new SRIMS.Checkin();
             this.checkout1 = new SRIMS.Checkout();
+            this.checkin1 = new SRIMS.Checkin();
+            this.viewDB1 = new SRIMS.ViewDB();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,6 +144,7 @@
             this.button7.TabIndex = 1;
             this.button7.Text = "Settings";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -229,66 +230,70 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // checkoutLog1
+            // 
+            this.checkoutLog1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.checkoutLog1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.checkoutLog1.Location = new System.Drawing.Point(-2947, 0);
+            this.checkoutLog1.Name = "checkoutLog1";
+            this.checkoutLog1.Size = new System.Drawing.Size(630, 526);
+            this.checkoutLog1.TabIndex = 3;
+            // 
             // search1
             // 
-            this.search1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.search1.Location = new System.Drawing.Point(203, 0);
+            this.search1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.search1.Location = new System.Drawing.Point(-2317, 0);
             this.search1.Name = "search1";
             this.search1.Size = new System.Drawing.Size(630, 526);
             this.search1.TabIndex = 2;
             // 
             // addItem1
             // 
-            this.addItem1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addItem1.Location = new System.Drawing.Point(203, 0);
+            this.addItem1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.addItem1.Location = new System.Drawing.Point(-1687, 0);
             this.addItem1.Name = "addItem1";
             this.addItem1.Size = new System.Drawing.Size(630, 526);
             this.addItem1.TabIndex = 1;
             // 
-            // checkoutLog1
+            // checkout1
             // 
-            this.checkoutLog1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkoutLog1.Location = new System.Drawing.Point(203, 0);
-            this.checkoutLog1.Name = "checkoutLog1";
-            this.checkoutLog1.Size = new System.Drawing.Size(630, 526);
-            this.checkoutLog1.TabIndex = 3;
-            // 
-            // viewDB1
-            // 
-            this.viewDB1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewDB1.Location = new System.Drawing.Point(203, 0);
-            this.viewDB1.Name = "viewDB1";
-            this.viewDB1.Size = new System.Drawing.Size(630, 526);
-            this.viewDB1.TabIndex = 4;
+            this.checkout1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.checkout1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.checkout1.Location = new System.Drawing.Point(-1057, 0);
+            this.checkout1.Name = "checkout1";
+            this.checkout1.Size = new System.Drawing.Size(630, 526);
+            this.checkout1.TabIndex = 6;
             // 
             // checkin1
             // 
-            this.checkin1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkin1.Location = new System.Drawing.Point(203, 0);
+            this.checkin1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.checkin1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.checkin1.Location = new System.Drawing.Point(-427, 0);
             this.checkin1.Name = "checkin1";
             this.checkin1.Size = new System.Drawing.Size(630, 526);
             this.checkin1.TabIndex = 5;
             // 
-            // checkout1
+            // viewDB1
             // 
-            this.checkout1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkout1.Location = new System.Drawing.Point(203, 0);
-            this.checkout1.Name = "checkout1";
-            this.checkout1.Size = new System.Drawing.Size(630, 526);
-            this.checkout1.TabIndex = 6;
+            this.viewDB1.BackColor = System.Drawing.Color.White;
+            this.viewDB1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.viewDB1.Location = new System.Drawing.Point(203, 0);
+            this.viewDB1.Name = "viewDB1";
+            this.viewDB1.Size = new System.Drawing.Size(630, 526);
+            this.viewDB1.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 526);
-            this.Controls.Add(this.checkout1);
-            this.Controls.Add(this.checkin1);
-            this.Controls.Add(this.viewDB1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkoutLog1);
             this.Controls.Add(this.search1);
             this.Controls.Add(this.addItem1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.checkout1);
+            this.Controls.Add(this.checkin1);
+            this.Controls.Add(this.viewDB1);
             this.Name = "Form1";
             this.Text = "Spartan Robotics Inventory Management System";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -35,7 +35,7 @@
             this.Submit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.Location = new System.Windows.Forms.TextBox();
+            this.ItemLocation = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +62,7 @@
             this.Category.Size = new System.Drawing.Size(223, 29);
             this.Category.TabIndex = 1;
             this.Category.Text = "Choose Category";
+            this.Category.SelectedIndexChanged += new System.EventHandler(this.Category_SelectedIndexChanged);
             // 
             // Description
             // 
@@ -94,6 +95,7 @@
             this.Submit.TabIndex = 3;
             this.Submit.Text = "Add Item";
             this.Submit.UseVisualStyleBackColor = false;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
             // label1
             // 
@@ -106,20 +108,21 @@
             this.label1.Text = "Item Added Sucessfully";
             this.label1.Visible = false;
             // 
-            // Location
+            // ItemLocation
             // 
-            this.Location.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Location.Location = new System.Drawing.Point(199, 131);
-            this.Location.Name = "Location";
-            this.Location.Size = new System.Drawing.Size(223, 27);
-            this.Location.TabIndex = 5;
-            this.Location.Text = "Location";
+            this.ItemLocation.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemLocation.Location = new System.Drawing.Point(199, 131);
+            this.ItemLocation.Name = "ItemLocation";
+            this.ItemLocation.Size = new System.Drawing.Size(223, 27);
+            this.ItemLocation.TabIndex = 5;
+            this.ItemLocation.Text = "Location";
+            this.ItemLocation.TextChanged += new System.EventHandler(this.ItemLocation_TextChanged);
             // 
             // AddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.Location);
+            this.Controls.Add(this.ItemLocation);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.Quantity);
@@ -143,6 +146,6 @@
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TextBox Location;
+        private System.Windows.Forms.TextBox ItemLocation;
     }
 }
