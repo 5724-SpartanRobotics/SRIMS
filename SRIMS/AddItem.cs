@@ -63,7 +63,6 @@ namespace SRIMS
 
         }
 
-
         private void Category_SelectedIndexChanged(object sender, EventArgs e)
         {
             Console.WriteLine(Category.SelectedIndex);

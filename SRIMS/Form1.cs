@@ -15,9 +15,7 @@ namespace SRIMS
     {
 
         string dbloc = Properties.Settings.Default.dbloc;
-        // Heloo
 
-        // help 
         public Form1()
         {
             InitializeComponent();
@@ -177,13 +175,11 @@ namespace SRIMS
             checkoutLog1.Visible = true;
 
         }
-
         // Settings
         private void button7_Click(object sender, EventArgs e)
         {
             Settings settings = new Settings();
             settings.Show();
         }
-
     }
 }
