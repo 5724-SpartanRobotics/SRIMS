@@ -181,8 +181,7 @@ namespace SRIMS
 		{
 			using (StreamWriter writer = new StreamWriter(dbloc))
 			{
-				// Is the space before Quality intended?
-				writer.WriteLine("Id" + inv.Count + ",Location,Category,Item,Item Description, Quantity");
+				writer.WriteLine("Id" + inv.Count + ",Location,Category,Item,Item Description,Quantity");
 				foreach (Item item in inv)
 					writer.WriteLine(item.ToString());
 			}
