@@ -24,11 +24,11 @@ namespace SRIMS
 		private void Init()
 		{
 			dbloc = Properties.Settings.Default.dbloc;
-			if (dbloc == null || dbloc == "")
+			/*if (dbloc == null || dbloc == "")
 			{
 				Settings settings = new Settings();
 				settings.Show();
-			}
+			}*/
 			try
 			{
 				// using statements automatically close disposible objects
