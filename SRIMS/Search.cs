@@ -34,7 +34,7 @@ namespace SRIMS
             {
                 if (sa == "" || sa == "Search Argument")
                 {
-                    return null;
+                    return new List<Item>();
                 }
                 sa = sa.ToLower();
                 if (tp == 0)
@@ -84,7 +84,7 @@ namespace SRIMS
                 return resultsList;
             }
 
-            return null;
+            return new List<Item>();
         }
 
         public void Reset()
