@@ -7,7 +7,6 @@ namespace SRIMS
 {
 	public partial class Form1 : Form
 	{
-
 		string dbloc = Properties.Settings.Default.dbloc;
 
 		public Form1()
@@ -42,7 +41,7 @@ namespace SRIMS
 					//Console.WriteLine(headId);
 					headId = headId.Remove(0, 2);
 					//Console.WriteLine(headId);
-					int itemcount = Int32.Parse(headId);
+					int itemcount = int.Parse(headId);
 					//Console.WriteLine(itemcount);
 
 					for (int i = 0; i < itemcount; i++)
@@ -53,7 +52,7 @@ namespace SRIMS
 
 						//Console.WriteLine(parts[0] + "," + parts[1] + "," + parts[2] + "," + parts[3] + "," + parts[4] + "," + parts[5]);
 
-						inv.Add(new Item((Int32.Parse(parts[0])), parts[1], parts[2], parts[3], parts[4], Int32.Parse(parts[5])));
+						inv.Add(new Item((int.Parse(parts[0])), parts[1], parts[2], parts[3], parts[4], int.Parse(parts[5])));
 
 					}
 
