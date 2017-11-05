@@ -89,14 +89,12 @@ namespace SRIMS
 
 		private void DehighlightSelectors()
 		{
-			CheckOutSelected.Visible = false;
 			CheckInSelected.Visible = false;
 			ViewDatabaseSelected.Visible = false;
 			AddItemSelected.Visible = false;
 			SearchSelected.Visible = false;
 			CheckOutLogSelected.Visible = false;
 
-			checkout1.Visible = false;
 			checkin1.Visible = false;
 			viewDB1.Visible = false;
 			addItem1.Visible = false;
@@ -110,14 +108,7 @@ namespace SRIMS
 		{
 
 		}
-		// CheckOut
-		private void button1_Click(object sender, EventArgs e)
-		{
-			DehighlightSelectors();
-			CheckOutSelected.Visible = true;
-			checkout1.Visible = true;
 
-		}
 		// CheckIn
 		private void button2_Click(object sender, EventArgs e)
 		{

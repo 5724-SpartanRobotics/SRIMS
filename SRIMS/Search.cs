@@ -29,7 +29,6 @@ namespace SRIMS
             
             int tp = comboBox1.SelectedIndex;
             string sa = textBox1.Text;
-            string gut = "";
             if (tp >= 0)
             {
                 if (sa == "" || sa == "Search Argument")

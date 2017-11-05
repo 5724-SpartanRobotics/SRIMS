@@ -58,12 +58,6 @@
     <Compile Include="Checkin.Designer.cs">
       <DependentUpon>Checkin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Checkout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Checkout.Designer.cs">
-      <DependentUpon>Checkout.cs</DependentUpon>
-    </Compile>
     <Compile Include="CheckoutLog.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,9 +102,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Checkin.resx">
       <DependentUpon>Checkin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Checkout.resx">
-      <DependentUpon>Checkout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CheckoutLog.resx">
       <DependentUpon>CheckoutLog.cs</DependentUpon>
