@@ -27,7 +27,7 @@ namespace SRIMS
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            int id = inv[inv.Count()-1].getid() + 1;
+            int id = inv[inv.Count()-1].Id + 1;
 
             int qt = (int) Quantity.Value;
 

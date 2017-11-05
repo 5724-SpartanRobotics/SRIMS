@@ -31,6 +31,18 @@
 			return this.id + "," + this.loc + "," + this.cat + "," + this.name + "," + this.desc + "," + this.qt;
 		}
 
+        public int Id
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                //this.id = value;
+            }
+        }
+
         public string Name
         {
             get
