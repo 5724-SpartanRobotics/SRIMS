@@ -3,8 +3,8 @@
 	public class Item
 	{
 		int id = 0;
-		string loc = "Location";
-		string cat = "Category";
+		private string loc = "Location";
+        string cat = "Category";
 		string name = "Item";
 		string desc = "Item Description";
 		int qt = 0;
@@ -30,22 +30,62 @@
 			//return null;
 			return this.id + "," + this.loc + "," + this.cat + "," + this.name + "," + this.desc + "," + this.qt;
 		}
-		public int getid()
-		{
-			return id;
-		}
-		public string getName()
-		{
-			return name;
-		}
-		public string getLoc()
-		{
-			return loc;
-		}
-		public string getCat()
-		{
-			return cat;
-		}
-	}
+
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+            }
+        }
+        public string Cat
+        {
+            get
+            {
+                return this.cat;
+            }
+            set
+            {
+                this.cat = value;
+            }
+        }
+        public string Loc
+        {
+            get
+            {
+                return this.loc;
+            }
+            set
+            {
+                this.loc = value;
+            }
+        }
+        public string Desc
+        {
+            get
+            {
+                return this.desc;
+            }
+            set
+            {
+                this.desc = value;
+            }
+        }
+        public int Qt
+        {
+            get
+            {
+                return this.qt;
+            }
+            set
+            {
+                this.qt = value;
+            }
+        }
+    }
 
 }

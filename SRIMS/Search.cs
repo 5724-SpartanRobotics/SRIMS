@@ -42,7 +42,7 @@ namespace SRIMS
                     foreach (Item x in inv)
                     {
                         // Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
-                        if (x.getName().ToLower().Contains(sa))
+                        if (x.Name.ToLower().Contains(sa))
                         {
                             //Console.WriteLine("bazzinga!");
                             resultsList.Add(x);
@@ -56,7 +56,7 @@ namespace SRIMS
                     foreach (Item x in inv)
                     {
                         // Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
-                        if (x.getLoc().ToLower().Contains(sa))
+                        if (x.Loc.ToLower().Contains(sa))
                         {
                             //Console.WriteLine("bazzinga!");
                             resultsList.Add(x);
@@ -73,7 +73,7 @@ namespace SRIMS
                     foreach (Item x in inv)
                     {
                         // Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
-                        if (x.getCat().ToLower().Contains(sa))
+                        if (x.Cat.ToLower().Contains(sa))
                         {
                             //Console.WriteLine("bazzinga!");
                             resultsList.Add(x);

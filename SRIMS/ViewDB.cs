@@ -62,5 +62,22 @@ namespace SRIMS
             System.Diagnostics.Process.Start(Properties.Settings.Default.dbloc);
             
         }
+
+
+        private void editItem(int index)
+        {
+            edit ed = new edit(inv, index, this);
+            ed.Show();
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                editItem(listBox1.SelectedIndex);
+                ext(inv);
+            }
+        }
     }
 }
