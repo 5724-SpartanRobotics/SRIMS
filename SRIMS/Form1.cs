@@ -167,13 +167,21 @@ namespace SRIMS
 			settings.Show();
 		}
 
-		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		private void Form1_FormClosing(object sender, FormClosingEventArgs a)
 		{
-			using (StreamWriter writer = new StreamWriter(dbloc))
+			try
 			{
-				writer.WriteLine("Id" + inv.Count + ",Location,Category,Item,Item Description,Quantity");
-				foreach (Item item in inv)
-					writer.WriteLine(item.ToString());
+				using (StreamWriter writer = new StreamWriter(dbloc))
+				{
+					writer.WriteLine("Id" + inv.Count + ",Location,Category,Item,Item Description,Quantity");
+					foreach (Item item in inv)
+						writer.WriteLine(item.ToString());
+				}
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("There was an error right here in the Form1_FormClosing function: " +
+					e.Message + "\n" + e.StackTrace);
 			}
 		}
 	}
