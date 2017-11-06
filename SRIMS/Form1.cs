@@ -34,25 +34,18 @@ namespace SRIMS
 				using (StreamReader sr = new StreamReader(dbloc))
 				{
 					string head = sr.ReadLine();
-
-					//Console.WriteLine(head);
-
+					
 					string headId = head.Split(',')[0];
-					//Console.WriteLine(headId);
 					headId = headId.Remove(0, 2);
-					//Console.WriteLine(headId);
 					int itemcount = int.Parse(headId);
-					//Console.WriteLine(itemcount);
-
+					
 					for (int i = 0; i < itemcount; i++)
 					{
 						string currentitem = sr.ReadLine();
 
-						string[] parts = currentitem.Split(',');
-
-						//Console.WriteLine(parts[0] + "," + parts[1] + "," + parts[2] + "," + parts[3] + "," + parts[4] + "," + parts[5]);
-
-						inv.Add(new Item((int.Parse(parts[0])), parts[1], parts[2], parts[3], parts[4], int.Parse(parts[5])));
+						// Created this CSVHelper in case some idiot decides to put a
+						// comma in a name or something and corrupt the inventory file.
+						inv.Add(CSVHelper.DeserializeItem(currentitem));
 
 					}
 
@@ -117,6 +110,7 @@ namespace SRIMS
 			checkin1.Visible = true;
 
 		}
+
 		// ViewDB
 		private void button3_Click(object sender, EventArgs e)
 		{
@@ -127,6 +121,7 @@ namespace SRIMS
 			viewDB1.ext(inv);
 
 		}
+
 		// Search
 		private void button4_Click(object sender, EventArgs e)
 		{
@@ -134,10 +129,11 @@ namespace SRIMS
 			SearchSelected.Visible = true;
 			search1.Visible = true;
 
-			search1.popdb(inv);
+			search1.PopDB(inv);
 			search1.Reset();
 
 		}
+
 		// AddItem
 		private void button5_Click(object sender, EventArgs e)
 		{
@@ -152,6 +148,7 @@ namespace SRIMS
 
 
 		}
+
 		// CheckOutLog
 		private void button6_Click(object sender, EventArgs e)
 		{
@@ -160,6 +157,7 @@ namespace SRIMS
 			checkoutLog1.Visible = true;
 
 		}
+
 		// Settings
 		private void button7_Click(object sender, EventArgs e)
 		{
@@ -175,7 +173,7 @@ namespace SRIMS
 				{
 					writer.WriteLine("Id" + inv.Count + ",Location,Category,Item,Item Description,Quantity");
 					foreach (Item item in inv)
-						writer.WriteLine(item.ToString());
+						writer.WriteLine(CSVHelper.SerializeItem(item));
 				}
 			}
 			catch (Exception e)

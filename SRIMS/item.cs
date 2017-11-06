@@ -27,7 +27,7 @@
 
 		public override string ToString()
 		{
-			return Id + "," + Loc + "," + Cat + "," + Name + "," + Desc + "," + Qt;
+			return CSVHelper.SerializeItem(this);
 		}
 	}
 

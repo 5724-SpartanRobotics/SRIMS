@@ -5,20 +5,22 @@ using System.Windows.Forms;
 namespace SRIMS
 {
 	public partial class Search : UserControl
-    {
-        public Search()
+	{
+
+		List<Item> inv;
+		List<Item> resultsList = new List<Item>();
+
+		public Search()
         {
             InitializeComponent();
         }
 
-        List<Item> inv;
-        List<Item> resultsList = new List<Item>();
         private void Search_Load(object sender, EventArgs e)
         {
 
         }
 
-        public void popdb(List<Item> x)
+        public void PopDB(List<Item> x)
         {
             inv = x;
             //Console.WriteLine("dbpopulated");
@@ -100,9 +102,7 @@ namespace SRIMS
             results.Items.Clear();
             resultsList.Clear();
             foreach (Item x in search())
-            {
                 results.Items.Add(x);
-            }
         }
 
         private void button2_Click_1(object sender, EventArgs e)

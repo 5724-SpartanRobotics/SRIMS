@@ -64,6 +64,7 @@
     <Compile Include="CheckoutLog.Designer.cs">
       <DependentUpon>CheckoutLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="CSVHelper.cs" />
     <Compile Include="edit.cs">
       <SubType>Form</SubType>
     </Compile>
