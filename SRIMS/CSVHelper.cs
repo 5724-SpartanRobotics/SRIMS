@@ -24,6 +24,8 @@ namespace SRIMS
 			bool inQuotes = false;
 			StringBuilder cell = new StringBuilder();
 
+			int startQuotePos = 0;
+
 			for (int i = 0; i < csvLine.Length; i++)
 			{
 				if (csvLine[i] == '"')
@@ -33,7 +35,7 @@ namespace SRIMS
 						if (i + 1 < csvLine.Length && csvLine[i + 1] == '"')
 						{
 							i++;
-							cell.Append('"');
+							cell.Append('\"');
 						}
 						else
 						{
@@ -43,6 +45,7 @@ namespace SRIMS
 					else
 					{
 						inQuotes = true;
+						startQuotePos = i;
 					}
 				}
 				else if (csvLine[i] == ',' && !inQuotes)
@@ -56,6 +59,11 @@ namespace SRIMS
 				}
 
 			}
+
+			// Invalid line, just ignore quotes
+			if (inQuotes)
+				return csvLine.Split(',');
+
 			list.Add(cell.ToString());
 
 			return list.ToArray();
