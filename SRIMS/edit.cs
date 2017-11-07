@@ -9,6 +9,8 @@ namespace SRIMS
 		List<Item> lol;
 		Item x;
 		ViewDB z;
+        Search z1;
+        bool tp;
 
 		public edit(List<Item> x, int index, ViewDB z)
 		{
@@ -18,7 +20,16 @@ namespace SRIMS
 			this.z = z;
 		}
 
-		private void edit_Load(object sender, EventArgs e)
+        public edit(List<Item> x, int index, Search z)
+        {
+            InitializeComponent();
+            this.x = x[index];
+            this.lol = x;
+            this.z1 = z;
+            this.tp = true;
+        }
+
+        private void edit_Load(object sender, EventArgs e)
 		{
 			textBox1.Text = x.Name;
 			textBox3.Text = x.Cat;
@@ -34,7 +45,10 @@ namespace SRIMS
 			x.Desc = textBox2.Text;
 			x.Qt = (int)numericUpDown1.Value;
 			x.Loc = textBox4.Text;
-			z.ext(lol);
+            if (!tp)
+            { z.ext(lol); }
+            else
+            { z1.PopDB(lol);}
 
 			Close();
 		}

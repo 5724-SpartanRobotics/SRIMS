@@ -96,18 +96,39 @@ namespace SRIMS
             //results.Items.Clear();
         }
 
+        public void but1click()
+        {
+            foreach (Item x in search())
+                results.Items.Add(x);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             //reset();
             results.Items.Clear();
             resultsList.Clear();
-            foreach (Item x in search())
-                results.Items.Add(x);
+            but1click();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             results.Items.Clear();
+        }
+
+        private void editItem(int index)
+        {
+            edit ed = new edit(resultsList, index, this);
+            ed.Show();
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (results.SelectedIndex != -1)
+            {
+                editItem(results.SelectedIndex);
+                PopDB(inv);
+            }
         }
     }
 }
