@@ -18,7 +18,7 @@ namespace SRIMS
 
 		Item x = new Item();
 
-		public List<Item> inv = new List<Item>();
+		public List<Item> Inv = new List<Item>();
 
 		private void Init()
 		{
@@ -45,11 +45,11 @@ namespace SRIMS
 
 						// Created this CSVHelper in case some idiot decides to put a
 						// comma in a name or something and corrupt the inventory file.
-						inv.Add(CSVHelper.DeserializeItem(currentitem));
+						Inv.Add(CSVHelper.DeserializeItem(currentitem));
 
 					}
 
-					foreach (Item x in inv)
+					foreach (Item x in Inv)
 					{
 						// Console.WriteLine(x);
 					}
@@ -118,7 +118,7 @@ namespace SRIMS
 			ViewDatabaseSelected.Visible = true;
 			viewDB1.Visible = true;
 
-			viewDB1.ext(inv);
+			viewDB1.ext();
 
 		}
 
@@ -128,10 +128,8 @@ namespace SRIMS
 			DehighlightSelectors();
 			SearchSelected.Visible = true;
 			search1.Visible = true;
-
-			search1.PopDB(inv);
+			
 			search1.Reset();
-
 		}
 
 		// AddItem
@@ -143,7 +141,7 @@ namespace SRIMS
 
 			addItem1.reload(true);
 
-			addItem1.setDB(inv);
+			addItem1.setDB(Inv);
 
 
 
@@ -171,8 +169,8 @@ namespace SRIMS
 			{
 				using (StreamWriter writer = new StreamWriter(dbloc))
 				{
-					writer.WriteLine("Id" + inv.Count + ",Location,Category,Item,Item Description,Quantity");
-					foreach (Item item in inv)
+					writer.WriteLine("Id" + Inv.Count + ",Location,Category,Item,Item Description,Quantity");
+					foreach (Item item in Inv)
 						writer.WriteLine(CSVHelper.SerializeItem(item));
 				}
 			}

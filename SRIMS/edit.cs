@@ -1,54 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SRIMS
 {
 	public partial class edit : Form
 	{
-		List<Item> lol;
-		Item x;
-		ViewDB z;
-        Search z1;
-        bool tp;
+		Item item;
+		ViewDB viewDB;
+		Search search;
+		bool tp;
+		Form1 parentForm;
 
-		public edit(List<Item> x, int index, ViewDB z)
+		public edit(Form1 parent, int index, ViewDB z)
 		{
 			InitializeComponent();
-			this.x = x[index];
-			this.lol = x;
-			this.z = z;
+			item = parent.Inv[index];
 		}
 
-        public edit(List<Item> x, int index, Search z)
-        {
-            InitializeComponent();
-            this.x = x[index];
-            this.lol = x;
-            this.z1 = z;
-            this.tp = true;
-        }
-
-        private void edit_Load(object sender, EventArgs e)
+		public edit(Form1 parent, Item itemInput, Search z)
 		{
-			textBox1.Text = x.Name;
-			textBox3.Text = x.Cat;
-			textBox2.Text = x.Desc;
-			numericUpDown1.Value = x.Qt;
-			textBox4.Text = x.Loc;
+			InitializeComponent();
+			parentForm = parent;
+			item = itemInput;
+			search = z;
+			tp = true;
+		}
+
+		private void edit_Load(object sender, EventArgs e)
+		{
+			textBox1.Text = item.Name;
+			textBox3.Text = item.Cat;
+			textBox2.Text = item.Desc;
+			numericUpDown1.Value = item.Qt;
+			textBox4.Text = item.Loc;
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			x.Name = textBox1.Text;
-			x.Cat = textBox3.Text;
-			x.Desc = textBox2.Text;
-			x.Qt = (int)numericUpDown1.Value;
-			x.Loc = textBox4.Text;
-            if (!tp)
-            { z.ext(lol); }
-            else
-            { z1.PopDB(lol);}
+			item.Name = textBox1.Text;
+			item.Cat = textBox3.Text;
+			item.Desc = textBox2.Text;
+			item.Qt = (int)numericUpDown1.Value;
+			item.Loc = textBox4.Text;
+			if (tp)
+				;
+			else
+				;
 
 			Close();
 		}
