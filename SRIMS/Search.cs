@@ -120,5 +120,18 @@ namespace SRIMS
 				EditItem(resultsList[results.SelectedIndex]);
 			}
 		}
-	}
+
+
+        // CHECK OUT!!!!!!!!!!!!!!!
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (results.SelectedIndex != -1)
+            {
+                CheckOut c = new CheckOut(resultsList[results.SelectedIndex]);
+                c.Show();
+            }
+            
+        }
+    }
 }

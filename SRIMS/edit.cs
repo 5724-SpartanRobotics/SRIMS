@@ -6,7 +6,7 @@ namespace SRIMS
 	public partial class edit : Form
 	{
 		Item item;
-		ViewDB viewDB;
+		//ViewDB viewDB;
 		Search search;
 		bool tp;
 		Form1 parentForm;

@@ -51,5 +51,10 @@ namespace SRIMS
                
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.checkout_list = "";
+        }
     }
 }

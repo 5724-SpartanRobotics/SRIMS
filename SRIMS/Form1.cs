@@ -20,9 +20,17 @@ namespace SRIMS
 
 		public List<Item> Inv = new List<Item>();
 
+        public List<Item> CheckOutInv = new List<Item>();
+
 		private void Init()
 		{
-			dbloc = Properties.Settings.Default.dbloc;
+
+            //Console.WriteLine("The CheckOut Line as of Open: " + Properties.Settings.Default.checkout_list);
+
+            dbloc = Properties.Settings.Default.dbloc;
+
+            string chout = Properties.Settings.Default.checkout_list;
+
 			/*if (dbloc == null || dbloc == "")
 			{
 				Settings settings = new Settings();
@@ -108,6 +116,7 @@ namespace SRIMS
 			DehighlightSelectors();
 			CheckInSelected.Visible = true;
 			checkin1.Visible = true;
+            checkin1.settingsReader();
 
 		}
 
@@ -163,6 +172,7 @@ namespace SRIMS
 			settings.Show();
 		}
 
+
 		private void Form1_FormClosing(object sender, FormClosingEventArgs a)
 		{
 			try
@@ -173,6 +183,9 @@ namespace SRIMS
 					foreach (Item item in Inv)
 						writer.WriteLine(CSVHelper.SerializeItem(item));
 				}
+
+                checkin1.modified();
+                //Console.WriteLine(DateTime.Today);
 			}
 			catch (Exception e)
 			{

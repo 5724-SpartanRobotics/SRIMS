@@ -34,5 +34,17 @@ namespace SRIMS.Properties {
                 this["dbloc"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string checkout_list {
+            get {
+                return ((string)(this["checkout_list"]));
+            }
+            set {
+                this["checkout_list"] = value;
+            }
+        }
     }
 }
