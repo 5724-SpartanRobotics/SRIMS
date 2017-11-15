@@ -6,9 +6,6 @@ namespace SRIMS
 	public partial class edit : Form
 	{
 		Item item;
-		//ViewDB viewDB;
-		Search search;
-		bool tp;
 		Form1 parentForm;
 
 		public edit(Form1 parent, int index, ViewDB z)
@@ -22,8 +19,6 @@ namespace SRIMS
 			InitializeComponent();
 			parentForm = parent;
 			item = itemInput;
-			search = z;
-			tp = true;
 		}
 
 		private void edit_Load(object sender, EventArgs e)
@@ -42,10 +37,6 @@ namespace SRIMS
 			item.Desc = textBox2.Text;
 			item.Qt = (int)numericUpDown1.Value;
 			item.Loc = textBox4.Text;
-			if (tp)
-				;
-			else
-				;
 
 			Close();
 		}
