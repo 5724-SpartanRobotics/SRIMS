@@ -36,7 +36,7 @@ namespace SRIMS
             OpenFileDialog op = new OpenFileDialog();
 
             //op.InitialDirectory = "c:\\";
-            op.Filter = "CSV Files|*.csv";
+            op.Filter = "All Files|*.*|CSV Files|*.csv";
             op.FilterIndex = 1;
             //op.RestoreDirectory = true;
 
