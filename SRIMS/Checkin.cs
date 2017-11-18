@@ -28,7 +28,7 @@ namespace SRIMS
 
 		private Item finditem(int id)
 		{
-			foreach (Item y in ((Form1)ParentForm).Inv)
+			foreach (Item y in ((SRIMSForm)ParentForm).Inv)
 			{
 				//Console.WriteLine(y);
 				//Console.WriteLine(y.Id + "vs (srch) " + id);
@@ -40,8 +40,10 @@ namespace SRIMS
 				}
 
 			}
-			Item o = new Item();
-			o.Name = "Unknown Item";
+			Item o = new Item
+			{
+				Name = "Unknown Item"
+			};
 			return o;
 		}
 

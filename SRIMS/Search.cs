@@ -4,13 +4,20 @@ using System.Windows.Forms;
 
 namespace SRIMS
 {
-	public partial class Search : UserControl
+	public partial class SearchControl : UserControl
 	{
 		List<Item> resultsList = new List<Item>();
 
-		public Search()
+		public SearchControl()
 		{
 			InitializeComponent();
+
+			results.Columns[0].Width = 23;
+			results.Columns[1].Width = 53;
+			results.Columns[2].Width = 70;
+			results.Columns[3].Width = 112;
+			results.Columns[4].Width = 171;
+			results.Columns[5].Width = 51;
 		}
 
 		private void Search_Load(object sender, EventArgs e)
@@ -18,20 +25,20 @@ namespace SRIMS
 
 		}
 
-		private List<Item> search()
+		private List<Item> Search()
 		{
-			int tp = comboBox1.SelectedIndex;
-			string sa = textBox1.Text;
+			int tp = SearchTypeDropdown.SelectedIndex;
+			string sa = SearchBox.Text;
 			if (tp >= 0)
 			{
-				if (sa == "" || sa == "Search Argument")
+				if (sa == "")
 				{
 					return new List<Item>();
 				}
 				sa = sa.ToLower();
 				if (tp == 0)
 				{
-					foreach (Item x in ((Form1)ParentForm).Inv)
+					foreach (Item x in ((SRIMSForm)ParentForm).Inv)
 					{
 						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
 						if (x.Name.ToLower().Contains(sa))
@@ -45,7 +52,7 @@ namespace SRIMS
 				if (tp == 1)
 				{
 					//Search by Loc
-					foreach (Item x in ((Form1)ParentForm).Inv)
+					foreach (Item x in ((SRIMSForm)ParentForm).Inv)
 					{
 						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
 						if (x.Loc.ToLower().Contains(sa))
@@ -62,7 +69,7 @@ namespace SRIMS
 
 					//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Add Dropdown For Category <<<<<<<<<<<<<<<<<<<<<<<<<<<<\\
 
-					foreach (Item x in ((Form1)ParentForm).Inv)
+					foreach (Item x in ((SRIMSForm)ParentForm).Inv)
 					{
 						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
 						if (x.Cat.ToLower().Contains(sa))
@@ -82,23 +89,21 @@ namespace SRIMS
 		public void Reset()
 		{
 			try { resultsList.Clear(); } catch { }
-			comboBox1.Text = "Type";
-			textBox1.Text = "Search Argument";
+			SearchTypeDropdown.SelectedIndex = 0;
 			//results.Items.Clear();
 		}
 
-		public void but1click()
+		private void SearchFunctionThing()
 		{
-			foreach (Item x in search())
-				results.Items.Add(x);
-		}
-
-		private void button1_Click(object sender, EventArgs e)
-		{
-			//reset();
-			results.Items.Clear();
 			resultsList.Clear();
-			but1click();
+			results.Items.Clear();
+			List<Item> items = Search();
+
+			foreach (Item item in items)
+			{
+				results.Items.Add(item.Id.ToString()).SubItems.AddRange(new string[]
+					{ item.Loc, item.Cat, item.Name, item.Desc, item.Qt.ToString() });
+			}
 		}
 
 		private void button2_Click_1(object sender, EventArgs e)
@@ -108,30 +113,35 @@ namespace SRIMS
 
 		private void EditItem(Item item)
 		{
-			edit ed = new edit(((Form1)ParentForm), item, this);
-			ed.FormClosed += button1_Click;
+			EditForm ed = new EditForm(((SRIMSForm)ParentForm), item, this);
+			ed.FormClosed += (sender, args) => SearchFunctionThing();
 			ed.Show();
 		}
 
 		private void Modify_Click(object sender, EventArgs e)
 		{
-			if (results.SelectedIndex != -1)
+			if (results.SelectedIndices.Count == 1 && results.SelectedIndices[0] != -1)
 			{
-				EditItem(resultsList[results.SelectedIndex]);
+				EditItem(resultsList[results.SelectedIndices[0]]);
 			}
 		}
 
 
-        // CHECK OUT!!!!!!!!!!!!!!!
+		// CHECK OUT!!!!!!!!!!!!!!!
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (results.SelectedIndex != -1)
-            {
-                CheckOut c = new CheckOut(resultsList[results.SelectedIndex]);
-                c.Show();
-            }
-            
-        }
-    }
+		private void button4_Click(object sender, EventArgs e)
+		{
+			if (results.SelectedIndices.Count == 1 && results.SelectedIndices[0] != -1)
+			{
+				CheckOut c = new CheckOut(resultsList[results.SelectedIndices[0]]);
+				c.Show();
+			}
+
+		}
+
+		private void SearchBox_TextChanged(object sender, EventArgs e)
+		{
+			SearchFunctionThing();
+		}
+	}
 }

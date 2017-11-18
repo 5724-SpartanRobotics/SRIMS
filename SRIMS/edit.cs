@@ -3,25 +3,25 @@ using System.Windows.Forms;
 
 namespace SRIMS
 {
-	public partial class edit : Form
+	public partial class EditForm : Form
 	{
 		Item item;
-		Form1 parentForm;
+		SRIMSForm parentForm;
 
-		public edit(Form1 parent, int index, ViewDB z)
+		public EditForm(SRIMSForm parent, int index, ViewDB z)
 		{
 			InitializeComponent();
 			item = parent.Inv[index];
 		}
 
-		public edit(Form1 parent, Item itemInput, Search z)
+		public EditForm(SRIMSForm parent, Item itemInput, SearchControl z)
 		{
 			InitializeComponent();
 			parentForm = parent;
 			item = itemInput;
 		}
 
-		private void edit_Load(object sender, EventArgs e)
+		private void Edit_Load(object sender, EventArgs e)
 		{
 			textBox1.Text = item.Name;
 			textBox3.Text = item.Cat;
@@ -30,7 +30,7 @@ namespace SRIMS
 			textBox4.Text = item.Loc;
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void SaveBtn_Click(object sender, EventArgs e)
 		{
 			item.Name = textBox1.Text;
 			item.Cat = textBox3.Text;

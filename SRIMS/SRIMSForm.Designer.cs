@@ -1,6 +1,6 @@
 ﻿namespace SRIMS
 {
-    partial class Form1
+    partial class SRIMSForm
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.checkoutLog1 = new SRIMS.CheckoutLog();
-            this.search1 = new SRIMS.Search();
+            this.search1 = new SRIMS.SearchControl();
             this.addItem1 = new SRIMS.AddItem();
             this.checkin1 = new SRIMS.Checkin();
             this.viewDB1 = new SRIMS.ViewDB();
@@ -282,7 +282,7 @@
         private System.Windows.Forms.Panel ViewDatabaseSelected;
         private System.Windows.Forms.Panel CheckInSelected;
         private System.Windows.Forms.Button button7;
-        private Search search1;
+        private SearchControl search1;
         private CheckoutLog checkoutLog1;
         private ViewDB viewDB1;
         private Checkin checkin1;

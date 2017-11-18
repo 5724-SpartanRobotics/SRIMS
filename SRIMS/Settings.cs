@@ -1,60 +1,90 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
 namespace SRIMS
 {
-    public partial class Settings : Form
-    {
-        public Settings()
-        {
-            InitializeComponent();
-            FormClosing += Settings_FormClosing;
-        }
+	public partial class Settings : Form
+	{
+		private SRIMSForm parentForm;
 
-        private void Settings_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.Save();
-        }
+		public Settings(SRIMSForm parent)
+		{
+			InitializeComponent();
+			FormClosing += Settings_FormClosing;
+			parentForm = parent;
+		}
 
-        private void Settings_Load(object sender, EventArgs e)
-        {
-            dbpath.Text = Properties.Settings.Default.dbloc;
-        }
+		private void Settings_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			Properties.Settings.Default.Save();
+			parentForm.Init();
+		}
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Stream mystream = null;
+		private void Settings_Load(object sender, EventArgs e)
+		{
+			dbpath.Text = Properties.Settings.Default.dbloc;
+		}
 
-            OpenFileDialog op = new OpenFileDialog();
+		private void ChangeDatabase_Click(object sender, EventArgs e)
+		{
+			Stream mystream = null;
 
-            //op.InitialDirectory = "c:\\";
-            op.Filter = "All Files|*.*|CSV Files|*.csv";
-            op.FilterIndex = 1;
-            //op.RestoreDirectory = true;
+			OpenFileDialog op = new OpenFileDialog
+			{
 
-            if (op.ShowDialog() == DialogResult.OK)
-            {
-               if ((mystream = op.OpenFile()) != null)
-                {
-                    // instert code here to change db location on app settings
-                    dbpath.Text = op.InitialDirectory + op.FileName;
-                    Properties.Settings.Default.dbloc = op.InitialDirectory + op.FileName;
-                }
-               
-            }
-        }
+				//op.InitialDirectory = "c:\\";
+				Filter = "All Files|*.*|CSV Files|*.csv",
+				FilterIndex = 3
+				//op.RestoreDirectory = true;
+			};
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.checkout_list = "";
-        }
-    }
+			if (op.ShowDialog() == DialogResult.OK)
+			{
+				if ((mystream = op.OpenFile()) != null)
+				{
+					mystream.Close();
+					// instert code here to change db location on app settings
+					dbpath.Text = op.InitialDirectory + op.FileName;
+					Properties.Settings.Default.dbloc = op.InitialDirectory + op.FileName;
+					parentForm.ClearInventory();
+				}
+
+			}
+		}
+
+		private void NewDatabase_Click(object sender, EventArgs e)
+		{
+			Stream mystream = null;
+
+			SaveFileDialog op = new SaveFileDialog
+			{
+
+				//op.InitialDirectory = "c:\\";
+				Filter = "All Files|*.*|CSV Files|*.csv",
+				FilterIndex = 3
+				//op.RestoreDirectory = true;
+			};
+
+			if (op.ShowDialog() == DialogResult.OK)
+			{
+				if ((mystream = op.OpenFile()) != null)
+				{
+					mystream.Close();
+					// instert code here to change db location on app settings
+					dbpath.Text = op.InitialDirectory + op.FileName;
+					Properties.Settings.Default.dbloc = op.InitialDirectory + op.FileName;
+
+					parentForm.ClearInventory();
+					parentForm.SaveInventory();
+				}
+
+			}
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.checkout_list = "";
+		}
+	}
 }

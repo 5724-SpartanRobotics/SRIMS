@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SRIMS
+﻿namespace SRIMS
 {
-    class CheckedOutItem
+	class CheckedOutItem
     {
 
         public string Name { get; set;} = "";
@@ -22,7 +16,7 @@ namespace SRIMS
 
         public override string ToString()
         {
-            return Name + ":" + item.Name + "-" + item.Loc + "-Qt[" + qt + "]";
+            return Name + ": " + item.Name + "-" + item.Loc + "-Qt[" + qt + "]";
         }
 
     }

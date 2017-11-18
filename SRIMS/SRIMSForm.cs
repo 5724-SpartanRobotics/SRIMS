@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 
+
 namespace SRIMS
 {
-	public partial class Form1 : Form
+	public partial class SRIMSForm : Form
 	{
-		string dbloc = Properties.Settings.Default.dbloc;
+		string DBloc { get { return Properties.Settings.Default.dbloc; } }
 
-		public Form1()
+		public SRIMSForm()
 		{
 			InitializeComponent();
 		}
@@ -20,16 +21,14 @@ namespace SRIMS
 
 		public List<Item> Inv = new List<Item>();
 
-        public List<Item> CheckOutInv = new List<Item>();
+		public List<Item> CheckOutInv = new List<Item>();
 
-		private void Init()
+		public void Init()
 		{
+			ClearInventory();
+			//Console.WriteLine("The CheckOut Line as of Open: " + Properties.Settings.Default.checkout_list);
 
-            //Console.WriteLine("The CheckOut Line as of Open: " + Properties.Settings.Default.checkout_list);
-
-            dbloc = Properties.Settings.Default.dbloc;
-
-            string chout = Properties.Settings.Default.checkout_list;
+			string chout = Properties.Settings.Default.checkout_list;
 
 			/*if (dbloc == null || dbloc == "")
 			{
@@ -39,14 +38,14 @@ namespace SRIMS
 			try
 			{
 				// using statements automatically close disposible objects
-				using (StreamReader sr = new StreamReader(dbloc))
+				using (StreamReader sr = new StreamReader(DBloc))
 				{
 					string head = sr.ReadLine();
-					
+
 					string headId = head.Split(',')[0];
 					headId = headId.Remove(0, 2);
 					int itemcount = int.Parse(headId);
-					
+
 					for (int i = 0; i < itemcount; i++)
 					{
 						string currentitem = sr.ReadLine();
@@ -67,7 +66,7 @@ namespace SRIMS
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
-				Settings settings = new Settings();
+				Settings settings = new Settings(this);
 				settings.Show();
 				settings.FormClosed += Settings_FormClosed;
 
@@ -116,7 +115,7 @@ namespace SRIMS
 			DehighlightSelectors();
 			CheckInSelected.Visible = true;
 			checkin1.Visible = true;
-            checkin1.settingsReader();
+			checkin1.settingsReader();
 
 		}
 
@@ -137,7 +136,7 @@ namespace SRIMS
 			DehighlightSelectors();
 			SearchSelected.Visible = true;
 			search1.Visible = true;
-			
+
 			search1.Reset();
 		}
 
@@ -150,7 +149,7 @@ namespace SRIMS
 
 			addItem1.reload(true);
 
-			addItem1.setDB(Inv);
+			addItem1.SetDB(Inv);
 
 
 
@@ -168,24 +167,28 @@ namespace SRIMS
 		// Settings
 		private void button7_Click(object sender, EventArgs e)
 		{
-			Settings settings = new Settings();
+			Settings settings = new Settings(this);
 			settings.Show();
 		}
 
+		// Erases the inventory
+		public void ClearInventory()
+		{
+			Inv.Clear();
+		}
 
-		private void Form1_FormClosing(object sender, FormClosingEventArgs a)
+		public void SaveInventory()
 		{
 			try
 			{
-				using (StreamWriter writer = new StreamWriter(dbloc))
+				using (StreamWriter writer = new StreamWriter(DBloc))
 				{
 					writer.WriteLine("Id" + Inv.Count + ",Location,Category,Item,Item Description,Quantity");
 					foreach (Item item in Inv)
 						writer.WriteLine(CSVHelper.SerializeItem(item));
 				}
 
-                checkin1.modified();
-                //Console.WriteLine(DateTime.Today);
+				checkin1.modified();
 			}
 			catch (Exception e)
 			{
@@ -193,5 +196,12 @@ namespace SRIMS
 					e.Message + "\n" + e.StackTrace);
 			}
 		}
+
+		private void Form1_FormClosing(object sender, FormClosingEventArgs a)
+		{
+			SaveInventory();
+		}
+
+
 	}
 }

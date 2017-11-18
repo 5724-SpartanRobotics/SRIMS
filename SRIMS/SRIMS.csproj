@@ -73,17 +73,23 @@
       <DependentUpon>CheckoutLog.cs</DependentUpon>
     </Compile>
     <Compile Include="CSVHelper.cs" />
-    <Compile Include="edit.cs">
+    <Compile Include="CustomTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomTextbox.Designer.cs">
+      <DependentUpon>CustomTextbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="edit.Designer.cs">
-      <DependentUpon>edit.cs</DependentUpon>
+    <Compile Include="Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="SRIMSForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="SRIMSForm.Designer.cs">
+      <DependentUpon>SRIMSForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
@@ -118,11 +124,11 @@
     <EmbeddedResource Include="CheckoutLog.resx">
       <DependentUpon>CheckoutLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="edit.resx">
-      <DependentUpon>edit.cs</DependentUpon>
+    <EmbeddedResource Include="Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="SRIMSForm.resx">
+      <DependentUpon>SRIMSForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
