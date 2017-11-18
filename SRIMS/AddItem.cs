@@ -7,7 +7,6 @@ namespace SRIMS
 {
 	public partial class AddItem : UserControl
 	{
-
 		List<Item> inv;
 
 		public AddItem()
@@ -35,22 +34,19 @@ namespace SRIMS
 			inv.Add(new Item(id, ItemLocation.Text, cat[scat], ItemName.Text, Description.Text, qt));
 
 			label1.Visible = true;
-
-			reload();
+			((SRIMSForm)ParentForm).SaveInventory();
+			Reload();
 		}
 
-		private void reload()
+		private void Reload()
 		{
-			ItemName.Text = "Item Name";
-			ItemLocation.Text = "Location";
-			Description.Text = "Item Description";
 			Quantity.Value = 0;
 			Category.SelectedIndex = 0;
 		}
 
-		public void reload(bool x)
+		public void Reload(bool x)
 		{
-			reload();
+			Reload();
 			label1.Visible = false;
 		}
 

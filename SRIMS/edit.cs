@@ -38,6 +38,7 @@ namespace SRIMS
 			item.Qt = (int)numericUpDown1.Value;
 			item.Loc = textBox4.Text;
 
+			parentForm.SaveInventory();
 			Close();
 		}
 	}

@@ -3,43 +3,84 @@ using System.Windows.Forms;
 
 namespace SRIMS
 {
-	// Source: https://stackoverflow.com/a/15232752/5515842
+	// Based off of https://stackoverflow.com/a/15232752/5515842
 	public partial class SRIMSTextBox : TextBox
 	{
 		/// <summary>
-		/// The text that will be presented as the watermak hint
+		/// The text that will be presented as the watermak hint.
 		/// </summary>
 		private string _watermarkText = "Someone forgot the watermark";
+
 		/// <summary>
-		/// Gets or Sets the text that will be presented as the watermak hint
+		/// Gets or Sets the text that will be presented as the watermak hint.
 		/// </summary>
 		public string WatermarkText
 		{
-			get { return _watermarkText; }
-			set { _watermarkText = value; }
+			get => _watermarkText;
+			set
+			{
+				_watermarkText = value;
+				if (_watermarkActive)
+					Text = value;
+			}
 		}
 
 		/// <summary>
-		/// Whether watermark effect is enabled or not
+		/// Gets or sets the color of the Watermark text.
+		/// </summary>
+		public Color WatermarkColor
+		{
+			get
+			{
+				return _watermarkColor;
+			}
+			set
+			{
+				_watermarkColor = value;
+				if (_watermarkActive)
+					base.ForeColor = _watermarkColor;
+			}
+		}
+
+		private Color _originalColor = Color.Black;
+		private Color _watermarkColor = Color.Gray;
+
+		public override Color ForeColor
+		{
+			get
+			{
+				return base.ForeColor;
+			}
+			set
+			{
+				_originalColor = value;
+				if (!_watermarkActive)
+					base.ForeColor = value;
+			}
+		}
+
+		/// <summary>
+		/// Whether watermark effect is enabled or not.
 		/// </summary>
 		private bool _watermarkActive = true;
+
 		/// <summary>
-		/// Gets or Sets whether watermark effect is enabled or not
+		/// Gets or Sets whether watermark effect is enabled or not.
 		/// </summary>
 		public bool WatermarkActive
 		{
-			get { return _watermarkActive; }
-			set { _watermarkActive = value; }
+			get => _watermarkActive;
+			set => _watermarkActive = value;
 		}
 
 		/// <summary>
-		/// Create a new TextBox that supports watermak hint
+		/// Create a new TextBox that supports watermak hint.
 		/// </summary>
 		public SRIMSTextBox()
 		{
 			_watermarkActive = true;
 			Text = _watermarkText;
-			ForeColor = Color.Gray;
+			base.ForeColor = WatermarkColor;
 
 			GotFocus += (source, e) =>
 			{
@@ -50,7 +91,6 @@ namespace SRIMS
 			{
 				ApplyWatermark();
 			};
-
 		}
 
 		/// <summary>
@@ -62,20 +102,20 @@ namespace SRIMS
 			{
 				_watermarkActive = false;
 				Text = "";
-				ForeColor = Color.Black;
+				base.ForeColor = _originalColor;
 			}
 		}
 
 		/// <summary>
-		/// Applywatermak immediately
+		/// Applywatermark immediately
 		/// </summary>
 		public void ApplyWatermark()
 		{
-			if (!_watermarkActive && string.IsNullOrEmpty(Text) || ForeColor == Color.Gray)
+			if (!_watermarkActive && string.IsNullOrEmpty(Text) || ForeColor == WatermarkColor)
 			{
 				_watermarkActive = true;
 				Text = _watermarkText;
-				ForeColor = Color.Gray;
+				base.ForeColor = WatermarkColor;
 			}
 		}
 
@@ -106,6 +146,10 @@ namespace SRIMS
 
 				Select(prevSpacePos + 1, SelectionStart - prevSpacePos - 1);
 				SelectedText = "";
+			}
+			else if (e.KeyData == (Keys.Control | Keys.A))
+			{
+				SelectAll();
 			}
 		}
 	}

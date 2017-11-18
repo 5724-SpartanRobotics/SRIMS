@@ -147,7 +147,7 @@ namespace SRIMS
 			AddItemSelected.Visible = true;
 			addItem1.Visible = true;
 
-			addItem1.reload(true);
+			addItem1.Reload(true);
 
 			addItem1.SetDB(Inv);
 

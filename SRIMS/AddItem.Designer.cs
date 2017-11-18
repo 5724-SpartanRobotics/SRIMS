@@ -93,37 +93,41 @@
 			// ItemName
 			// 
 			this.ItemName.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.ItemName.ForeColor = System.Drawing.Color.Gray;
+			this.ItemName.ForeColor = System.Drawing.Color.Black;
 			this.ItemName.Location = new System.Drawing.Point(199, 59);
 			this.ItemName.Name = "ItemName";
 			this.ItemName.Size = new System.Drawing.Size(223, 27);
 			this.ItemName.TabIndex = 6;
 			this.ItemName.Text = "Item Name";
 			this.ItemName.WatermarkActive = true;
+			this.ItemName.WatermarkColor = System.Drawing.Color.Gray;
 			this.ItemName.WatermarkText = "Item Name";
 			// 
 			// ItemLocation
 			// 
 			this.ItemLocation.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.ItemLocation.ForeColor = System.Drawing.Color.Gray;
+			this.ItemLocation.ForeColor = System.Drawing.Color.Black;
 			this.ItemLocation.Location = new System.Drawing.Point(199, 131);
 			this.ItemLocation.Name = "ItemLocation";
 			this.ItemLocation.Size = new System.Drawing.Size(223, 27);
 			this.ItemLocation.TabIndex = 7;
 			this.ItemLocation.Text = "Location";
 			this.ItemLocation.WatermarkActive = true;
-			this.ItemLocation.WatermarkText = "";
+			this.ItemLocation.WatermarkColor = System.Drawing.Color.Gray;
+			this.ItemLocation.WatermarkText = "Location";
 			// 
 			// Description
 			// 
 			this.Description.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.Description.ForeColor = System.Drawing.Color.Gray;
+			this.Description.ForeColor = System.Drawing.Color.Black;
 			this.Description.Location = new System.Drawing.Point(199, 166);
 			this.Description.Multiline = true;
 			this.Description.Name = "Description";
 			this.Description.Size = new System.Drawing.Size(223, 173);
 			this.Description.TabIndex = 8;
+			this.Description.Text = "Item Description";
 			this.Description.WatermarkActive = true;
+			this.Description.WatermarkColor = System.Drawing.Color.Gray;
 			this.Description.WatermarkText = "Item Description";
 			// 
 			// AddItem

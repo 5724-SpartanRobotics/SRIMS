@@ -148,13 +148,14 @@
 			// SearchBox
 			// 
 			this.SearchBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-			this.SearchBox.ForeColor = System.Drawing.Color.Gray;
+			this.SearchBox.ForeColor = System.Drawing.Color.Black;
 			this.SearchBox.Location = new System.Drawing.Point(211, 34);
 			this.SearchBox.Name = "SearchBox";
 			this.SearchBox.Size = new System.Drawing.Size(336, 21);
 			this.SearchBox.TabIndex = 7;
 			this.SearchBox.Text = "Search Argument";
 			this.SearchBox.WatermarkActive = true;
+			this.SearchBox.WatermarkColor = System.Drawing.Color.Gray;
 			this.SearchBox.WatermarkText = "Search Argument";
 			this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
 			// 
