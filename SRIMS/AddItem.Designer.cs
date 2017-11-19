@@ -33,9 +33,9 @@
 			this.Submit = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-			this.ItemName = new SRIMS.SRIMSTextBox();
-			this.ItemLocation = new SRIMS.SRIMSTextBox();
-			this.Description = new SRIMS.SRIMSTextBox();
+			this.Description = new SRIMS.WatermarkTextbox();
+			this.ItemLocation = new SRIMS.WatermarkTextbox();
+			this.ItemName = new SRIMS.WatermarkTextbox();
 			((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -90,45 +90,43 @@
 			this.label1.Text = "Item Added Sucessfully";
 			this.label1.Visible = false;
 			// 
-			// ItemName
-			// 
-			this.ItemName.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.ItemName.ForeColor = System.Drawing.Color.Black;
-			this.ItemName.Location = new System.Drawing.Point(199, 59);
-			this.ItemName.Name = "ItemName";
-			this.ItemName.Size = new System.Drawing.Size(223, 27);
-			this.ItemName.TabIndex = 6;
-			this.ItemName.Text = "Item Name";
-			this.ItemName.WatermarkActive = true;
-			this.ItemName.WatermarkColor = System.Drawing.Color.Gray;
-			this.ItemName.WatermarkText = "Item Name";
-			// 
-			// ItemLocation
-			// 
-			this.ItemLocation.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.ItemLocation.ForeColor = System.Drawing.Color.Black;
-			this.ItemLocation.Location = new System.Drawing.Point(199, 131);
-			this.ItemLocation.Name = "ItemLocation";
-			this.ItemLocation.Size = new System.Drawing.Size(223, 27);
-			this.ItemLocation.TabIndex = 7;
-			this.ItemLocation.Text = "Location";
-			this.ItemLocation.WatermarkActive = true;
-			this.ItemLocation.WatermarkColor = System.Drawing.Color.Gray;
-			this.ItemLocation.WatermarkText = "Location";
-			// 
 			// Description
 			// 
 			this.Description.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.Description.ForeColor = System.Drawing.Color.Black;
+			this.Description.ForeColor = System.Drawing.Color.Gray;
 			this.Description.Location = new System.Drawing.Point(199, 166);
 			this.Description.Multiline = true;
 			this.Description.Name = "Description";
 			this.Description.Size = new System.Drawing.Size(223, 173);
 			this.Description.TabIndex = 8;
 			this.Description.Text = "Item Description";
-			this.Description.WatermarkActive = true;
 			this.Description.WatermarkColor = System.Drawing.Color.Gray;
 			this.Description.WatermarkText = "Item Description";
+			this.Description.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Description_KeyPress);
+			// 
+			// ItemLocation
+			// 
+			this.ItemLocation.Font = new System.Drawing.Font("Century Gothic", 12F);
+			this.ItemLocation.ForeColor = System.Drawing.Color.Gray;
+			this.ItemLocation.Location = new System.Drawing.Point(199, 131);
+			this.ItemLocation.Name = "ItemLocation";
+			this.ItemLocation.Size = new System.Drawing.Size(223, 27);
+			this.ItemLocation.TabIndex = 7;
+			this.ItemLocation.Text = "Location";
+			this.ItemLocation.WatermarkColor = System.Drawing.Color.Gray;
+			this.ItemLocation.WatermarkText = "Location";
+			// 
+			// ItemName
+			// 
+			this.ItemName.Font = new System.Drawing.Font("Century Gothic", 12F);
+			this.ItemName.ForeColor = System.Drawing.Color.Gray;
+			this.ItemName.Location = new System.Drawing.Point(199, 59);
+			this.ItemName.Name = "ItemName";
+			this.ItemName.Size = new System.Drawing.Size(223, 27);
+			this.ItemName.TabIndex = 6;
+			this.ItemName.Text = "Item Name";
+			this.ItemName.WatermarkColor = System.Drawing.Color.Gray;
+			this.ItemName.WatermarkText = "Item Name";
 			// 
 			// AddItem
 			// 
@@ -155,8 +153,8 @@
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-		private SRIMSTextBox ItemName;
-		private SRIMSTextBox ItemLocation;
-		private SRIMSTextBox Description;
+		private WatermarkTextbox ItemName;
+		private WatermarkTextbox ItemLocation;
+		private WatermarkTextbox Description;
 	}
 }

@@ -23,10 +23,10 @@ namespace SRIMS
 
 		}
 
-		public void ext()
+		public void Ext()
 		{
 			Clear();
-			foreach (Item item in ((SRIMSForm)ParentForm).Inv)
+			foreach (Item item in SRIMSForm.Instance.Inv)
 				ViewListBox.Items.Add(item.Id.ToString()).SubItems.AddRange(new string[]
 					{ item.Loc, item.Cat, item.Name, item.Desc, item.Qt.ToString() });
 		}
@@ -40,8 +40,8 @@ namespace SRIMS
 		{
 			if (ViewListBox.SelectedIndices.Count == 1 && ViewListBox.SelectedIndices[0] != -1)
 			{
-				((SRIMSForm)ParentForm).Inv.Remove(((SRIMSForm)ParentForm).Inv[ViewListBox.SelectedIndices[0]]);
-				ext();
+				SRIMSForm.Instance.Inv.Remove(SRIMSForm.Instance.Inv[ViewListBox.SelectedIndices[0]]);
+				Ext();
 			}
 
 		}
@@ -55,14 +55,9 @@ namespace SRIMS
 
 		private void EditItem(int index)
 		{
-			EditForm ed = new EditForm((SRIMSForm)ParentForm, index, this);
-			ed.FormClosed += Ed_FormClosed;
-			ed.Show();
-		}
-
-		private void Ed_FormClosed(object sender, FormClosedEventArgs e)
-		{
-			ext();
+			using (EditForm ed = new EditForm(index, this))
+				ed.ShowDialog();
+			Ext();
 		}
 
 		private void button1_Click(object sender, EventArgs e)

@@ -8,11 +8,15 @@ namespace SRIMS
 {
 	public partial class SRIMSForm : Form
 	{
-		string DBloc { get { return Properties.Settings.Default.dbloc; } }
+		string DBloc { get => Properties.Settings.Default.dbloc; }
+		public static SRIMSForm Instance { get; private set; } = null;
 
 		public SRIMSForm()
 		{
 			InitializeComponent();
+			if (Instance != null)
+				throw new ApplicationException("Can't have more than one instance of SRIMSForm in a single application!");
+			Instance = this;
 		}
 
 		//Real Code Begins Here:
@@ -29,12 +33,8 @@ namespace SRIMS
 			//Console.WriteLine("The CheckOut Line as of Open: " + Properties.Settings.Default.checkout_list);
 
 			string chout = Properties.Settings.Default.checkout_list;
+			// TODO use ShowDialog instead of Show for all forms and fix bug that happened when trying to open database while it was opened in excel
 
-			/*if (dbloc == null || dbloc == "")
-			{
-				Settings settings = new Settings();
-				settings.Show();
-			}*/
 			try
 			{
 				// using statements automatically close disposible objects
@@ -55,30 +55,14 @@ namespace SRIMS
 						Inv.Add(CSVHelper.DeserializeItem(currentitem));
 
 					}
-
-					foreach (Item x in Inv)
-					{
-						// Console.WriteLine(x);
-					}
-
 				}
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
-				Settings settings = new Settings(this);
-				settings.Show();
-				settings.FormClosed += Settings_FormClosed;
-
+				using (Settings settings = new Settings())
+					settings.ShowDialog();
 			}
-
-			//StreamReader sr = new StreamReader(dbloc);
-
-		}
-
-		private void Settings_FormClosed(object sender, FormClosedEventArgs e)
-		{
-			Init();
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
@@ -126,7 +110,7 @@ namespace SRIMS
 			ViewDatabaseSelected.Visible = true;
 			viewDB1.Visible = true;
 
-			viewDB1.ext();
+			viewDB1.Ext();
 
 		}
 
@@ -167,7 +151,7 @@ namespace SRIMS
 		// Settings
 		private void button7_Click(object sender, EventArgs e)
 		{
-			Settings settings = new Settings(this);
+			Settings settings = new Settings();
 			settings.Show();
 		}
 

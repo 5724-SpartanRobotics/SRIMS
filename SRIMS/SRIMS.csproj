@@ -73,11 +73,11 @@
       <DependentUpon>CheckoutLog.cs</DependentUpon>
     </Compile>
     <Compile Include="CSVHelper.cs" />
-    <Compile Include="CustomTextbox.cs">
+    <Compile Include="CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomTextbox.Designer.cs">
-      <DependentUpon>CustomTextbox.cs</DependentUpon>
+    <Compile Include="CustomTextBox.Designer.cs">
+      <DependentUpon>CustomTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Edit.cs">
       <SubType>Form</SubType>
@@ -85,6 +85,7 @@
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventory.cs" />
     <Compile Include="SRIMSForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +112,9 @@
     </Compile>
     <Compile Include="ViewDB.Designer.cs">
       <DependentUpon>ViewDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WatermarkTextbox.cs">
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="AddItem.resx">
       <DependentUpon>AddItem.cs</DependentUpon>

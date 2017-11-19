@@ -28,27 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
 			this.SaveBtn = new System.Windows.Forms.Button();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
+			this.NameTextBox = new SRIMS.SRIMSTextBox();
+			this.CatTextBox = new SRIMS.SRIMSTextBox();
+			this.LocTextBox = new SRIMS.SRIMSTextBox();
+			this.DescTextBox = new SRIMS.SRIMSTextBox();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// textBox1
-			// 
-			this.textBox1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox1.Location = new System.Drawing.Point(39, 23);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(121, 21);
-			this.textBox1.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -79,15 +71,6 @@
 			this.label3.Size = new System.Drawing.Size(67, 16);
 			this.label3.TabIndex = 1;
 			this.label3.Text = "Description";
-			// 
-			// textBox2
-			// 
-			this.textBox2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox2.Location = new System.Drawing.Point(39, 149);
-			this.textBox2.Multiline = true;
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(121, 90);
-			this.textBox2.TabIndex = 3;
 			// 
 			// label4
 			// 
@@ -123,22 +106,6 @@
 			this.SaveBtn.UseVisualStyleBackColor = true;
 			this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
 			// 
-			// textBox3
-			// 
-			this.textBox3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox3.Location = new System.Drawing.Point(39, 63);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(121, 21);
-			this.textBox3.TabIndex = 0;
-			// 
-			// textBox4
-			// 
-			this.textBox4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox4.Location = new System.Drawing.Point(39, 106);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(121, 21);
-			this.textBox4.TabIndex = 0;
-			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
@@ -149,22 +116,60 @@
 			this.label5.TabIndex = 1;
 			this.label5.Text = "Location";
 			// 
+			// NameTextBox
+			// 
+			this.NameTextBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+			this.NameTextBox.ForeColor = System.Drawing.Color.Black;
+			this.NameTextBox.Location = new System.Drawing.Point(39, 23);
+			this.NameTextBox.Name = "NameTextBox";
+			this.NameTextBox.Size = new System.Drawing.Size(121, 21);
+			this.NameTextBox.TabIndex = 6;
+			// 
+			// CatTextBox
+			// 
+			this.CatTextBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+			this.CatTextBox.ForeColor = System.Drawing.Color.Black;
+			this.CatTextBox.Location = new System.Drawing.Point(39, 63);
+			this.CatTextBox.Name = "CatTextBox";
+			this.CatTextBox.Size = new System.Drawing.Size(121, 21);
+			this.CatTextBox.TabIndex = 7;
+			// 
+			// LocTextBox
+			// 
+			this.LocTextBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+			this.LocTextBox.ForeColor = System.Drawing.Color.Black;
+			this.LocTextBox.Location = new System.Drawing.Point(39, 106);
+			this.LocTextBox.Name = "LocTextBox";
+			this.LocTextBox.Size = new System.Drawing.Size(121, 21);
+			this.LocTextBox.TabIndex = 8;
+			// 
+			// DescTextBox
+			// 
+			this.DescTextBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+			this.DescTextBox.ForeColor = System.Drawing.Color.Black;
+			this.DescTextBox.Location = new System.Drawing.Point(39, 149);
+			this.DescTextBox.Multiline = true;
+			this.DescTextBox.Name = "DescTextBox";
+			this.DescTextBox.Size = new System.Drawing.Size(121, 90);
+			this.DescTextBox.TabIndex = 9;
+			this.DescTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DescTextBox_KeyPress);
+			// 
 			// EditForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(208, 319);
+			this.Controls.Add(this.DescTextBox);
+			this.Controls.Add(this.LocTextBox);
+			this.Controls.Add(this.CatTextBox);
+			this.Controls.Add(this.NameTextBox);
 			this.Controls.Add(this.SaveBtn);
 			this.Controls.Add(this.numericUpDown1);
-			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.textBox4);
-			this.Controls.Add(this.textBox3);
-			this.Controls.Add(this.textBox1);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "EditForm";
@@ -179,17 +184,16 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button SaveBtn;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
-    }
+		private SRIMSTextBox NameTextBox;
+		private SRIMSTextBox CatTextBox;
+		private SRIMSTextBox LocTextBox;
+		private SRIMSTextBox DescTextBox;
+	}
 }

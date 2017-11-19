@@ -28,7 +28,7 @@ namespace SRIMS
 
 		private Item finditem(int id)
 		{
-			foreach (Item y in ((SRIMSForm)ParentForm).Inv)
+			foreach (Item y in SRIMSForm.Instance.Inv)
 			{
 				//Console.WriteLine(y);
 				//Console.WriteLine(y.Id + "vs (srch) " + id);

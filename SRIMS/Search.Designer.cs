@@ -39,7 +39,7 @@
 			this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.descColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.qtColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.SearchBox = new SRIMS.SRIMSTextBox();
+			this.SearchBox = new SRIMS.WatermarkTextbox();
 			this.SuspendLayout();
 			// 
 			// SearchTypeDropdown
@@ -55,6 +55,7 @@
 			this.SearchTypeDropdown.Name = "SearchTypeDropdown";
 			this.SearchTypeDropdown.Size = new System.Drawing.Size(142, 24);
 			this.SearchTypeDropdown.TabIndex = 1;
+			this.SearchTypeDropdown.SelectedValueChanged += new System.EventHandler(this.SearchTypeDropdown_SelectedValueChanged);
 			// 
 			// button2
 			// 
@@ -67,9 +68,9 @@
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(105, 31);
 			this.button2.TabIndex = 4;
-			this.button2.Text = "Clear Results";
+			this.button2.Text = "Clear Search";
 			this.button2.UseVisualStyleBackColor = false;
-			this.button2.Click += new System.EventHandler(this.button2_Click_1);
+			this.button2.Click += new System.EventHandler(this.ClearSearch_Click);
 			// 
 			// button3
 			// 
@@ -148,13 +149,13 @@
 			// SearchBox
 			// 
 			this.SearchBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-			this.SearchBox.ForeColor = System.Drawing.Color.Black;
+			this.SearchBox.ForeColor = System.Drawing.Color.Gray;
 			this.SearchBox.Location = new System.Drawing.Point(211, 34);
 			this.SearchBox.Name = "SearchBox";
+			this.SearchBox.OriginalColor = System.Drawing.Color.Black;
 			this.SearchBox.Size = new System.Drawing.Size(336, 21);
 			this.SearchBox.TabIndex = 7;
 			this.SearchBox.Text = "Search Argument";
-			this.SearchBox.WatermarkActive = true;
 			this.SearchBox.WatermarkColor = System.Drawing.Color.Gray;
 			this.SearchBox.WatermarkText = "Search Argument";
 			this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
@@ -171,7 +172,6 @@
 			this.Controls.Add(this.SearchTypeDropdown);
 			this.Name = "SearchControl";
 			this.Size = new System.Drawing.Size(630, 526);
-			this.Load += new System.EventHandler(this.Search_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -189,6 +189,6 @@
 		private System.Windows.Forms.ColumnHeader nameColumn;
 		private System.Windows.Forms.ColumnHeader descColumn;
 		private System.Windows.Forms.ColumnHeader qtColumn;
-		private SRIMSTextBox SearchBox;
+		private WatermarkTextbox SearchBox;
 	}
 }

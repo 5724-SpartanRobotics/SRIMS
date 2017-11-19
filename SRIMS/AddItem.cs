@@ -34,7 +34,7 @@ namespace SRIMS
 			inv.Add(new Item(id, ItemLocation.Text, cat[scat], ItemName.Text, Description.Text, qt));
 
 			label1.Visible = true;
-			((SRIMSForm)ParentForm).SaveInventory();
+			SRIMSForm.Instance.SaveInventory();
 			Reload();
 		}
 
@@ -60,26 +60,11 @@ namespace SRIMS
 			Console.WriteLine(Category.SelectedIndex);
 		}
 
-		// Source: https://stackoverflow.com/a/1125081/5515842
-		private void TextBoxes_KeyDown(object sender, KeyEventArgs e)
+		private void Description_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			throw new NotImplementedException();
-			if (e.KeyData == (Keys.Control | Keys.Back))
-			{
-				TextBox textBox1 = (TextBox)sender;
-				e.SuppressKeyPress = true;
-				int selStart = textBox1.SelectionStart;
-				while (selStart > 0 && textBox1.Text.Substring(selStart - 1, 1) == " ")
-					selStart--;
-
-				int prevSpacePos = -1;
-				if (selStart != 0)
-					prevSpacePos = textBox1.Text.LastIndexOf(' ', selStart - 1);
-
-				textBox1.Select(prevSpacePos + 1, textBox1.SelectionStart - prevSpacePos - 1);
-				textBox1.SelectedText = "";
-			}
-
+			// Prevent newlines because they break things
+			if (e.KeyChar == '\r' || e.KeyChar == '\n')
+				e.Handled = true;
 		}
 	}
 }

@@ -6,40 +6,45 @@ namespace SRIMS
 	public partial class EditForm : Form
 	{
 		Item item;
-		SRIMSForm parentForm;
 
-		public EditForm(SRIMSForm parent, int index, ViewDB z)
+		public EditForm(int index, ViewDB z)
 		{
 			InitializeComponent();
-			item = parent.Inv[index];
+			item = SRIMSForm.Instance.Inv[index];
 		}
 
-		public EditForm(SRIMSForm parent, Item itemInput, SearchControl z)
+		public EditForm(Item itemInput, SearchControl z)
 		{
 			InitializeComponent();
-			parentForm = parent;
 			item = itemInput;
 		}
 
 		private void Edit_Load(object sender, EventArgs e)
 		{
-			textBox1.Text = item.Name;
-			textBox3.Text = item.Cat;
-			textBox2.Text = item.Desc;
+			NameTextBox.Text = item.Name;
+			CatTextBox.Text = item.Cat;
+			DescTextBox.Text = item.Desc;
 			numericUpDown1.Value = item.Qt;
-			textBox4.Text = item.Loc;
+			LocTextBox.Text = item.Loc;
 		}
 
 		private void SaveBtn_Click(object sender, EventArgs e)
 		{
-			item.Name = textBox1.Text;
-			item.Cat = textBox3.Text;
-			item.Desc = textBox2.Text;
+			item.Name = NameTextBox.Text;
+			item.Cat = CatTextBox.Text;
+			item.Desc = DescTextBox.Text;
 			item.Qt = (int)numericUpDown1.Value;
-			item.Loc = textBox4.Text;
+			item.Loc = LocTextBox.Text;
 
-			parentForm.SaveInventory();
+			SRIMSForm.Instance.SaveInventory();
 			Close();
+		}
+
+		private void DescTextBox_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			// Prevent newlines because they break things
+			if (e.KeyChar == '\r' || e.KeyChar == '\n')
+				e.Handled = true;
 		}
 	}
 }

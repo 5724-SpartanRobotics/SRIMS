@@ -11,34 +11,28 @@ namespace SRIMS
 		public SearchControl()
 		{
 			InitializeComponent();
-
+			
 			results.Columns[0].Width = 23;
 			results.Columns[1].Width = 53;
-			results.Columns[2].Width = 70;
-			results.Columns[3].Width = 112;
+			results.Columns[2].Width = 55;
+			results.Columns[3].Width = 110;
 			results.Columns[4].Width = 171;
 			results.Columns[5].Width = 51;
 		}
 
-		private void Search_Load(object sender, EventArgs e)
+		private void Search()
 		{
-
-		}
-
-		private List<Item> Search()
-		{
+			resultsList.Clear();
+			results.Items.Clear();
 			int tp = SearchTypeDropdown.SelectedIndex;
 			string sa = SearchBox.Text;
-			if (tp >= 0)
+
+			if (sa != string.Empty && tp >= 0)
 			{
-				if (sa == "")
-				{
-					return new List<Item>();
-				}
 				sa = sa.ToLower();
 				if (tp == 0)
 				{
-					foreach (Item x in ((SRIMSForm)ParentForm).Inv)
+					foreach (Item x in SRIMSForm.Instance.Inv)
 					{
 						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
 						if (x.Name.ToLower().Contains(sa))
@@ -48,11 +42,10 @@ namespace SRIMS
 						}
 					}
 				}
-
-				if (tp == 1)
+				else if (tp == 1)
 				{
 					//Search by Loc
-					foreach (Item x in ((SRIMSForm)ParentForm).Inv)
+					foreach (Item x in SRIMSForm.Instance.Inv)
 					{
 						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
 						if (x.Loc.ToLower().Contains(sa))
@@ -62,14 +55,13 @@ namespace SRIMS
 						}
 					}
 				}
-
-				if (tp == 2)
+				else if (tp == 2)
 				{
 					//Search by Cat
 
 					//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Add Dropdown For Category <<<<<<<<<<<<<<<<<<<<<<<<<<<<\\
 
-					foreach (Item x in ((SRIMSForm)ParentForm).Inv)
+					foreach (Item x in SRIMSForm.Instance.Inv)
 					{
 						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
 						if (x.Cat.ToLower().Contains(sa))
@@ -80,42 +72,37 @@ namespace SRIMS
 					}
 				}
 
-				return resultsList;
+			}
+			else
+			{
+				resultsList.AddRange(SRIMSForm.Instance.Inv);
 			}
 
-			return new List<Item>();
-		}
 
-		public void Reset()
-		{
-			try { resultsList.Clear(); } catch { }
-			SearchTypeDropdown.SelectedIndex = 0;
-			//results.Items.Clear();
-		}
-
-		private void SearchFunctionThing()
-		{
-			resultsList.Clear();
-			results.Items.Clear();
-			List<Item> items = Search();
-
-			foreach (Item item in items)
+			foreach (Item item in resultsList)
 			{
 				results.Items.Add(item.Id.ToString()).SubItems.AddRange(new string[]
 					{ item.Loc, item.Cat, item.Name, item.Desc, item.Qt.ToString() });
 			}
 		}
 
-		private void button2_Click_1(object sender, EventArgs e)
+		public void Reset()
 		{
-			results.Items.Clear();
+			SearchTypeDropdown.SelectedIndex = 0;
+			SearchBox.Text = string.Empty;
+			Search();
+		}
+
+		private void ClearSearch_Click(object sender, EventArgs e)
+		{
+			Reset();
 		}
 
 		private void EditItem(Item item)
 		{
-			EditForm ed = new EditForm(((SRIMSForm)ParentForm), item, this);
-			ed.FormClosed += (sender, args) => SearchFunctionThing();
-			ed.Show();
+			using (EditForm ed = new EditForm(item, this))
+				ed.ShowDialog();
+			Search();
 		}
 
 		private void Modify_Click(object sender, EventArgs e)
@@ -133,15 +120,20 @@ namespace SRIMS
 		{
 			if (results.SelectedIndices.Count == 1 && results.SelectedIndices[0] != -1)
 			{
-				CheckOut c = new CheckOut(resultsList[results.SelectedIndices[0]]);
-				c.Show();
+				using (CheckOut c = new CheckOut(resultsList[results.SelectedIndices[0]]))
+					c.ShowDialog();
 			}
 
 		}
 
 		private void SearchBox_TextChanged(object sender, EventArgs e)
 		{
-			SearchFunctionThing();
+			Search();
+		}
+
+		private void SearchTypeDropdown_SelectedValueChanged(object sender, EventArgs e)
+		{
+			Search();
 		}
 	}
 }

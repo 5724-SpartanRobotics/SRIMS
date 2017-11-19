@@ -1,24 +1,21 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace SRIMS
 {
 	public partial class Settings : Form
 	{
-		private SRIMSForm parentForm;
-
-		public Settings(SRIMSForm parent)
+		public Settings()
 		{
 			InitializeComponent();
-			FormClosing += Settings_FormClosing;
-			parentForm = parent;
+			FormClosed += Settings_FormClosed;
 		}
 
-		private void Settings_FormClosing(object sender, FormClosingEventArgs e)
+		private void Settings_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Properties.Settings.Default.Save();
-			parentForm.Init();
+			SRIMSForm.Instance.Init();
 		}
 
 		private void Settings_Load(object sender, EventArgs e)
@@ -47,7 +44,7 @@ namespace SRIMS
 					// instert code here to change db location on app settings
 					dbpath.Text = op.InitialDirectory + op.FileName;
 					Properties.Settings.Default.dbloc = op.InitialDirectory + op.FileName;
-					parentForm.ClearInventory();
+					SRIMSForm.Instance.ClearInventory();
 				}
 
 			}
@@ -75,8 +72,8 @@ namespace SRIMS
 					dbpath.Text = op.InitialDirectory + op.FileName;
 					Properties.Settings.Default.dbloc = op.InitialDirectory + op.FileName;
 
-					parentForm.ClearInventory();
-					parentForm.SaveInventory();
+					SRIMSForm.Instance.ClearInventory();
+					SRIMSForm.Instance.SaveInventory();
 				}
 
 			}
