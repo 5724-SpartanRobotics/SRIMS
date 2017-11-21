@@ -12,7 +12,7 @@ namespace SRIMS
 		/// </summary>
 		public string WatermarkText
 		{
-			get => _watermarkText;
+			get { return _watermarkText; }
 			set
 			{
 				_watermarkText = value;

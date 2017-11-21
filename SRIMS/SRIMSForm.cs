@@ -8,7 +8,7 @@ namespace SRIMS
 {
 	public partial class SRIMSForm : Form
 	{
-		string DBloc { get => Properties.Settings.Default.dbloc; }
+		string DBloc { get { return Properties.Settings.Default.dbloc; } }
 		public static SRIMSForm Instance { get; private set; } = null;
 
 		public SRIMSForm()
