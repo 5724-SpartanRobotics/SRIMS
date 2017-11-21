@@ -143,6 +143,7 @@
             this.button6.TabIndex = 1;
             this.button6.Text = "CheckOut Log";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
@@ -228,7 +229,7 @@
             // 
             // checkin1
             // 
-            this.checkin1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.checkin1.BackColor = System.Drawing.Color.White;
             this.checkin1.Dock = System.Windows.Forms.DockStyle.Right;
             this.checkin1.Location = new System.Drawing.Point(-427, 0);
             this.checkin1.Name = "checkin1";
@@ -244,7 +245,7 @@
             this.viewDB1.Size = new System.Drawing.Size(630, 526);
             this.viewDB1.TabIndex = 4;
             // 
-            // Form1
+            // SRIMSForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -257,7 +258,7 @@
             this.Controls.Add(this.viewDB1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
+            this.Name = "SRIMSForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Spartan Robotics Inventory Management System";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
