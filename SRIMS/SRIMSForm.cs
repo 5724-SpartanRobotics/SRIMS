@@ -94,7 +94,7 @@ namespace SRIMS
 		}
 
 		// CheckIn
-		private void button2_Click(object sender, EventArgs e)
+		private void _BtnCheckInPage_Click(object sender, EventArgs e)
 		{
 			DehighlightSelectors();
 			CheckInSelected.Visible = true;
@@ -104,7 +104,7 @@ namespace SRIMS
 		}
 
 		// ViewDB
-		private void button3_Click(object sender, EventArgs e)
+		private void _BtnViewDBPage_Click(object sender, EventArgs e)
 		{
 			DehighlightSelectors();
 			ViewDatabaseSelected.Visible = true;
@@ -115,7 +115,7 @@ namespace SRIMS
 		}
 
 		// Search
-		private void button4_Click(object sender, EventArgs e)
+		private void _BtnSearchPage_Click(object sender, EventArgs e)
 		{
 			DehighlightSelectors();
 			SearchSelected.Visible = true;
@@ -125,7 +125,7 @@ namespace SRIMS
 		}
 
 		// AddItem
-		private void button5_Click(object sender, EventArgs e)
+		private void _BtnAddItemPage_Click(object sender, EventArgs e)
 		{
 			DehighlightSelectors();
 			AddItemSelected.Visible = true;
@@ -140,7 +140,7 @@ namespace SRIMS
 		}
 
 		// CheckOutLog
-		private void button6_Click(object sender, EventArgs e)
+		private void _BtnCheckOutLog_Click(object sender, EventArgs e)
 		{
 			DehighlightSelectors();
 			CheckOutLogSelected.Visible = true;
@@ -149,7 +149,7 @@ namespace SRIMS
 		}
 
 		// Settings
-		private void button7_Click(object sender, EventArgs e)
+		private void _BtnSettings_Click(object sender, EventArgs e)
 		{
 			Settings settings = new Settings();
 			settings.Show();
@@ -181,7 +181,7 @@ namespace SRIMS
 			}
 		}
 
-		private void Form1_FormClosing(object sender, FormClosingEventArgs a)
+		private void SRIMSForm_FormClosing(object sender, FormClosingEventArgs a)
 		{
 			SaveInventory();
 		}

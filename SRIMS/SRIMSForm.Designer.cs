@@ -28,261 +28,259 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.CheckOutLogSelected = new System.Windows.Forms.Panel();
-            this.AddItemSelected = new System.Windows.Forms.Panel();
-            this.SearchSelected = new System.Windows.Forms.Panel();
-            this.ViewDatabaseSelected = new System.Windows.Forms.Panel();
-            this.CheckInSelected = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkoutLog1 = new SRIMS.CheckoutLog();
-            this.search1 = new SRIMS.SearchControl();
-            this.addItem1 = new SRIMS.AddItem();
-            this.checkin1 = new SRIMS.Checkin();
-            this.viewDB1 = new SRIMS.ViewDB();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Controls.Add(this.CheckOutLogSelected);
-            this.panel1.Controls.Add(this.AddItemSelected);
-            this.panel1.Controls.Add(this.SearchSelected);
-            this.panel1.Controls.Add(this.ViewDatabaseSelected);
-            this.panel1.Controls.Add(this.CheckInSelected);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(203, 526);
-            this.panel1.TabIndex = 0;
-            // 
-            // CheckOutLogSelected
-            // 
-            this.CheckOutLogSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.CheckOutLogSelected.Location = new System.Drawing.Point(3, 312);
-            this.CheckOutLogSelected.Name = "CheckOutLogSelected";
-            this.CheckOutLogSelected.Size = new System.Drawing.Size(10, 69);
-            this.CheckOutLogSelected.TabIndex = 2;
-            this.CheckOutLogSelected.Visible = false;
-            this.CheckOutLogSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // AddItemSelected
-            // 
-            this.AddItemSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.AddItemSelected.Location = new System.Drawing.Point(3, 237);
-            this.AddItemSelected.Name = "AddItemSelected";
-            this.AddItemSelected.Size = new System.Drawing.Size(10, 69);
-            this.AddItemSelected.TabIndex = 2;
-            this.AddItemSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // SearchSelected
-            // 
-            this.SearchSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.SearchSelected.Location = new System.Drawing.Point(3, 162);
-            this.SearchSelected.Name = "SearchSelected";
-            this.SearchSelected.Size = new System.Drawing.Size(10, 69);
-            this.SearchSelected.TabIndex = 2;
-            this.SearchSelected.Visible = false;
-            this.SearchSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // ViewDatabaseSelected
-            // 
-            this.ViewDatabaseSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.ViewDatabaseSelected.Location = new System.Drawing.Point(3, 87);
-            this.ViewDatabaseSelected.Name = "ViewDatabaseSelected";
-            this.ViewDatabaseSelected.Size = new System.Drawing.Size(10, 69);
-            this.ViewDatabaseSelected.TabIndex = 2;
-            this.ViewDatabaseSelected.Visible = false;
-            this.ViewDatabaseSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // CheckInSelected
-            // 
-            this.CheckInSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.CheckInSelected.Location = new System.Drawing.Point(3, 12);
-            this.CheckInSelected.Name = "CheckInSelected";
-            this.CheckInSelected.Size = new System.Drawing.Size(10, 69);
-            this.CheckInSelected.TabIndex = 2;
-            this.CheckInSelected.Visible = false;
-            this.CheckInSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // button7
-            // 
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(3, 478);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(197, 36);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Settings";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button6
-            // 
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(3, 312);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(197, 69);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "CheckOut Log";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(3, 237);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(197, 69);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Add Item";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(3, 162);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(197, 69);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Search";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(3, 87);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(197, 69);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "View Database";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(3, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(197, 69);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Check In";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // checkoutLog1
-            // 
-            this.checkoutLog1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.checkoutLog1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.checkoutLog1.Location = new System.Drawing.Point(-2317, 0);
-            this.checkoutLog1.Name = "checkoutLog1";
-            this.checkoutLog1.Size = new System.Drawing.Size(630, 526);
-            this.checkoutLog1.TabIndex = 3;
-            // 
-            // search1
-            // 
-            this.search1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.search1.Location = new System.Drawing.Point(-1687, 0);
-            this.search1.Name = "search1";
-            this.search1.Size = new System.Drawing.Size(630, 526);
-            this.search1.TabIndex = 2;
-            // 
-            // addItem1
-            // 
-            this.addItem1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addItem1.Location = new System.Drawing.Point(-1057, 0);
-            this.addItem1.Name = "addItem1";
-            this.addItem1.Size = new System.Drawing.Size(630, 526);
-            this.addItem1.TabIndex = 1;
-            // 
-            // checkin1
-            // 
-            this.checkin1.BackColor = System.Drawing.Color.White;
-            this.checkin1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.checkin1.Location = new System.Drawing.Point(-427, 0);
-            this.checkin1.Name = "checkin1";
-            this.checkin1.Size = new System.Drawing.Size(630, 526);
-            this.checkin1.TabIndex = 5;
-            // 
-            // viewDB1
-            // 
-            this.viewDB1.BackColor = System.Drawing.Color.White;
-            this.viewDB1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.viewDB1.Location = new System.Drawing.Point(203, 0);
-            this.viewDB1.Name = "viewDB1";
-            this.viewDB1.Size = new System.Drawing.Size(630, 526);
-            this.viewDB1.TabIndex = 4;
-            // 
-            // SRIMSForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 526);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.checkoutLog1);
-            this.Controls.Add(this.search1);
-            this.Controls.Add(this.addItem1);
-            this.Controls.Add(this.checkin1);
-            this.Controls.Add(this.viewDB1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "SRIMSForm";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Spartan Robotics Inventory Management System";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
+			this.sidePanel = new System.Windows.Forms.Panel();
+			this.CheckOutLogSelected = new System.Windows.Forms.Panel();
+			this.AddItemSelected = new System.Windows.Forms.Panel();
+			this.SearchSelected = new System.Windows.Forms.Panel();
+			this.ViewDatabaseSelected = new System.Windows.Forms.Panel();
+			this.CheckInSelected = new System.Windows.Forms.Panel();
+			this._BtnSettings = new System.Windows.Forms.Button();
+			this._BtnCheckOutLog = new System.Windows.Forms.Button();
+			this._BtnAddItemPage = new System.Windows.Forms.Button();
+			this._BtnSearchPage = new System.Windows.Forms.Button();
+			this._BtnViewDBPage = new System.Windows.Forms.Button();
+			this._BtnCheckInPage = new System.Windows.Forms.Button();
+			this.checkoutLog1 = new SRIMS.CheckoutLog();
+			this.search1 = new SRIMS.SearchControl();
+			this.addItem1 = new SRIMS.AddItem();
+			this.checkin1 = new SRIMS.Checkin();
+			this.viewDB1 = new SRIMS.ViewDB();
+			this.sidePanel.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// sidePanel
+			// 
+			this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.sidePanel.Controls.Add(this.CheckOutLogSelected);
+			this.sidePanel.Controls.Add(this.AddItemSelected);
+			this.sidePanel.Controls.Add(this.SearchSelected);
+			this.sidePanel.Controls.Add(this.ViewDatabaseSelected);
+			this.sidePanel.Controls.Add(this.CheckInSelected);
+			this.sidePanel.Controls.Add(this._BtnSettings);
+			this.sidePanel.Controls.Add(this._BtnCheckOutLog);
+			this.sidePanel.Controls.Add(this._BtnAddItemPage);
+			this.sidePanel.Controls.Add(this._BtnSearchPage);
+			this.sidePanel.Controls.Add(this._BtnViewDBPage);
+			this.sidePanel.Controls.Add(this._BtnCheckInPage);
+			this.sidePanel.Dock = System.Windows.Forms.DockStyle.Left;
+			this.sidePanel.Location = new System.Drawing.Point(0, 0);
+			this.sidePanel.Name = "sidePanel";
+			this.sidePanel.Size = new System.Drawing.Size(203, 526);
+			this.sidePanel.TabIndex = 0;
+			// 
+			// CheckOutLogSelected
+			// 
+			this.CheckOutLogSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.CheckOutLogSelected.Location = new System.Drawing.Point(3, 312);
+			this.CheckOutLogSelected.Name = "CheckOutLogSelected";
+			this.CheckOutLogSelected.Size = new System.Drawing.Size(10, 69);
+			this.CheckOutLogSelected.TabIndex = 2;
+			this.CheckOutLogSelected.Visible = false;
+			this.CheckOutLogSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+			// 
+			// AddItemSelected
+			// 
+			this.AddItemSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.AddItemSelected.Location = new System.Drawing.Point(3, 237);
+			this.AddItemSelected.Name = "AddItemSelected";
+			this.AddItemSelected.Size = new System.Drawing.Size(10, 69);
+			this.AddItemSelected.TabIndex = 2;
+			this.AddItemSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+			// 
+			// SearchSelected
+			// 
+			this.SearchSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.SearchSelected.Location = new System.Drawing.Point(3, 162);
+			this.SearchSelected.Name = "SearchSelected";
+			this.SearchSelected.Size = new System.Drawing.Size(10, 69);
+			this.SearchSelected.TabIndex = 2;
+			this.SearchSelected.Visible = false;
+			this.SearchSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+			// 
+			// ViewDatabaseSelected
+			// 
+			this.ViewDatabaseSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.ViewDatabaseSelected.Location = new System.Drawing.Point(3, 87);
+			this.ViewDatabaseSelected.Name = "ViewDatabaseSelected";
+			this.ViewDatabaseSelected.Size = new System.Drawing.Size(10, 69);
+			this.ViewDatabaseSelected.TabIndex = 2;
+			this.ViewDatabaseSelected.Visible = false;
+			this.ViewDatabaseSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+			// 
+			// CheckInSelected
+			// 
+			this.CheckInSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.CheckInSelected.Location = new System.Drawing.Point(3, 12);
+			this.CheckInSelected.Name = "CheckInSelected";
+			this.CheckInSelected.Size = new System.Drawing.Size(10, 69);
+			this.CheckInSelected.TabIndex = 2;
+			this.CheckInSelected.Visible = false;
+			this.CheckInSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+			// 
+			// _BtnSettings
+			// 
+			this._BtnSettings.FlatAppearance.BorderSize = 0;
+			this._BtnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnSettings.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnSettings.ForeColor = System.Drawing.Color.White;
+			this._BtnSettings.Location = new System.Drawing.Point(3, 478);
+			this._BtnSettings.Name = "_BtnSettings";
+			this._BtnSettings.Size = new System.Drawing.Size(197, 36);
+			this._BtnSettings.TabIndex = 1;
+			this._BtnSettings.Text = "Settings";
+			this._BtnSettings.UseVisualStyleBackColor = true;
+			this._BtnSettings.Click += new System.EventHandler(this._BtnSettings_Click);
+			// 
+			// _BtnCheckOutLog
+			// 
+			this._BtnCheckOutLog.FlatAppearance.BorderSize = 0;
+			this._BtnCheckOutLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnCheckOutLog.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnCheckOutLog.ForeColor = System.Drawing.Color.White;
+			this._BtnCheckOutLog.Location = new System.Drawing.Point(3, 312);
+			this._BtnCheckOutLog.Name = "_BtnCheckOutLog";
+			this._BtnCheckOutLog.Size = new System.Drawing.Size(197, 69);
+			this._BtnCheckOutLog.TabIndex = 1;
+			this._BtnCheckOutLog.Text = "CheckOut Log";
+			this._BtnCheckOutLog.UseVisualStyleBackColor = true;
+			this._BtnCheckOutLog.Click += new System.EventHandler(this._BtnCheckOutLog_Click);
+			// 
+			// _BtnAddItemPage
+			// 
+			this._BtnAddItemPage.FlatAppearance.BorderSize = 0;
+			this._BtnAddItemPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnAddItemPage.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnAddItemPage.ForeColor = System.Drawing.Color.White;
+			this._BtnAddItemPage.Location = new System.Drawing.Point(3, 237);
+			this._BtnAddItemPage.Name = "_BtnAddItemPage";
+			this._BtnAddItemPage.Size = new System.Drawing.Size(197, 69);
+			this._BtnAddItemPage.TabIndex = 1;
+			this._BtnAddItemPage.Text = "Add Item";
+			this._BtnAddItemPage.UseVisualStyleBackColor = true;
+			this._BtnAddItemPage.Click += new System.EventHandler(this._BtnAddItemPage_Click);
+			// 
+			// _BtnSearchPage
+			// 
+			this._BtnSearchPage.FlatAppearance.BorderSize = 0;
+			this._BtnSearchPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnSearchPage.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnSearchPage.ForeColor = System.Drawing.Color.White;
+			this._BtnSearchPage.Location = new System.Drawing.Point(3, 162);
+			this._BtnSearchPage.Name = "_BtnSearchPage";
+			this._BtnSearchPage.Size = new System.Drawing.Size(197, 69);
+			this._BtnSearchPage.TabIndex = 1;
+			this._BtnSearchPage.Text = "Search";
+			this._BtnSearchPage.UseVisualStyleBackColor = true;
+			this._BtnSearchPage.Click += new System.EventHandler(this._BtnSearchPage_Click);
+			// 
+			// _BtnViewDBPage
+			// 
+			this._BtnViewDBPage.FlatAppearance.BorderSize = 0;
+			this._BtnViewDBPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnViewDBPage.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnViewDBPage.ForeColor = System.Drawing.Color.White;
+			this._BtnViewDBPage.Location = new System.Drawing.Point(3, 87);
+			this._BtnViewDBPage.Name = "_BtnViewDBPage";
+			this._BtnViewDBPage.Size = new System.Drawing.Size(197, 69);
+			this._BtnViewDBPage.TabIndex = 1;
+			this._BtnViewDBPage.Text = "View Database";
+			this._BtnViewDBPage.UseVisualStyleBackColor = true;
+			this._BtnViewDBPage.Click += new System.EventHandler(this._BtnViewDBPage_Click);
+			// 
+			// _BtnCheckInPage
+			// 
+			this._BtnCheckInPage.FlatAppearance.BorderSize = 0;
+			this._BtnCheckInPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnCheckInPage.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnCheckInPage.ForeColor = System.Drawing.Color.White;
+			this._BtnCheckInPage.Location = new System.Drawing.Point(3, 12);
+			this._BtnCheckInPage.Name = "_BtnCheckInPage";
+			this._BtnCheckInPage.Size = new System.Drawing.Size(197, 69);
+			this._BtnCheckInPage.TabIndex = 1;
+			this._BtnCheckInPage.Text = "Check In";
+			this._BtnCheckInPage.UseVisualStyleBackColor = true;
+			this._BtnCheckInPage.Click += new System.EventHandler(this._BtnCheckInPage_Click);
+			// 
+			// checkoutLog1
+			// 
+			this.checkoutLog1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+			this.checkoutLog1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.checkoutLog1.Location = new System.Drawing.Point(-1687, 0);
+			this.checkoutLog1.Name = "checkoutLog1";
+			this.checkoutLog1.Size = new System.Drawing.Size(630, 526);
+			this.checkoutLog1.TabIndex = 3;
+			// 
+			// search1
+			// 
+			this.search1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.search1.Location = new System.Drawing.Point(-1057, 0);
+			this.search1.Name = "search1";
+			this.search1.Size = new System.Drawing.Size(630, 526);
+			this.search1.TabIndex = 2;
+			// 
+			// addItem1
+			// 
+			this.addItem1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.addItem1.Location = new System.Drawing.Point(-427, 0);
+			this.addItem1.Name = "addItem1";
+			this.addItem1.Size = new System.Drawing.Size(630, 526);
+			this.addItem1.TabIndex = 1;
+			// 
+			// checkin1
+			// 
+			this.checkin1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			this.checkin1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.checkin1.Location = new System.Drawing.Point(203, 0);
+			this.checkin1.Name = "checkin1";
+			this.checkin1.Size = new System.Drawing.Size(630, 526);
+			this.checkin1.TabIndex = 5;
+			// 
+			// viewDB1
+			// 
+			this.viewDB1.BackColor = System.Drawing.Color.White;
+			this.viewDB1.Location = new System.Drawing.Point(203, 0);
+			this.viewDB1.Name = "viewDB1";
+			this.viewDB1.Size = new System.Drawing.Size(630, 526);
+			this.viewDB1.TabIndex = 4;
+			// 
+			// SRIMSForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(833, 526);
+			this.Controls.Add(this.sidePanel);
+			this.Controls.Add(this.checkoutLog1);
+			this.Controls.Add(this.search1);
+			this.Controls.Add(this.addItem1);
+			this.Controls.Add(this.checkin1);
+			this.Controls.Add(this.viewDB1);
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
+			this.Name = "SRIMSForm";
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+			this.Text = "Spartan Robotics Inventory Management System";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SRIMSForm_FormClosing);
+			this.Load += new System.EventHandler(this.Form1_Load);
+			this.sidePanel.ResumeLayout(false);
+			this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel sidePanel;
+        private System.Windows.Forms.Button _BtnCheckOutLog;
+        private System.Windows.Forms.Button _BtnAddItemPage;
+        private System.Windows.Forms.Button _BtnSearchPage;
+        private System.Windows.Forms.Button _BtnViewDBPage;
+        private System.Windows.Forms.Button _BtnCheckInPage;
         private AddItem addItem1;
         private System.Windows.Forms.Panel CheckOutLogSelected;
         private System.Windows.Forms.Panel AddItemSelected;
         private System.Windows.Forms.Panel SearchSelected;
         private System.Windows.Forms.Panel ViewDatabaseSelected;
         private System.Windows.Forms.Panel CheckInSelected;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button _BtnSettings;
         private SearchControl search1;
         private CheckoutLog checkoutLog1;
         private ViewDB viewDB1;
