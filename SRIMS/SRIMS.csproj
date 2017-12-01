@@ -107,6 +107,12 @@
       <DependentUpon>CheckoutLog.cs</DependentUpon>
     </Compile>
     <Compile Include="CSVHelper.cs" />
+    <Compile Include="SortableListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SortableListView.Designer.cs">
+      <DependentUpon>SortableListView.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>

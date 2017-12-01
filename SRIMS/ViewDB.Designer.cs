@@ -1,37 +1,37 @@
-﻿namespace SRIMS
+namespace SRIMS
 {
-    partial class ViewDB
-    {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class ViewDB
+	{
+		/// <summary> 
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary> 
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Component Designer generated code
+		#region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-			this.delitem = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.ViewListBox = new System.Windows.Forms.ListView();
+		/// <summary> 
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			this._BtnDelItem = new System.Windows.Forms.Button();
+			this._BtnEdit = new System.Windows.Forms.Button();
+			this._BtnOpenDatabase = new System.Windows.Forms.Button();
+			this.ViewListBox = new SRIMS.SortableListView();
 			this.idColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.locColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.catColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,45 +40,45 @@
 			this.qtColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
 			// 
-			// delitem
+			// _BtnDelItem
 			// 
-			this.delitem.BackColor = System.Drawing.Color.White;
-			this.delitem.FlatAppearance.BorderSize = 0;
-			this.delitem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.delitem.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.delitem.Location = new System.Drawing.Point(597, 3);
-			this.delitem.Name = "delitem";
-			this.delitem.Size = new System.Drawing.Size(30, 30);
-			this.delitem.TabIndex = 1;
-			this.delitem.Text = "X";
-			this.delitem.UseVisualStyleBackColor = false;
-			this.delitem.Click += new System.EventHandler(this.DelItem_Click);
+			this._BtnDelItem.BackColor = System.Drawing.Color.White;
+			this._BtnDelItem.FlatAppearance.BorderSize = 0;
+			this._BtnDelItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnDelItem.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnDelItem.Location = new System.Drawing.Point(597, 3);
+			this._BtnDelItem.Name = "_BtnDelItem";
+			this._BtnDelItem.Size = new System.Drawing.Size(30, 30);
+			this._BtnDelItem.TabIndex = 8;
+			this._BtnDelItem.Text = "X";
+			this._BtnDelItem.UseVisualStyleBackColor = false;
+			this._BtnDelItem.Click += new System.EventHandler(this._BtnDelItem_Click);
 			// 
-			// button1
+			// _BtnEdit
 			// 
-			this.button1.FlatAppearance.BorderSize = 0;
-			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(516, 3);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 30);
-			this.button1.TabIndex = 2;
-			this.button1.Text = "Edit";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this._BtnEdit.FlatAppearance.BorderSize = 0;
+			this._BtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnEdit.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnEdit.Location = new System.Drawing.Point(516, 3);
+			this._BtnEdit.Name = "_BtnEdit";
+			this._BtnEdit.Size = new System.Drawing.Size(75, 30);
+			this._BtnEdit.TabIndex = 7;
+			this._BtnEdit.Text = "Edit";
+			this._BtnEdit.UseVisualStyleBackColor = true;
+			this._BtnEdit.Click += new System.EventHandler(this._BtnEdit_Click);
 			// 
-			// button2
+			// _BtnOpenDatabase
 			// 
-			this.button2.FlatAppearance.BorderSize = 0;
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(3, 3);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(142, 30);
-			this.button2.TabIndex = 2;
-			this.button2.Text = "Open Database";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this._BtnOpenDatabase.FlatAppearance.BorderSize = 0;
+			this._BtnOpenDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnOpenDatabase.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnOpenDatabase.Location = new System.Drawing.Point(3, 3);
+			this._BtnOpenDatabase.Name = "_BtnOpenDatabase";
+			this._BtnOpenDatabase.Size = new System.Drawing.Size(142, 30);
+			this._BtnOpenDatabase.TabIndex = 6;
+			this._BtnOpenDatabase.Text = "Open Database";
+			this._BtnOpenDatabase.UseVisualStyleBackColor = true;
+			this._BtnOpenDatabase.Click += new System.EventHandler(this._BtnOpenDatabase_Click);
 			// 
 			// ViewListBox
 			// 
@@ -95,7 +95,7 @@
 			this.ViewListBox.Name = "ViewListBox";
 			this.ViewListBox.ShowItemToolTips = true;
 			this.ViewListBox.Size = new System.Drawing.Size(624, 484);
-			this.ViewListBox.TabIndex = 7;
+			this.ViewListBox.TabIndex = 9;
 			this.ViewListBox.UseCompatibleStateImageBehavior = false;
 			this.ViewListBox.View = System.Windows.Forms.View.Details;
 			// 
@@ -135,21 +135,20 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.Controls.Add(this.ViewListBox);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.delitem);
+			this.Controls.Add(this._BtnOpenDatabase);
+			this.Controls.Add(this._BtnEdit);
+			this.Controls.Add(this._BtnDelItem);
 			this.Name = "ViewDB";
 			this.Size = new System.Drawing.Size(630, 526);
-			this.Load += new System.EventHandler(this.ViewDB_Load);
 			this.ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
-        private System.Windows.Forms.Button delitem;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.ListView ViewListBox;
+		#endregion
+		private System.Windows.Forms.Button _BtnDelItem;
+		private System.Windows.Forms.Button _BtnEdit;
+		private System.Windows.Forms.Button _BtnOpenDatabase;
+		private SRIMS.SortableListView ViewListBox;
 		private System.Windows.Forms.ColumnHeader idColumn;
 		private System.Windows.Forms.ColumnHeader locColumn;
 		private System.Windows.Forms.ColumnHeader catColumn;

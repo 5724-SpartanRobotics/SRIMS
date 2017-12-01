@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -6,12 +6,12 @@ namespace SRIMS
 {
 	public partial class SearchControl : UserControl
 	{
-		List<Item> resultsList = new List<Item>();
+		List<Item> _ResultsList = new List<Item>();
 
 		public SearchControl()
 		{
 			InitializeComponent();
-			
+
 			results.Columns[0].Width = 23;
 			results.Columns[1].Width = 53;
 			results.Columns[2].Width = 55;
@@ -22,12 +22,12 @@ namespace SRIMS
 
 		private void Search()
 		{
-			resultsList.Clear();
+			_ResultsList.Clear();
 			results.Items.Clear();
 			int tp = SearchTypeDropdown.SelectedIndex;
 			string sa = SearchBox.Text;
 
-			if (sa != string.Empty && tp >= 0)
+			if (sa != string.Empty && !SearchBox.WatermarkOn && tp >= 0)
 			{
 				sa = sa.ToLower();
 				if (tp == 0)
@@ -38,7 +38,7 @@ namespace SRIMS
 						if (x.Name.ToLower().Contains(sa))
 						{
 							//Console.WriteLine("bazzinga!");
-							resultsList.Add(x);
+							_ResultsList.Add(x);
 						}
 					}
 				}
@@ -51,7 +51,7 @@ namespace SRIMS
 						if (x.Loc.ToLower().Contains(sa))
 						{
 							//Console.WriteLine("bazzinga!");
-							resultsList.Add(x);
+							_ResultsList.Add(x);
 						}
 					}
 				}
@@ -67,7 +67,7 @@ namespace SRIMS
 						if (x.Cat.ToLower().Contains(sa))
 						{
 							//Console.WriteLine("bazzinga!");
-							resultsList.Add(x);
+							_ResultsList.Add(x);
 						}
 					}
 				}
@@ -75,15 +75,12 @@ namespace SRIMS
 			}
 			else
 			{
-				resultsList.AddRange(SRIMSForm.Instance.Inv);
+				_ResultsList.AddRange(SRIMSForm.Instance.Inv);
 			}
 
 
-			foreach (Item item in resultsList)
-			{
-				results.Items.Add(item.Id.ToString()).SubItems.AddRange(new string[]
-					{ item.Loc, item.Cat, item.Name, item.Desc, item.Qt.ToString() });
-			}
+			foreach (Item item in _ResultsList)
+				results.Items.Add(new Item.ItemListViewItem(item));
 		}
 
 		public void Reset()
@@ -100,7 +97,7 @@ namespace SRIMS
 
 		private void EditItem(Item item)
 		{
-			using (EditForm ed = new EditForm(item, this))
+			using (EditForm ed = new EditForm(item))
 				ed.ShowDialog();
 			Search();
 		}
@@ -108,9 +105,7 @@ namespace SRIMS
 		private void Modify_Click(object sender, EventArgs e)
 		{
 			if (results.SelectedIndices.Count == 1 && results.SelectedIndices[0] != -1)
-			{
-				EditItem(resultsList[results.SelectedIndices[0]]);
-			}
+				EditItem(_ResultsList[results.SelectedIndices[0]]);
 		}
 
 
@@ -120,7 +115,7 @@ namespace SRIMS
 		{
 			if (results.SelectedIndices.Count == 1 && results.SelectedIndices[0] != -1)
 			{
-				using (CheckOut c = new CheckOut(resultsList[results.SelectedIndices[0]]))
+				using (CheckOut c = new CheckOut(_ResultsList[results.SelectedIndices[0]]))
 					c.ShowDialog();
 			}
 

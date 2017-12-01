@@ -64,7 +64,7 @@
 			this.ChangeDatabaseBtn.Location = new System.Drawing.Point(12, 86);
 			this.ChangeDatabaseBtn.Name = "ChangeDatabaseBtn";
 			this.ChangeDatabaseBtn.Size = new System.Drawing.Size(120, 43);
-			this.ChangeDatabaseBtn.TabIndex = 2;
+			this.ChangeDatabaseBtn.TabIndex = 1;
 			this.ChangeDatabaseBtn.Text = "Change Database";
 			this.ChangeDatabaseBtn.UseVisualStyleBackColor = false;
 			this.ChangeDatabaseBtn.Click += new System.EventHandler(this.ChangeDatabase_Click);
@@ -89,7 +89,7 @@
 			this.CreateDatabaseBtn.Location = new System.Drawing.Point(144, 86);
 			this.CreateDatabaseBtn.Name = "CreateDatabaseBtn";
 			this.CreateDatabaseBtn.Size = new System.Drawing.Size(120, 43);
-			this.CreateDatabaseBtn.TabIndex = 5;
+			this.CreateDatabaseBtn.TabIndex = 2;
 			this.CreateDatabaseBtn.Text = "Create New Database";
 			this.CreateDatabaseBtn.UseVisualStyleBackColor = false;
 			this.CreateDatabaseBtn.Click += new System.EventHandler(this.NewDatabase_Click);

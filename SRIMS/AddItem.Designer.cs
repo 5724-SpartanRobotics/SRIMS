@@ -1,4 +1,4 @@
-﻿namespace SRIMS
+namespace SRIMS
 {
     partial class AddItem
     {
@@ -53,8 +53,7 @@
 			this.Category.Location = new System.Drawing.Point(199, 94);
 			this.Category.Name = "Category";
 			this.Category.Size = new System.Drawing.Size(223, 29);
-			this.Category.TabIndex = 1;
-			this.Category.SelectedIndexChanged += new System.EventHandler(this.Category_SelectedIndexChanged);
+			this.Category.TabIndex = 8;
 			// 
 			// Quantity
 			// 
@@ -62,7 +61,7 @@
 			this.Quantity.Location = new System.Drawing.Point(199, 345);
 			this.Quantity.Name = "Quantity";
 			this.Quantity.Size = new System.Drawing.Size(223, 27);
-			this.Quantity.TabIndex = 2;
+			this.Quantity.TabIndex = 11;
 			// 
 			// Submit
 			// 
@@ -74,7 +73,7 @@
 			this.Submit.Location = new System.Drawing.Point(199, 380);
 			this.Submit.Name = "Submit";
 			this.Submit.Size = new System.Drawing.Size(223, 55);
-			this.Submit.TabIndex = 3;
+			this.Submit.TabIndex = 12;
 			this.Submit.Text = "Add Item";
 			this.Submit.UseVisualStyleBackColor = false;
 			this.Submit.Click += new System.EventHandler(this.Submit_Click);
@@ -93,12 +92,13 @@
 			// Description
 			// 
 			this.Description.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.Description.ForeColor = System.Drawing.Color.Gray;
+			this.Description.ForeColor = System.Drawing.Color.Black;
 			this.Description.Location = new System.Drawing.Point(199, 166);
 			this.Description.Multiline = true;
 			this.Description.Name = "Description";
+			this.Description.OriginalColor = System.Drawing.Color.Black;
 			this.Description.Size = new System.Drawing.Size(223, 173);
-			this.Description.TabIndex = 8;
+			this.Description.TabIndex = 10;
 			this.Description.Text = "Item Description";
 			this.Description.WatermarkColor = System.Drawing.Color.Gray;
 			this.Description.WatermarkText = "Item Description";
@@ -107,11 +107,12 @@
 			// ItemLocation
 			// 
 			this.ItemLocation.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.ItemLocation.ForeColor = System.Drawing.Color.Gray;
+			this.ItemLocation.ForeColor = System.Drawing.Color.Black;
 			this.ItemLocation.Location = new System.Drawing.Point(199, 131);
 			this.ItemLocation.Name = "ItemLocation";
+			this.ItemLocation.OriginalColor = System.Drawing.Color.Black;
 			this.ItemLocation.Size = new System.Drawing.Size(223, 27);
-			this.ItemLocation.TabIndex = 7;
+			this.ItemLocation.TabIndex = 9;
 			this.ItemLocation.Text = "Location";
 			this.ItemLocation.WatermarkColor = System.Drawing.Color.Gray;
 			this.ItemLocation.WatermarkText = "Location";
@@ -119,11 +120,12 @@
 			// ItemName
 			// 
 			this.ItemName.Font = new System.Drawing.Font("Century Gothic", 12F);
-			this.ItemName.ForeColor = System.Drawing.Color.Gray;
+			this.ItemName.ForeColor = System.Drawing.Color.Black;
 			this.ItemName.Location = new System.Drawing.Point(199, 59);
 			this.ItemName.Name = "ItemName";
+			this.ItemName.OriginalColor = System.Drawing.Color.Black;
 			this.ItemName.Size = new System.Drawing.Size(223, 27);
-			this.ItemName.TabIndex = 6;
+			this.ItemName.TabIndex = 7;
 			this.ItemName.Text = "Item Name";
 			this.ItemName.WatermarkColor = System.Drawing.Color.Gray;
 			this.ItemName.WatermarkText = "Item Name";

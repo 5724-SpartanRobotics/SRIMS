@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace SRIMS
 {
 	public partial class ViewDB : UserControl
 	{
-
 		public ViewDB()
 		{
 			InitializeComponent();
@@ -16,19 +15,16 @@ namespace SRIMS
 			ViewListBox.Columns[3].Width = 112;
 			ViewListBox.Columns[4].Width = 293;
 			ViewListBox.Columns[5].Width = 51;
-		}
 
-		private void ViewDB_Load(object sender, EventArgs e)
-		{
-
+			ViewListBox.Sorting = SortOrder.Ascending;
 		}
 
 		public void Ext()
 		{
 			Clear();
 			foreach (Item item in SRIMSForm.Instance.Inv)
-				ViewListBox.Items.Add(item.Id.ToString()).SubItems.AddRange(new string[]
-					{ item.Loc, item.Cat, item.Name, item.Desc, item.Qt.ToString() });
+				ViewListBox.Items.Add(new Item.ItemListViewItem(item));
+			ViewListBox.Sort();
 		}
 
 		public void Clear()
@@ -36,36 +32,35 @@ namespace SRIMS
 			ViewListBox.Items.Clear();
 		}
 
-		private void DelItem_Click(object sender, EventArgs e)
+		private void _BtnDelItem_Click(object sender, EventArgs e)
 		{
-			if (ViewListBox.SelectedIndices.Count == 1 && ViewListBox.SelectedIndices[0] != -1)
+			if (ViewListBox.SelectedItems.Count == 1)
 			{
-				SRIMSForm.Instance.Inv.Remove(SRIMSForm.Instance.Inv[ViewListBox.SelectedIndices[0]]);
+				SRIMSForm.Instance.Inv.Remove(((Item.ItemListViewItem)ViewListBox.SelectedItems[0]).ItemValue);
 				Ext();
+				SRIMSForm.Instance.SaveInventory();
 			}
 
 		}
 
-		private void button2_Click(object sender, EventArgs e)
+		private void _BtnOpenDatabase_Click(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process.Start(Properties.Settings.Default.dbloc);
-
 		}
 
 
-		private void EditItem(int index)
+		private void EditItem(Item item)
 		{
-			using (EditForm ed = new EditForm(index, this))
+			using (EditForm ed = new EditForm(item))
 				ed.ShowDialog();
 			Ext();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void _BtnEdit_Click(object sender, EventArgs e)
 		{
-			if (ViewListBox.SelectedIndices.Count == 1 && ViewListBox.SelectedIndices[0] != -1)
-			{
-				EditItem(ViewListBox.SelectedIndices[0]);
-			}
+			if (ViewListBox.SelectedItems.Count == 1)
+				EditItem(((Item.ItemListViewItem)ViewListBox.SelectedItems[0]).ItemValue);
 		}
+
 	}
 }

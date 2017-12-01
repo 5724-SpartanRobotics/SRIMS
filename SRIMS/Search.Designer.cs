@@ -1,4 +1,4 @@
-﻿namespace SRIMS
+namespace SRIMS
 {
 	partial class SearchControl
 	{
@@ -32,7 +32,7 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
-			this.results = new System.Windows.Forms.ListView();
+			this.results = new SRIMS.SortableListView();
 			this.idColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.locColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.catColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -54,7 +54,7 @@
 			this.SearchTypeDropdown.Location = new System.Drawing.Point(63, 34);
 			this.SearchTypeDropdown.Name = "SearchTypeDropdown";
 			this.SearchTypeDropdown.Size = new System.Drawing.Size(142, 24);
-			this.SearchTypeDropdown.TabIndex = 1;
+			this.SearchTypeDropdown.TabIndex = 6;
 			this.SearchTypeDropdown.SelectedValueChanged += new System.EventHandler(this.SearchTypeDropdown_SelectedValueChanged);
 			// 
 			// button2
@@ -67,7 +67,7 @@
 			this.button2.Location = new System.Drawing.Point(442, 484);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(105, 31);
-			this.button2.TabIndex = 4;
+			this.button2.TabIndex = 11;
 			this.button2.Text = "Clear Search";
 			this.button2.UseVisualStyleBackColor = false;
 			this.button2.Click += new System.EventHandler(this.ClearSearch_Click);
@@ -81,7 +81,7 @@
 			this.button3.Location = new System.Drawing.Point(184, 484);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(115, 31);
-			this.button3.TabIndex = 5;
+			this.button3.TabIndex = 10;
 			this.button3.Text = "Modify Selected";
 			this.button3.UseVisualStyleBackColor = false;
 			this.button3.Click += new System.EventHandler(this.Modify_Click);
@@ -95,7 +95,7 @@
 			this.button4.Location = new System.Drawing.Point(63, 484);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(115, 31);
-			this.button4.TabIndex = 5;
+			this.button4.TabIndex = 9;
 			this.button4.Text = "CheckOut Selected";
 			this.button4.UseVisualStyleBackColor = false;
 			this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -115,7 +115,7 @@
 			this.results.Name = "results";
 			this.results.ShowItemToolTips = true;
 			this.results.Size = new System.Drawing.Size(484, 412);
-			this.results.TabIndex = 6;
+			this.results.TabIndex = 8;
 			this.results.UseCompatibleStateImageBehavior = false;
 			this.results.View = System.Windows.Forms.View.Details;
 			// 
@@ -149,7 +149,7 @@
 			// SearchBox
 			// 
 			this.SearchBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-			this.SearchBox.ForeColor = System.Drawing.Color.Gray;
+			this.SearchBox.ForeColor = System.Drawing.Color.Black;
 			this.SearchBox.Location = new System.Drawing.Point(211, 34);
 			this.SearchBox.Name = "SearchBox";
 			this.SearchBox.OriginalColor = System.Drawing.Color.Black;
@@ -180,9 +180,9 @@
 		#endregion
 		private System.Windows.Forms.ComboBox SearchTypeDropdown;
 		private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.ListView results;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button button4;
+		private SRIMS.SortableListView results;
 		private System.Windows.Forms.ColumnHeader idColumn;
 		private System.Windows.Forms.ColumnHeader locColumn;
 		private System.Windows.Forms.ColumnHeader catColumn;

@@ -1,23 +1,41 @@
-﻿using System;
+using System;
 using System.Drawing;
 
 namespace SRIMS
 {
 	class WatermarkTextbox : SRIMSTextBox
 	{
-		private string _watermarkText = "Someone forgot the watermark";
+		public bool WatermarkOn { get; private set; }
+		private string _WatermarkText = "Someone forgot the watermark";
 
 		/// <summary>
 		/// Gets or sets the text that will be presented as the watermak hint.
 		/// </summary>
 		public string WatermarkText
 		{
-			get { return _watermarkText; }
+			get { return _WatermarkText; }
 			set
 			{
-				_watermarkText = value;
+				_WatermarkText = value;
 				RemoveWatermark();
 				ApplyWatermark();
+			}
+		}
+
+		public override string Text
+		{
+			get
+			{
+				return base.Text;
+			}
+			set
+			{
+				base.Text = value;
+				if (value == string.Empty && !Focused)
+				{
+					WatermarkOn = false;
+					ApplyWatermark();
+				}
 			}
 		}
 
@@ -46,9 +64,9 @@ namespace SRIMS
 		/// </summary>
 		public void RemoveWatermark()
 		{
-			if (_watermarkOn)
+			if (WatermarkOn)
 			{
-				_watermarkOn = false;
+				WatermarkOn = false;
 				Text = string.Empty;
 			}
 			ForeColor = OriginalColor;
@@ -59,19 +77,17 @@ namespace SRIMS
 		/// </summary>
 		public void ApplyWatermark()
 		{
-			if (!_watermarkOn && string.IsNullOrEmpty(Text) || ForeColor == WatermarkColor)
+			if (!WatermarkOn && string.IsNullOrEmpty(Text) || ForeColor == WatermarkColor)
 			{
-				_watermarkOn = true;
+				WatermarkOn = true;
 				Text = WatermarkText;
 				ForeColor = WatermarkColor;
 			}
 		}
 
-		private bool _watermarkOn;
-
 		public WatermarkTextbox()
 		{
-			_watermarkOn = false;
+			WatermarkOn = false;
 			ApplyWatermark();
 			GotFocus += GotFocusListener;
 			LostFocus += LostFocusListener;

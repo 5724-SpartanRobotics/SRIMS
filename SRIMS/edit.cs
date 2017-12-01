@@ -7,13 +7,7 @@ namespace SRIMS
 	{
 		Item item;
 
-		public EditForm(int index, ViewDB z)
-		{
-			InitializeComponent();
-			item = SRIMSForm.Instance.Inv[index];
-		}
-
-		public EditForm(Item itemInput, SearchControl z)
+		public EditForm(Item itemInput)
 		{
 			InitializeComponent();
 			item = itemInput;

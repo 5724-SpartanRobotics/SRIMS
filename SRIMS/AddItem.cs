@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -40,24 +40,17 @@ namespace SRIMS
 
 		private void Reload()
 		{
-			Quantity.Value = 0;
+			ItemName.Text = string.Empty;
 			Category.SelectedIndex = 0;
+			ItemLocation.Text = string.Empty;
+			Description.Text = string.Empty;
+			Quantity.Value = 0;
 		}
 
 		public void Reload(bool x)
 		{
 			Reload();
 			label1.Visible = false;
-		}
-
-		private void ItemLocation_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void Category_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			Console.WriteLine(Category.SelectedIndex);
 		}
 
 		private void Description_KeyPress(object sender, KeyPressEventArgs e)

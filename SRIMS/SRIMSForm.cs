@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 
-
+//TODO comment everything
 namespace SRIMS
 {
 	public partial class SRIMSForm : Form
@@ -33,7 +33,6 @@ namespace SRIMS
 			//Console.WriteLine("The CheckOut Line as of Open: " + Properties.Settings.Default.checkout_list);
 
 			string chout = Properties.Settings.Default.checkout_list;
-			// TODO use ShowDialog instead of Show for all forms and fix bug that happened when trying to open database while it was opened in excel
 
 			try
 			{
@@ -65,7 +64,7 @@ namespace SRIMS
 			}
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
+		private void SRIMSForm_Load(object sender, EventArgs e)
 		{
 			Init();
 			DehighlightSelectors();
@@ -88,7 +87,7 @@ namespace SRIMS
 
 		}
 
-		private void panel2_Paint(object sender, PaintEventArgs e)
+		private void CheckOutLogPanel_Paint(object sender, PaintEventArgs e)
 		{
 
 		}

@@ -2,4 +2,64 @@
 root = true
 
 [*.cs]
+############# Basic stuff #############
 indent_style = tab
+charset: utf-8
+end_of_line: crlf
+insert_final_newline: true
+trim_trailing_whitespace: true
+
+
+############### Naming ################
+# Interfaces
+dotnet_naming_rule.async_methods_end_in_async.symbols  = any_interfaces
+dotnet_naming_rule.async_methods_end_in_async.style    = start_with_I
+dotnet_naming_rule.async_methods_end_in_async.severity = suggestion
+
+dotnet_naming_symbols.any_interfaces.applicable_kinds           = interface
+dotnet_naming_symbols.any_interfaces.applicable_accessibilities = *
+
+dotnet_naming_style.start_with_I.required_prefix = I
+dotnet_naming_style.start_with_I.capitalization  = pascal_case
+
+
+# Consts
+dotnet_naming_rule.consts_all_caps.symbols  = consts
+dotnet_naming_rule.consts_all_caps.style    = all_upper_format
+dotnet_naming_rule.consts_all_caps.severity = suggestion
+
+dotnet_naming_symbols.consts.applicable_kinds           = *
+dotnet_naming_symbols.consts.applicable_accessibilities = *
+dotnet_naming_symbols.consts.required_modifiers         = const
+
+dotnet_naming_style.all_upper_format.capitalization  = all_upper
+
+
+# Members (private)
+dotnet_naming_rule.private_member_names.symbols  = private_members
+dotnet_naming_rule.private_member_names.style    = start_with__
+dotnet_naming_rule.private_member_names.severity = suggestion
+
+dotnet_naming_symbols.private_members.applicable_kinds           = property,field
+dotnet_naming_symbols.private_members.applicable_accessibilities = private,protected
+
+dotnet_naming_style.start_with__.required_prefix = _
+dotnet_naming_style.start_with__.capitalization  = pascal_case
+
+
+# Everything else
+dotnet_naming_rule.everything_else_pascal_case.symbols  = everything_else
+dotnet_naming_rule.everything_else_pascal_case.style    = standard_pascal_case
+dotnet_naming_rule.everything_else_pascal_case.severity = suggestion
+
+dotnet_naming_symbols.everything_else.applicable_kinds           = *
+dotnet_naming_symbols.everything_else.applicable_accessibilities = *
+
+dotnet_naming_style.standard_pascal_case.capitalization  = pascal_case
+
+
+######## this. (C#) / me. (VB) ########
+dotnet_style_qualification_for_field    = false : suggestion
+dotnet_style_qualification_for_property = false : suggestion
+dotnet_style_qualification_for_method   = false : suggestion
+dotnet_style_qualification_for_event    = false : suggestion
