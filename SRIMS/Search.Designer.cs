@@ -32,7 +32,7 @@ namespace SRIMS
 			this.button2 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
-			this.results = new SRIMS.SortableListView();
+			this._ListView_Results = new SRIMS.SortableListView();
 			this.idColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.locColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.catColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -98,26 +98,26 @@ namespace SRIMS
 			this.button4.TabIndex = 9;
 			this.button4.Text = "CheckOut Selected";
 			this.button4.UseVisualStyleBackColor = false;
-			this.button4.Click += new System.EventHandler(this.button4_Click);
+			this.button4.Click += new System.EventHandler(this._Btn_Checkout_Click);
 			// 
 			// results
 			// 
-			this.results.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this._ListView_Results.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idColumn,
             this.locColumn,
             this.catColumn,
             this.nameColumn,
             this.descColumn,
             this.qtColumn});
-			this.results.FullRowSelect = true;
-			this.results.Location = new System.Drawing.Point(63, 66);
-			this.results.MultiSelect = false;
-			this.results.Name = "results";
-			this.results.ShowItemToolTips = true;
-			this.results.Size = new System.Drawing.Size(484, 412);
-			this.results.TabIndex = 8;
-			this.results.UseCompatibleStateImageBehavior = false;
-			this.results.View = System.Windows.Forms.View.Details;
+			this._ListView_Results.FullRowSelect = true;
+			this._ListView_Results.Location = new System.Drawing.Point(63, 66);
+			this._ListView_Results.MultiSelect = false;
+			this._ListView_Results.Name = "results";
+			this._ListView_Results.ShowItemToolTips = true;
+			this._ListView_Results.Size = new System.Drawing.Size(484, 412);
+			this._ListView_Results.TabIndex = 8;
+			this._ListView_Results.UseCompatibleStateImageBehavior = false;
+			this._ListView_Results.View = System.Windows.Forms.View.Details;
 			// 
 			// idColumn
 			// 
@@ -165,7 +165,7 @@ namespace SRIMS
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.SearchBox);
-			this.Controls.Add(this.results);
+			this.Controls.Add(this._ListView_Results);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.button2);
@@ -182,7 +182,7 @@ namespace SRIMS
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button4;
-		private SRIMS.SortableListView results;
+		private SRIMS.SortableListView _ListView_Results;
 		private System.Windows.Forms.ColumnHeader idColumn;
 		private System.Windows.Forms.ColumnHeader locColumn;
 		private System.Windows.Forms.ColumnHeader catColumn;

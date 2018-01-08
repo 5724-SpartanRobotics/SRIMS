@@ -28,10 +28,5 @@ namespace SRIMS
 
 			ListViewItemSorter = new Item.ItemListViewComparer(e.Column, Sorting);
 		}
-
-		protected override void OnPaint(PaintEventArgs pe)
-		{
-			base.OnPaint(pe);
-		}
 	}
 }

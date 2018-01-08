@@ -12,18 +12,18 @@ namespace SRIMS
 		{
 			InitializeComponent();
 
-			results.Columns[0].Width = 23;
-			results.Columns[1].Width = 53;
-			results.Columns[2].Width = 55;
-			results.Columns[3].Width = 110;
-			results.Columns[4].Width = 171;
-			results.Columns[5].Width = 51;
+			_ListView_Results.Columns[0].Width = 23;
+			_ListView_Results.Columns[1].Width = 53;
+			_ListView_Results.Columns[2].Width = 55;
+			_ListView_Results.Columns[3].Width = 110;
+			_ListView_Results.Columns[4].Width = 171;
+			_ListView_Results.Columns[5].Width = 51;
 		}
 
 		private void Search()
 		{
 			_ResultsList.Clear();
-			results.Items.Clear();
+			_ListView_Results.Items.Clear();
 			int tp = SearchTypeDropdown.SelectedIndex;
 			string sa = SearchBox.Text;
 
@@ -80,7 +80,7 @@ namespace SRIMS
 
 
 			foreach (Item item in _ResultsList)
-				results.Items.Add(new Item.ItemListViewItem(item));
+				_ListView_Results.Items.Add(new Item.ItemListViewItem(item));
 		}
 
 		public void Reset()
@@ -104,20 +104,16 @@ namespace SRIMS
 
 		private void Modify_Click(object sender, EventArgs e)
 		{
-			if (results.SelectedIndices.Count == 1 && results.SelectedIndices[0] != -1)
-				EditItem(_ResultsList[results.SelectedIndices[0]]);
+			if (_ListView_Results.SelectedItems.Count == 1)
+				EditItem(((Item.ItemListViewItem)_ListView_Results.SelectedItems[0]).ItemValue);
 		}
 
-
-		// CHECK OUT!!!!!!!!!!!!!!!
-
-		private void button4_Click(object sender, EventArgs e)
+		private void _Btn_Checkout_Click(object sender, EventArgs e)
 		{
-			if (results.SelectedIndices.Count == 1 && results.SelectedIndices[0] != -1)
-			{
-				using (CheckOut c = new CheckOut(_ResultsList[results.SelectedIndices[0]]))
+			if (_ListView_Results.SelectedItems.Count == 1)
+				using (CheckOut c = new CheckOut(((Item.ItemListViewItem)_ListView_Results.SelectedItems[0]).ItemValue))
 					c.ShowDialog();
-			}
+
 
 		}
 
