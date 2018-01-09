@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
 			this.sidePanel = new System.Windows.Forms.Panel();
+			this._PanelCategoriesSelected = new System.Windows.Forms.Panel();
+			this._BtnCategories = new System.Windows.Forms.Button();
 			this.CheckOutLogSelected = new System.Windows.Forms.Panel();
 			this.AddItemSelected = new System.Windows.Forms.Panel();
 			this.SearchSelected = new System.Windows.Forms.Panel();
@@ -45,12 +47,15 @@
 			this.addItem1 = new SRIMS.AddItem();
 			this.checkin1 = new SRIMS.Checkin();
 			this.viewDB1 = new SRIMS.ViewDB();
+			this._CategoryPage = new SRIMS.CategoryPage();
 			this.sidePanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// sidePanel
 			// 
 			this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.sidePanel.Controls.Add(this._PanelCategoriesSelected);
+			this.sidePanel.Controls.Add(this._BtnCategories);
 			this.sidePanel.Controls.Add(this.CheckOutLogSelected);
 			this.sidePanel.Controls.Add(this.AddItemSelected);
 			this.sidePanel.Controls.Add(this.SearchSelected);
@@ -67,6 +72,29 @@
 			this.sidePanel.Name = "sidePanel";
 			this.sidePanel.Size = new System.Drawing.Size(203, 526);
 			this.sidePanel.TabIndex = 0;
+			// 
+			// _PanelCategoriesSelected
+			// 
+			this._PanelCategoriesSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this._PanelCategoriesSelected.Location = new System.Drawing.Point(3, 387);
+			this._PanelCategoriesSelected.Name = "_PanelCategoriesSelected";
+			this._PanelCategoriesSelected.Size = new System.Drawing.Size(10, 69);
+			this._PanelCategoriesSelected.TabIndex = 6;
+			this._PanelCategoriesSelected.Visible = false;
+			// 
+			// _BtnCategories
+			// 
+			this._BtnCategories.FlatAppearance.BorderSize = 0;
+			this._BtnCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnCategories.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnCategories.ForeColor = System.Drawing.Color.White;
+			this._BtnCategories.Location = new System.Drawing.Point(3, 387);
+			this._BtnCategories.Name = "_BtnCategories";
+			this._BtnCategories.Size = new System.Drawing.Size(197, 69);
+			this._BtnCategories.TabIndex = 7;
+			this._BtnCategories.Text = "Categories";
+			this._BtnCategories.UseVisualStyleBackColor = true;
+			this._BtnCategories.Click += new System.EventHandler(this._BtnCategories_Click);
 			// 
 			// CheckOutLogSelected
 			// 
@@ -244,11 +272,19 @@
 			this.viewDB1.Size = new System.Drawing.Size(630, 526);
 			this.viewDB1.TabIndex = 4;
 			// 
+			// _CategoryPage
+			// 
+			this._CategoryPage.Location = new System.Drawing.Point(203, 0);
+			this._CategoryPage.Name = "_CategoryPage";
+			this._CategoryPage.Size = new System.Drawing.Size(630, 523);
+			this._CategoryPage.TabIndex = 6;
+			// 
 			// SRIMSForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(833, 526);
+			this.Controls.Add(this._CategoryPage);
 			this.Controls.Add(this.sidePanel);
 			this.Controls.Add(this.checkoutLog1);
 			this.Controls.Add(this.search1);
@@ -286,6 +322,9 @@
         private CheckoutLog checkoutLog1;
         private ViewDB viewDB1;
         private Checkin checkin1;
-    }
+		private System.Windows.Forms.Panel _PanelCategoriesSelected;
+		private System.Windows.Forms.Button _BtnCategories;
+		private CategoryPage _CategoryPage;
+	}
 }
 

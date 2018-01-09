@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,50 +6,42 @@ namespace SRIMS
 {
 	public partial class AddItem : UserControl
 	{
-		List<Item> inv;
-
 		public AddItem()
 		{
 			InitializeComponent();
-		}
-
-		public void SetDB(List<Item> x)
-		{
-			inv = x;
+			SRIMSForm.Instance?.Inv?.Categories?.ForEach(x => _ComboBoxCategory.Items.Add(x));
 		}
 
 		private void Submit_Click(object sender, EventArgs e)
 		{
 			int id = 0;
-			if (inv.Count > 0)
-				id = inv.Last().Id + 1;
+			if (SRIMSForm.Instance.Inv.Items.Count > 0)
+				id = SRIMSForm.Instance.Inv.Items.Last().Id + 1;
 
 			int qt = (int)Quantity.Value;
 
-			string[] cat = { "Mech", "Elec", "Code", "Bump", "Misc" };
+			Category cat = (Category)_ComboBoxCategory.SelectedItem;
 
-			int scat = Category.SelectedIndex;
+			SRIMSForm.Instance.Inv.Items.Add(new Item(id, ItemLocation.Text, cat, ItemName.Text, Description.Text, qt));
 
-			inv.Add(new Item(id, ItemLocation.Text, cat[scat], ItemName.Text, Description.Text, qt));
-
-			label1.Visible = true;
+			_LabelSuccess.Visible = true;
 			SRIMSForm.Instance.SaveInventory();
-			Reload();
+			ResetItems();
 		}
 
-		private void Reload()
+		private void ResetItems()
 		{
 			ItemName.Text = string.Empty;
-			Category.SelectedIndex = 0;
+			_ComboBoxCategory.SelectedIndex = 0;
 			ItemLocation.Text = string.Empty;
 			Description.Text = string.Empty;
 			Quantity.Value = 0;
 		}
 
-		public void Reload(bool x)
+		public void Reload()
 		{
-			Reload();
-			label1.Visible = false;
+			ResetItems();
+			_LabelSuccess.Visible = false;
 		}
 
 		private void Description_KeyPress(object sender, KeyPressEventArgs e)

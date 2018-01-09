@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Text;
 
 namespace SRIMS
@@ -8,12 +8,13 @@ namespace SRIMS
 		public static Item DeserializeItem(string itemLine)
 		{
 			string[] vals = LineToArray(itemLine);
-			return new Item((int.Parse(vals[0])), vals[1], vals[2], vals[3], vals[4], int.Parse(vals[5]));
+			return new Item((int.Parse(vals[0])), vals[1], SRIMSForm.Instance.Inv.FindCategoryByName(vals[2]),
+				vals[3], vals[4], int.Parse(vals[5]));
 		}
 
 		public static string SerializeItem(Item item)
 		{
-			return ArrayToLine(item.Id.ToString(), item.Loc, item.Cat, item.Name, item.Desc, item.Qt.ToString());
+			return ArrayToLine(item.Id.ToString(), item.Loc, item.Cat.Name, item.Name, item.Desc, item.Qt.ToString());
 		}
 
 		// I'm using the rules excel does for escaping commas / quotes

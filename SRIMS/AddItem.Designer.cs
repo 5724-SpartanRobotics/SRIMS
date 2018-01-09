@@ -28,10 +28,10 @@ namespace SRIMS
         /// </summary>
         private void InitializeComponent()
         {
-			this.Category = new System.Windows.Forms.ComboBox();
+			this._ComboBoxCategory = new System.Windows.Forms.ComboBox();
 			this.Quantity = new System.Windows.Forms.NumericUpDown();
 			this.Submit = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
+			this._LabelSuccess = new System.Windows.Forms.Label();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.Description = new SRIMS.WatermarkTextbox();
 			this.ItemLocation = new SRIMS.WatermarkTextbox();
@@ -41,19 +41,13 @@ namespace SRIMS
 			// 
 			// Category
 			// 
-			this.Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.Category.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Category.FormattingEnabled = true;
-			this.Category.Items.AddRange(new object[] {
-            "Mechanical",
-            "Electrical",
-            "Programming",
-            "Bumper",
-            "Misc"});
-			this.Category.Location = new System.Drawing.Point(199, 94);
-			this.Category.Name = "Category";
-			this.Category.Size = new System.Drawing.Size(223, 29);
-			this.Category.TabIndex = 8;
+			this._ComboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this._ComboBoxCategory.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._ComboBoxCategory.FormattingEnabled = true;
+			this._ComboBoxCategory.Location = new System.Drawing.Point(199, 94);
+			this._ComboBoxCategory.Name = "Category";
+			this._ComboBoxCategory.Size = new System.Drawing.Size(223, 29);
+			this._ComboBoxCategory.TabIndex = 8;
 			// 
 			// Quantity
 			// 
@@ -80,14 +74,14 @@ namespace SRIMS
 			// 
 			// label1
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(215, 443);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(190, 21);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "Item Added Sucessfully";
-			this.label1.Visible = false;
+			this._LabelSuccess.AutoSize = true;
+			this._LabelSuccess.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._LabelSuccess.Location = new System.Drawing.Point(215, 443);
+			this._LabelSuccess.Name = "label1";
+			this._LabelSuccess.Size = new System.Drawing.Size(200, 21);
+			this._LabelSuccess.TabIndex = 4;
+			this._LabelSuccess.Text = "Item Added Successfully";
+			this._LabelSuccess.Visible = false;
 			// 
 			// Description
 			// 
@@ -137,10 +131,10 @@ namespace SRIMS
 			this.Controls.Add(this.Description);
 			this.Controls.Add(this.ItemLocation);
 			this.Controls.Add(this.ItemName);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this._LabelSuccess);
 			this.Controls.Add(this.Submit);
 			this.Controls.Add(this.Quantity);
-			this.Controls.Add(this.Category);
+			this.Controls.Add(this._ComboBoxCategory);
 			this.Name = "AddItem";
 			this.Size = new System.Drawing.Size(630, 526);
 			((System.ComponentModel.ISupportInitialize)(this.Quantity)).EndInit();
@@ -150,10 +144,10 @@ namespace SRIMS
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox Category;
+        private System.Windows.Forms.ComboBox _ComboBoxCategory;
         private System.Windows.Forms.NumericUpDown Quantity;
         private System.Windows.Forms.Button Submit;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label _LabelSuccess;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
 		private WatermarkTextbox ItemName;
 		private WatermarkTextbox ItemLocation;

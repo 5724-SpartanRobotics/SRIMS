@@ -1,29 +1,30 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.Serialization.Json;
+using SRIMS.Properties;
 
 //TODO comment everything
 namespace SRIMS
 {
 	public partial class SRIMSForm : Form
 	{
-		string DBloc { get { return Properties.Settings.Default.dbloc; } }
+		public string DBLoc { get { return Settings.Default.dbloc; } private set { Settings.Default.dbloc = value; } }
 		public static SRIMSForm Instance { get; private set; } = null;
 
 		public SRIMSForm()
 		{
-			InitializeComponent();
 			if (Instance != null)
 				throw new ApplicationException("Can't have more than one instance of SRIMSForm in a single application!");
 			Instance = this;
+			Init();
+			InitializeComponent();
 		}
 
 		//Real Code Begins Here:
 
-		Item x = new Item();
-
-		public List<Item> Inv = new List<Item>();
+		public Inventory Inv = new Inventory();
 
 		public List<Item> CheckOutInv = new List<Item>();
 
@@ -32,41 +33,27 @@ namespace SRIMS
 			ClearInventory();
 			//Console.WriteLine("The CheckOut Line as of Open: " + Properties.Settings.Default.checkout_list);
 
-			string chout = Properties.Settings.Default.checkout_list;
-
-			try
+			bool flag = false;
+			while (!flag)
 			{
-				// using statements automatically close disposible objects
-				using (StreamReader sr = new StreamReader(DBloc))
+				string chout = Settings.Default.checkout_list;
+
+				try
 				{
-					string head = sr.ReadLine();
-
-					string headId = head.Split(',')[0];
-					headId = headId.Remove(0, 2);
-					int itemcount = int.Parse(headId);
-
-					for (int i = 0; i < itemcount; i++)
-					{
-						string currentitem = sr.ReadLine();
-
-						// Created this CSVHelper in case some idiot decides to put a
-						// comma in a name or something and corrupt the inventory file.
-						Inv.Add(CSVHelper.DeserializeItem(currentitem));
-
-					}
+					LoadInventory();
+					flag = true;
 				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex);
-				using (Settings settings = new Settings())
-					settings.ShowDialog();
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex);
+					using (SettingsForm settings = new SettingsForm())
+						settings.ShowDialog();
+				}
 			}
 		}
 
 		private void SRIMSForm_Load(object sender, EventArgs e)
 		{
-			Init();
 			DehighlightSelectors();
 		}
 
@@ -77,14 +64,14 @@ namespace SRIMS
 			AddItemSelected.Visible = false;
 			SearchSelected.Visible = false;
 			CheckOutLogSelected.Visible = false;
+			_PanelCategoriesSelected.Visible = false;
 
 			checkin1.Visible = false;
 			viewDB1.Visible = false;
 			addItem1.Visible = false;
 			search1.Visible = false;
 			checkoutLog1.Visible = false;
-
-
+			_CategoryPage.Visible = false;
 		}
 
 		private void CheckOutLogPanel_Paint(object sender, PaintEventArgs e)
@@ -130,12 +117,7 @@ namespace SRIMS
 			AddItemSelected.Visible = true;
 			addItem1.Visible = true;
 
-			addItem1.Reload(true);
-
-			addItem1.SetDB(Inv);
-
-
-
+			addItem1.Reload();
 		}
 
 		// CheckOutLog
@@ -150,25 +132,80 @@ namespace SRIMS
 		// Settings
 		private void _BtnSettings_Click(object sender, EventArgs e)
 		{
-			Settings settings = new Settings();
+			SettingsForm settings = new SettingsForm();
 			settings.Show();
+		}
+
+		private void _BtnCategories_Click(object sender, EventArgs e)
+		{
+			DehighlightSelectors();
+			_PanelCategoriesSelected.Visible = true;
+			_CategoryPage.Visible = true;
+
+			_CategoryPage.Reload();
 		}
 
 		// Erases the inventory
 		public void ClearInventory()
 		{
-			Inv.Clear();
+			Inv?.Items?.Clear();
+		}
+
+		private void LoadInventory()
+		{
+			// Decided to switch to just using JSON to store the inventory
+			try
+			{
+				using (Stream stream = File.OpenRead(DBLoc))
+				{
+					DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Inventory));
+					Inv = (Inventory)serializer.ReadObject(stream);
+					Inv.CorrectItemErrors(); // No idea why I need this
+				}
+			}
+			catch
+			{
+				// using statements automatically close IDisposible objects
+				using (StreamReader sr = new StreamReader(DBLoc))
+				{
+					string head = sr.ReadLine();
+
+					string headId = head.Split(',')[0];
+					headId = headId.Remove(0, 2);
+					int itemcount = int.Parse(headId);
+					Inv = new Inventory();
+
+					for (int i = 0; i < itemcount; i++)
+					{
+						string currentitem = sr.ReadLine();
+
+						// Created this CSVHelper in case some idiot decides to put a
+						// comma in a name or something and corrupt the inventory file.
+						Inv.Items.Add(CSVHelper.DeserializeItem(currentitem));
+					}
+				}
+				int j = 0;
+				string filename = Path.Combine(Path.GetDirectoryName(DBLoc), Path.GetFileNameWithoutExtension(DBLoc)
+					+ ".old" + Path.GetExtension(DBLoc));
+
+				while (File.Exists(filename))
+					filename = Path.Combine(Path.GetDirectoryName(DBLoc), Path.GetFileNameWithoutExtension(DBLoc)
+					+ ".old" + (j++).ToString() + Path.GetExtension(DBLoc));
+
+				File.Move(DBLoc, filename);
+				DBLoc = Path.Combine(Path.GetDirectoryName(DBLoc), Path.GetFileNameWithoutExtension(DBLoc) + ".json");
+				SaveInventory();
+			}
 		}
 
 		public void SaveInventory()
 		{
 			try
 			{
-				using (StreamWriter writer = new StreamWriter(DBloc))
+				using (FileStream fs = File.Open(DBLoc, FileMode.Create))
 				{
-					writer.WriteLine("Id" + Inv.Count + ",Location,Category,Item,Item Description,Quantity");
-					foreach (Item item in Inv)
-						writer.WriteLine(CSVHelper.SerializeItem(item));
+					DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Inventory));
+					serializer.WriteObject(fs, Inv);
 				}
 
 				checkin1.modified();
@@ -184,7 +221,5 @@ namespace SRIMS
 		{
 			SaveInventory();
 		}
-
-
 	}
 }

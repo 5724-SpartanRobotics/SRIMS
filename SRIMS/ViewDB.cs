@@ -22,7 +22,7 @@ namespace SRIMS
 		public void Ext()
 		{
 			Clear();
-			foreach (Item item in SRIMSForm.Instance.Inv)
+			foreach (Item item in SRIMSForm.Instance.Inv.Items)
 				ViewListBox.Items.Add(new Item.ItemListViewItem(item));
 			ViewListBox.Sort();
 		}
@@ -36,7 +36,7 @@ namespace SRIMS
 		{
 			if (ViewListBox.SelectedItems.Count == 1)
 			{
-				SRIMSForm.Instance.Inv.Remove(((Item.ItemListViewItem)ViewListBox.SelectedItems[0]).ItemValue);
+				SRIMSForm.Instance.Inv.Items.Remove(((Item.ItemListViewItem)ViewListBox.SelectedItems[0]).ItemValue);
 				Ext();
 				SRIMSForm.Instance.SaveInventory();
 			}

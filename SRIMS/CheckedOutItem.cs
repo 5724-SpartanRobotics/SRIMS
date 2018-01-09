@@ -1,22 +1,22 @@
-﻿namespace SRIMS
+namespace SRIMS
 {
 	class CheckedOutItem
     {
 
         public string Name { get; set;} = "";
-        public Item item { get; set; } = new Item();
-        public int qt { get; set; } = 0;
+		public Item Item { get; set; } = null;
+        public int Qt { get; set; } = 0;
 
-        public CheckedOutItem(string Name, Item x, int qt)
+        public CheckedOutItem(string name, Item x, int qt)
         {
-            this.Name = Name;
-            this.item = x;
-            this.qt = qt;
+			Name = name;
+			Item = x;
+			Qt = qt;
         }
 
         public override string ToString()
         {
-            return Name + ": " + item.Name + "-" + item.Loc + "-Qt[" + qt + "]";
+            return Name + ": " + Item.Name + "-" + Item.Loc + "-Qt[" + Qt + "]";
         }
 
     }

@@ -36,9 +36,9 @@
 			this.SaveBtn = new System.Windows.Forms.Button();
 			this.label5 = new System.Windows.Forms.Label();
 			this.NameTextBox = new SRIMS.SRIMSTextBox();
-			this.CatTextBox = new SRIMS.SRIMSTextBox();
 			this.LocTextBox = new SRIMS.SRIMSTextBox();
 			this.DescTextBox = new SRIMS.SRIMSTextBox();
+			this._ComboBoxCat = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -125,15 +125,6 @@
 			this.NameTextBox.Size = new System.Drawing.Size(121, 21);
 			this.NameTextBox.TabIndex = 6;
 			// 
-			// CatTextBox
-			// 
-			this.CatTextBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-			this.CatTextBox.ForeColor = System.Drawing.Color.Black;
-			this.CatTextBox.Location = new System.Drawing.Point(39, 63);
-			this.CatTextBox.Name = "CatTextBox";
-			this.CatTextBox.Size = new System.Drawing.Size(121, 21);
-			this.CatTextBox.TabIndex = 7;
-			// 
 			// LocTextBox
 			// 
 			this.LocTextBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
@@ -154,14 +145,22 @@
 			this.DescTextBox.TabIndex = 9;
 			this.DescTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DescTextBox_KeyPress);
 			// 
+			// _ComboBoxCat
+			// 
+			this._ComboBoxCat.FormattingEnabled = true;
+			this._ComboBoxCat.Location = new System.Drawing.Point(39, 63);
+			this._ComboBoxCat.Name = "_ComboBoxCat";
+			this._ComboBoxCat.Size = new System.Drawing.Size(121, 21);
+			this._ComboBoxCat.TabIndex = 10;
+			// 
 			// EditForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(208, 319);
+			this.Controls.Add(this._ComboBoxCat);
 			this.Controls.Add(this.DescTextBox);
 			this.Controls.Add(this.LocTextBox);
-			this.Controls.Add(this.CatTextBox);
 			this.Controls.Add(this.NameTextBox);
 			this.Controls.Add(this.SaveBtn);
 			this.Controls.Add(this.numericUpDown1);
@@ -192,8 +191,8 @@
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Label label5;
 		private SRIMSTextBox NameTextBox;
-		private SRIMSTextBox CatTextBox;
 		private SRIMSTextBox LocTextBox;
 		private SRIMSTextBox DescTextBox;
+		private System.Windows.Forms.ComboBox _ComboBoxCat;
 	}
 }

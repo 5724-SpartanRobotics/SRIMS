@@ -1,34 +1,36 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace SRIMS
 {
 	public partial class EditForm : Form
 	{
-		Item item;
+		Item _Item;
 
 		public EditForm(Item itemInput)
 		{
 			InitializeComponent();
-			item = itemInput;
+			_Item = itemInput;
+			foreach (Category cat in SRIMSForm.Instance.Inv.Categories)
+				_ComboBoxCat.Items.Add(cat);
 		}
 
 		private void Edit_Load(object sender, EventArgs e)
 		{
-			NameTextBox.Text = item.Name;
-			CatTextBox.Text = item.Cat;
-			DescTextBox.Text = item.Desc;
-			numericUpDown1.Value = item.Qt;
-			LocTextBox.Text = item.Loc;
+			NameTextBox.Text = _Item.Name;
+			_ComboBoxCat.SelectedIndex = _ComboBoxCat.Items.IndexOf(_Item.Cat);
+			DescTextBox.Text = _Item.Desc;
+			numericUpDown1.Value = _Item.Qt;
+			LocTextBox.Text = _Item.Loc;
 		}
 
 		private void SaveBtn_Click(object sender, EventArgs e)
 		{
-			item.Name = NameTextBox.Text;
-			item.Cat = CatTextBox.Text;
-			item.Desc = DescTextBox.Text;
-			item.Qt = (int)numericUpDown1.Value;
-			item.Loc = LocTextBox.Text;
+			_Item.Name = NameTextBox.Text;
+			_Item.Cat = (Category)_ComboBoxCat.SelectedItem;
+			_Item.Desc = DescTextBox.Text;
+			_Item.Qt = (int)numericUpDown1.Value;
+			_Item.Loc = LocTextBox.Text;
 
 			SRIMSForm.Instance.SaveInventory();
 			Close();

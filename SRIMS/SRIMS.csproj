@@ -72,6 +72,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -83,6 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CategoryPage.Designer.cs">
+      <DependentUpon>CategoryPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +116,12 @@
       <DependentUpon>CheckoutLog.cs</DependentUpon>
     </Compile>
     <Compile Include="CSVHelper.cs" />
+    <Compile Include="EditCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCategory.Designer.cs">
+      <DependentUpon>EditCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -158,6 +171,9 @@
     <Compile Include="WatermarkTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="CategoryPage.resx">
+      <DependentUpon>CategoryPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddItem.resx">
       <DependentUpon>AddItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCategory.resx">
+      <DependentUpon>EditCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SRIMSForm.resx">
       <DependentUpon>SRIMSForm.cs</DependentUpon>

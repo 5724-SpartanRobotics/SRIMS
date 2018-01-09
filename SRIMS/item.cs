@@ -1,23 +1,40 @@
-﻿using System.Collections;
+using System.Collections;
+using System.Runtime.Serialization;
 using System.Windows.Forms;
 
 namespace SRIMS
 {
+	[DataContract]
 	public class Item
 	{
+		[DataMember]
 		public int Id { get; private set; } = 0;
+		[DataMember]
 		public string Name { get; set; } = "Item";
-		public string Cat { get; set; } = "Category";
-		public string Loc { get; set; } = "Location";
-		public string Desc { get; set; } = "Item Description";
-		public int Qt { get; set; } = 0;
 
-		public Item()
+		public Category Cat { get; set; } = Category.NONE;
+
+		[DataMember]
+		private int _CatID
 		{
-
+			get
+			{
+				return Cat.Id;
+			}
+			set
+			{
+				Cat = SRIMSForm.Instance.Inv.FindCategoryById(value);
+			}
 		}
 
-		public Item(int id, string loc, string cat, string name, string desc, int qt)
+		[DataMember]
+		public string Loc { get; set; } = "Location";
+		[DataMember]
+		public string Desc { get; set; } = "Item Description";
+		[DataMember]
+		public int Qt { get; set; } = 0;
+
+		public Item(int id, string loc, Category cat, string name, string desc, int qt)
 		{
 			Id = id;
 			Loc = loc;
@@ -25,7 +42,6 @@ namespace SRIMS
 			Name = name;
 			Desc = desc;
 			Qt = qt;
-
 		}
 
 		public override string ToString()
@@ -40,36 +56,36 @@ namespace SRIMS
 			public ItemListViewItem(Item item) : base(item.Id.ToString())
 			{
 				ItemValue = item;
-				SubItems.AddRange(new string[] { item.Loc, item.Cat, item.Name, item.Desc, item.Qt.ToString() });
+				SubItems.AddRange(new string[] { item.Loc, item.Cat.Name, item.Name, item.Desc, item.Qt.ToString() });
 			}
 		}
 
 		public class ItemListViewComparer : IComparer
 		{
-			private bool _isNumber;
-			private int _column;
-			private SortOrder _sortOrder;
+			private bool _IsNumber;
+			private int _Column;
+			private SortOrder _SortOrder;
 
 			public ItemListViewComparer(int col, SortOrder order)
 			{
-				_column = col;
-				_isNumber = _column == 0 || _column == 5;
-				_sortOrder = order;
+				_Column = col;
+				_IsNumber = _Column == 0 || _Column == 5;
+				_SortOrder = order;
 			}
 
 			public int Compare(object rowX, object rowY)
 			{
-				string x = ((ListViewItem)rowX).SubItems[_column].Text;
-				string y = ((ListViewItem)rowY).SubItems[_column].Text;
+				string x = ((ListViewItem)rowX).SubItems[_Column].Text;
+				string y = ((ListViewItem)rowY).SubItems[_Column].Text;
 
-				if (_sortOrder == SortOrder.Descending)
+				if (_SortOrder == SortOrder.Descending)
 				{
 					string temp = x;
 					x = y;
 					y = temp;
 				}
 
-				if (_isNumber)
+				if (_IsNumber)
 					if (int.TryParse(x.ToString(), out int a) && int.TryParse(y.ToString(), out int b))
 						return a.CompareTo(b);
 

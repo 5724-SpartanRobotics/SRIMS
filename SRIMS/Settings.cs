@@ -1,12 +1,13 @@
-﻿using System;
+using SRIMS.Properties;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
 namespace SRIMS
 {
-	public partial class Settings : Form
+	public partial class SettingsForm : Form
 	{
-		public Settings()
+		public SettingsForm()
 		{
 			InitializeComponent();
 			FormClosed += Settings_FormClosed;
@@ -14,13 +15,12 @@ namespace SRIMS
 
 		private void Settings_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			Properties.Settings.Default.Save();
-			SRIMSForm.Instance.Init();
+			Settings.Default.Save();
 		}
 
 		private void Settings_Load(object sender, EventArgs e)
 		{
-			dbpath.Text = Properties.Settings.Default.dbloc;
+			dbpath.Text = Settings.Default.dbloc;
 		}
 
 		private void ChangeDatabase_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace SRIMS
 			{
 
 				//op.InitialDirectory = "c:\\";
-				Filter = "All Files|*.*|CSV Files|*.csv",
+				Filter = "All Files|*.*|JSON Files|*.json",
 				FilterIndex = 3
 				//op.RestoreDirectory = true;
 			};
@@ -58,7 +58,7 @@ namespace SRIMS
 			{
 
 				//op.InitialDirectory = "c:\\";
-				Filter = "All Files|*.*|CSV Files|*.csv",
+				Filter = "All Files|*.*|JSON Files|*.json",
 				FilterIndex = 3
 				//op.RestoreDirectory = true;
 			};

@@ -12,18 +12,18 @@ namespace SRIMS
 		{
 			InitializeComponent();
 
-			_ListView_Results.Columns[0].Width = 23;
-			_ListView_Results.Columns[1].Width = 53;
-			_ListView_Results.Columns[2].Width = 55;
-			_ListView_Results.Columns[3].Width = 110;
-			_ListView_Results.Columns[4].Width = 171;
-			_ListView_Results.Columns[5].Width = 51;
+			_ListViewResults.Columns[0].Width = 23;
+			_ListViewResults.Columns[1].Width = 53;
+			_ListViewResults.Columns[2].Width = 55;
+			_ListViewResults.Columns[3].Width = 110;
+			_ListViewResults.Columns[4].Width = 171;
+			_ListViewResults.Columns[5].Width = 51;
 		}
 
 		private void Search()
 		{
 			_ResultsList.Clear();
-			_ListView_Results.Items.Clear();
+			_ListViewResults.Items.Clear();
 			int tp = SearchTypeDropdown.SelectedIndex;
 			string sa = SearchBox.Text;
 
@@ -32,7 +32,7 @@ namespace SRIMS
 				sa = sa.ToLower();
 				if (tp == 0)
 				{
-					foreach (Item x in SRIMSForm.Instance.Inv)
+					foreach (Item x in SRIMSForm.Instance.Inv.Items)
 					{
 						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
 						if (x.Name.ToLower().Contains(sa))
@@ -45,7 +45,7 @@ namespace SRIMS
 				else if (tp == 1)
 				{
 					//Search by Loc
-					foreach (Item x in SRIMSForm.Instance.Inv)
+					foreach (Item x in SRIMSForm.Instance.Inv.Items)
 					{
 						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
 						if (x.Loc.ToLower().Contains(sa))
@@ -61,10 +61,10 @@ namespace SRIMS
 
 					//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Add Dropdown For Category <<<<<<<<<<<<<<<<<<<<<<<<<<<<\\
 
-					foreach (Item x in SRIMSForm.Instance.Inv)
+					foreach (Item x in SRIMSForm.Instance.Inv.Items)
 					{
 						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
-						if (x.Cat.ToLower().Contains(sa))
+						if (x.Cat.Name.ToLower().Contains(sa))
 						{
 							//Console.WriteLine("bazzinga!");
 							_ResultsList.Add(x);
@@ -75,12 +75,12 @@ namespace SRIMS
 			}
 			else
 			{
-				_ResultsList.AddRange(SRIMSForm.Instance.Inv);
+				_ResultsList.AddRange(SRIMSForm.Instance.Inv.Items);
 			}
 
 
 			foreach (Item item in _ResultsList)
-				_ListView_Results.Items.Add(new Item.ItemListViewItem(item));
+				_ListViewResults.Items.Add(new Item.ItemListViewItem(item));
 		}
 
 		public void Reset()
@@ -104,14 +104,14 @@ namespace SRIMS
 
 		private void Modify_Click(object sender, EventArgs e)
 		{
-			if (_ListView_Results.SelectedItems.Count == 1)
-				EditItem(((Item.ItemListViewItem)_ListView_Results.SelectedItems[0]).ItemValue);
+			if (_ListViewResults.SelectedItems.Count == 1)
+				EditItem(((Item.ItemListViewItem)_ListViewResults.SelectedItems[0]).ItemValue);
 		}
 
 		private void _Btn_Checkout_Click(object sender, EventArgs e)
 		{
-			if (_ListView_Results.SelectedItems.Count == 1)
-				using (CheckOut c = new CheckOut(((Item.ItemListViewItem)_ListView_Results.SelectedItems[0]).ItemValue))
+			if (_ListViewResults.SelectedItems.Count == 1)
+				using (CheckOut c = new CheckOut(((Item.ItemListViewItem)_ListViewResults.SelectedItems[0]).ItemValue))
 					c.ShowDialog();
 
 

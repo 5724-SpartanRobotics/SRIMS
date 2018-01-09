@@ -1,11 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SRIMS
@@ -26,37 +22,27 @@ namespace SRIMS
 			settingsReader();
 		}
 
-		private Item finditem(int id)
+		private Item Finditem(int id)
 		{
-			foreach (Item y in SRIMSForm.Instance.Inv)
+			foreach (Item y in SRIMSForm.Instance.Inv.Items)
 			{
-				//Console.WriteLine(y);
-				//Console.WriteLine(y.Id + "vs (srch) " + id);
 				if (y.Id == id)
 					return y;
 				else
-				{
 					continue;
-				}
-
 			}
-			Item o = new Item
-			{
-				Name = "Unknown Item"
-			};
+			Item o = new Item(-1, "", Category.NONE, "Unknown Item", "unknown", 0);
 			return o;
 		}
 
-		private void population()
+		private void Population()
 		{
 			foreach (CheckedOutItem x in checkout_list)
-			{
 				listBox1.Items.Add(x);
-			}
 			listBox1.Refresh();
 		}
 
-		private void depop()
+		private void Depop()
 		{
 			listBox1.Items.Clear();
 		}
@@ -65,7 +51,7 @@ namespace SRIMS
 		{
 			//Clear List<>
 			checkout_list.Clear();
-			depop();
+			Depop();
 			//Read Settings for CheckOutItems
 			string checkout_list_string = Properties.Settings.Default.checkout_list;
 
@@ -80,7 +66,7 @@ namespace SRIMS
 						string[] pieces = lol.Split(',');
 						string nom = pieces[0];
 						int id = Int32.Parse(pieces[1]);
-						Item XD = finditem(id);
+						Item XD = Finditem(id);
 						int qt = Int32.Parse(pieces[2]);
 						CheckedOutItem wtf = new CheckedOutItem(nom, XD, qt);
 						// Console.WriteLine(nom + " {" + XD + " : [" + pieces[1] + "] " + qt);
@@ -93,7 +79,7 @@ namespace SRIMS
 				}
 			}
 			// Populate ListBox
-			population();
+			Population();
 		}
 
 		public void modified()
@@ -101,32 +87,24 @@ namespace SRIMS
 			string newset = "";
 			Properties.Settings.Default.checkout_list = "";
 			foreach (CheckedOutItem x in checkout_list)
-			{
-				//Console.WriteLine(LogIt(x));
 				newset += LogIt(x);
-			}
-			//Console.WriteLine(newset);
-			Properties.Settings.Default.checkout_list = newset;
-			//Console.WriteLine(Properties.Settings.Default.checkout_list);
-			Properties.Settings.Default.Save();
 
+			Properties.Settings.Default.checkout_list = newset;
+			Properties.Settings.Default.Save();
 		}
 
 		private string LogIt(CheckedOutItem lol)
 		{
-
-			return lol.Name + "," + lol.item.Id + "," + lol.qt + ";";
-
+			return lol.Name + "," + lol.Item.Id + "," + lol.Qt + ";";
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
 			if (listBox1.SelectedIndex != -1)
-			{
 				checkout_list.Remove(checkout_list[listBox1.SelectedIndex]);
-			}
-			depop();
-			population();
+
+			Depop();
+			Population();
 		}
 	}
 }
