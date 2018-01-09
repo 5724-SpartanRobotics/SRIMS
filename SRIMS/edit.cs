@@ -32,6 +32,9 @@ namespace SRIMS
 			_Item.Qt = (int)numericUpDown1.Value;
 			_Item.Loc = LocTextBox.Text;
 
+			if (_Item.Cat == null)
+				_Item.Cat = Category.NONE;
+
 			SRIMSForm.Instance.SaveInventory();
 			Close();
 		}
