@@ -1,3 +1,4 @@
+using SRIMS.Properties;
 using System;
 using System.Windows.Forms;
 
@@ -9,34 +10,33 @@ namespace SRIMS
 		{
 			InitializeComponent();
 
-			ViewListBox.Columns[0].Width = 23;
-			ViewListBox.Columns[1].Width = 53;
-			ViewListBox.Columns[2].Width = 70;
-			ViewListBox.Columns[3].Width = 112;
-			ViewListBox.Columns[4].Width = 293;
-			ViewListBox.Columns[5].Width = 51;
+			if (Settings.Default.ViewDBColumnSizes == null)
+				Settings.Default.ViewDBColumnSizes = new int[] { 23, 53, 73, 112, 290, 51 };
 
-			ViewListBox.Sorting = SortOrder.Ascending;
+			for (int i = 0; i < 6; i++)
+				_ListViewBox.Columns[i].Width = Settings.Default.ViewDBColumnSizes[i];
+
+			_ListViewBox.Sorting = SortOrder.Ascending;
 		}
 
 		public void Ext()
 		{
 			Clear();
 			foreach (Item item in SRIMSForm.Instance.Inv.Items)
-				ViewListBox.Items.Add(new Item.ItemListViewItem(item));
-			ViewListBox.Sort();
+				_ListViewBox.Items.Add(new Item.ItemListViewItem(item));
+			_ListViewBox.Sort();
 		}
 
 		public void Clear()
 		{
-			ViewListBox.Items.Clear();
+			_ListViewBox.Items.Clear();
 		}
 
 		private void _BtnDelItem_Click(object sender, EventArgs e)
 		{
-			if (ViewListBox.SelectedItems.Count == 1)
+			if (_ListViewBox.SelectedItems.Count == 1)
 			{
-				SRIMSForm.Instance.Inv.Items.Remove(((Item.ItemListViewItem)ViewListBox.SelectedItems[0]).ItemValue);
+				SRIMSForm.Instance.Inv.Items.Remove(((Item.ItemListViewItem)_ListViewBox.SelectedItems[0]).ItemValue);
 				Ext();
 				SRIMSForm.Instance.SaveInventory();
 			}
@@ -58,9 +58,13 @@ namespace SRIMS
 
 		private void _BtnEdit_Click(object sender, EventArgs e)
 		{
-			if (ViewListBox.SelectedItems.Count == 1)
-				EditItem(((Item.ItemListViewItem)ViewListBox.SelectedItems[0]).ItemValue);
+			if (_ListViewBox.SelectedItems.Count == 1)
+				EditItem(((Item.ItemListViewItem)_ListViewBox.SelectedItems[0]).ItemValue);
 		}
 
+		private void _ListViewBox_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+		{
+			Settings.Default.ViewDBColumnSizes[e.ColumnIndex] = _ListViewBox.Columns[e.ColumnIndex].Width;
+		}
 	}
 }

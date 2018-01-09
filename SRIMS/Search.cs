@@ -1,3 +1,4 @@
+using SRIMS.Properties;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -12,12 +13,11 @@ namespace SRIMS
 		{
 			InitializeComponent();
 
-			_ListViewResults.Columns[0].Width = 23;
-			_ListViewResults.Columns[1].Width = 53;
-			_ListViewResults.Columns[2].Width = 55;
-			_ListViewResults.Columns[3].Width = 110;
-			_ListViewResults.Columns[4].Width = 171;
-			_ListViewResults.Columns[5].Width = 51;
+			if (Settings.Default.SearchColumnSizes == null)
+				Settings.Default.SearchColumnSizes = new int[] { 23, 53, 73, 112, 290, 51 };
+
+			for (int i = 0; i < 6; i++)
+				_ListViewResults.Columns[i].Width = Settings.Default.SearchColumnSizes[i];
 		}
 
 		private void Search()
@@ -125,6 +125,11 @@ namespace SRIMS
 		private void SearchTypeDropdown_SelectedValueChanged(object sender, EventArgs e)
 		{
 			Search();
+		}
+
+		private void _ListViewResults_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
+		{
+			Settings.Default.ViewDBColumnSizes[e.ColumnIndex] = _ListViewResults.Columns[e.ColumnIndex].Width;
 		}
 	}
 }

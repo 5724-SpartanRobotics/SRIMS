@@ -1,4 +1,4 @@
-﻿namespace SRIMS
+namespace SRIMS
 {
     partial class SRIMSForm
     {
@@ -31,23 +31,23 @@
 			this.sidePanel = new System.Windows.Forms.Panel();
 			this._PanelCategoriesSelected = new System.Windows.Forms.Panel();
 			this._BtnCategories = new System.Windows.Forms.Button();
-			this.CheckOutLogSelected = new System.Windows.Forms.Panel();
 			this.AddItemSelected = new System.Windows.Forms.Panel();
 			this.SearchSelected = new System.Windows.Forms.Panel();
 			this.ViewDatabaseSelected = new System.Windows.Forms.Panel();
 			this.CheckInSelected = new System.Windows.Forms.Panel();
 			this._BtnSettings = new System.Windows.Forms.Button();
-			this._BtnCheckOutLog = new System.Windows.Forms.Button();
 			this._BtnAddItemPage = new System.Windows.Forms.Button();
 			this._BtnSearchPage = new System.Windows.Forms.Button();
 			this._BtnViewDBPage = new System.Windows.Forms.Button();
 			this._BtnCheckInPage = new System.Windows.Forms.Button();
+			this.CheckOutLogSelected = new System.Windows.Forms.Panel();
+			this._BtnCheckOutLog = new System.Windows.Forms.Button();
 			this.checkoutLog1 = new SRIMS.CheckoutLog();
 			this.search1 = new SRIMS.SearchControl();
 			this.addItem1 = new SRIMS.AddItem();
-			this.checkin1 = new SRIMS.Checkin();
-			this.viewDB1 = new SRIMS.ViewDB();
+			this._ViewDB = new SRIMS.ViewDB();
 			this._CategoryPage = new SRIMS.CategoryPage();
+			this.checkin1 = new SRIMS.Checkin();
 			this.sidePanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -56,17 +56,17 @@
 			this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.sidePanel.Controls.Add(this._PanelCategoriesSelected);
 			this.sidePanel.Controls.Add(this._BtnCategories);
-			this.sidePanel.Controls.Add(this.CheckOutLogSelected);
 			this.sidePanel.Controls.Add(this.AddItemSelected);
 			this.sidePanel.Controls.Add(this.SearchSelected);
 			this.sidePanel.Controls.Add(this.ViewDatabaseSelected);
 			this.sidePanel.Controls.Add(this.CheckInSelected);
 			this.sidePanel.Controls.Add(this._BtnSettings);
-			this.sidePanel.Controls.Add(this._BtnCheckOutLog);
 			this.sidePanel.Controls.Add(this._BtnAddItemPage);
 			this.sidePanel.Controls.Add(this._BtnSearchPage);
 			this.sidePanel.Controls.Add(this._BtnViewDBPage);
 			this.sidePanel.Controls.Add(this._BtnCheckInPage);
+			this.sidePanel.Controls.Add(this.CheckOutLogSelected);
+			this.sidePanel.Controls.Add(this._BtnCheckOutLog);
 			this.sidePanel.Dock = System.Windows.Forms.DockStyle.Left;
 			this.sidePanel.Location = new System.Drawing.Point(0, 0);
 			this.sidePanel.Name = "sidePanel";
@@ -76,7 +76,7 @@
 			// _PanelCategoriesSelected
 			// 
 			this._PanelCategoriesSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this._PanelCategoriesSelected.Location = new System.Drawing.Point(3, 387);
+			this._PanelCategoriesSelected.Location = new System.Drawing.Point(3, 312);
 			this._PanelCategoriesSelected.Name = "_PanelCategoriesSelected";
 			this._PanelCategoriesSelected.Size = new System.Drawing.Size(10, 69);
 			this._PanelCategoriesSelected.TabIndex = 6;
@@ -88,23 +88,13 @@
 			this._BtnCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this._BtnCategories.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this._BtnCategories.ForeColor = System.Drawing.Color.White;
-			this._BtnCategories.Location = new System.Drawing.Point(3, 387);
+			this._BtnCategories.Location = new System.Drawing.Point(3, 312);
 			this._BtnCategories.Name = "_BtnCategories";
 			this._BtnCategories.Size = new System.Drawing.Size(197, 69);
 			this._BtnCategories.TabIndex = 7;
 			this._BtnCategories.Text = "Categories";
 			this._BtnCategories.UseVisualStyleBackColor = true;
 			this._BtnCategories.Click += new System.EventHandler(this._BtnCategories_Click);
-			// 
-			// CheckOutLogSelected
-			// 
-			this.CheckOutLogSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.CheckOutLogSelected.Location = new System.Drawing.Point(3, 312);
-			this.CheckOutLogSelected.Name = "CheckOutLogSelected";
-			this.CheckOutLogSelected.Size = new System.Drawing.Size(10, 69);
-			this.CheckOutLogSelected.TabIndex = 2;
-			this.CheckOutLogSelected.Visible = false;
-			this.CheckOutLogSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.CheckOutLogPanel_Paint);
 			// 
 			// AddItemSelected
 			// 
@@ -147,6 +137,7 @@
 			// 
 			// _BtnSettings
 			// 
+			this._BtnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this._BtnSettings.FlatAppearance.BorderSize = 0;
 			this._BtnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this._BtnSettings.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -158,20 +149,6 @@
 			this._BtnSettings.Text = "Settings";
 			this._BtnSettings.UseVisualStyleBackColor = true;
 			this._BtnSettings.Click += new System.EventHandler(this._BtnSettings_Click);
-			// 
-			// _BtnCheckOutLog
-			// 
-			this._BtnCheckOutLog.FlatAppearance.BorderSize = 0;
-			this._BtnCheckOutLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this._BtnCheckOutLog.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this._BtnCheckOutLog.ForeColor = System.Drawing.Color.White;
-			this._BtnCheckOutLog.Location = new System.Drawing.Point(3, 312);
-			this._BtnCheckOutLog.Name = "_BtnCheckOutLog";
-			this._BtnCheckOutLog.Size = new System.Drawing.Size(197, 69);
-			this._BtnCheckOutLog.TabIndex = 4;
-			this._BtnCheckOutLog.Text = "CheckOut Log";
-			this._BtnCheckOutLog.UseVisualStyleBackColor = true;
-			this._BtnCheckOutLog.Click += new System.EventHandler(this._BtnCheckOutLog_Click);
 			// 
 			// _BtnAddItemPage
 			// 
@@ -229,70 +206,105 @@
 			this._BtnCheckInPage.UseVisualStyleBackColor = true;
 			this._BtnCheckInPage.Click += new System.EventHandler(this._BtnCheckInPage_Click);
 			// 
+			// CheckOutLogSelected
+			// 
+			this.CheckOutLogSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.CheckOutLogSelected.Location = new System.Drawing.Point(3, 387);
+			this.CheckOutLogSelected.Name = "CheckOutLogSelected";
+			this.CheckOutLogSelected.Size = new System.Drawing.Size(10, 69);
+			this.CheckOutLogSelected.TabIndex = 2;
+			this.CheckOutLogSelected.Visible = false;
+			this.CheckOutLogSelected.Paint += new System.Windows.Forms.PaintEventHandler(this.CheckOutLogPanel_Paint);
+			// 
+			// _BtnCheckOutLog
+			// 
+			this._BtnCheckOutLog.FlatAppearance.BorderSize = 0;
+			this._BtnCheckOutLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnCheckOutLog.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnCheckOutLog.ForeColor = System.Drawing.Color.White;
+			this._BtnCheckOutLog.Location = new System.Drawing.Point(3, 387);
+			this._BtnCheckOutLog.Name = "_BtnCheckOutLog";
+			this._BtnCheckOutLog.Size = new System.Drawing.Size(197, 69);
+			this._BtnCheckOutLog.TabIndex = 4;
+			this._BtnCheckOutLog.Text = "CheckOut Log";
+			this._BtnCheckOutLog.UseVisualStyleBackColor = true;
+			this._BtnCheckOutLog.Visible = false;
+			this._BtnCheckOutLog.Click += new System.EventHandler(this._BtnCheckOutLog_Click);
+			// 
 			// checkoutLog1
 			// 
 			this.checkoutLog1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 			this.checkoutLog1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.checkoutLog1.Location = new System.Drawing.Point(-2317, 0);
+			this.checkoutLog1.Location = new System.Drawing.Point(204, 0);
 			this.checkoutLog1.Name = "checkoutLog1";
 			this.checkoutLog1.Size = new System.Drawing.Size(630, 526);
 			this.checkoutLog1.TabIndex = 3;
 			// 
 			// search1
 			// 
-			this.search1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.search1.Location = new System.Drawing.Point(-1687, 0);
+			this.search1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.search1.Location = new System.Drawing.Point(203, 0);
 			this.search1.Name = "search1";
 			this.search1.Size = new System.Drawing.Size(630, 526);
 			this.search1.TabIndex = 2;
 			// 
 			// addItem1
 			// 
-			this.addItem1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.addItem1.Location = new System.Drawing.Point(-1057, 0);
+			this.addItem1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.addItem1.Location = new System.Drawing.Point(203, 0);
 			this.addItem1.Name = "addItem1";
-			this.addItem1.Size = new System.Drawing.Size(630, 526);
+			this.addItem1.Size = new System.Drawing.Size(631, 526);
 			this.addItem1.TabIndex = 1;
 			// 
-			// checkin1
+			// _ViewDB
 			// 
-			this.checkin1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-			this.checkin1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.checkin1.Location = new System.Drawing.Point(-427, 0);
-			this.checkin1.Name = "checkin1";
-			this.checkin1.Size = new System.Drawing.Size(630, 526);
-			this.checkin1.TabIndex = 5;
-			// 
-			// viewDB1
-			// 
-			this.viewDB1.BackColor = System.Drawing.Color.White;
-			this.viewDB1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.viewDB1.Location = new System.Drawing.Point(203, 0);
-			this.viewDB1.Name = "viewDB1";
-			this.viewDB1.Size = new System.Drawing.Size(630, 526);
-			this.viewDB1.TabIndex = 4;
+			this._ViewDB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this._ViewDB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this._ViewDB.BackColor = System.Drawing.Color.White;
+			this._ViewDB.Location = new System.Drawing.Point(203, 0);
+			this._ViewDB.Name = "_ViewDB";
+			this._ViewDB.Size = new System.Drawing.Size(630, 526);
+			this._ViewDB.TabIndex = 4;
 			// 
 			// _CategoryPage
 			// 
+			this._CategoryPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this._CategoryPage.AutoSize = true;
 			this._CategoryPage.Location = new System.Drawing.Point(203, 0);
 			this._CategoryPage.Name = "_CategoryPage";
-			this._CategoryPage.Size = new System.Drawing.Size(630, 523);
+			this._CategoryPage.Size = new System.Drawing.Size(630, 526);
 			this._CategoryPage.TabIndex = 6;
+			// 
+			// checkin1
+			// 
+			this.checkin1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.checkin1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+			this.checkin1.Location = new System.Drawing.Point(204, 0);
+			this.checkin1.Name = "checkin1";
+			this.checkin1.Size = new System.Drawing.Size(630, 526);
+			this.checkin1.TabIndex = 5;
 			// 
 			// SRIMSForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(833, 526);
-			this.Controls.Add(this._CategoryPage);
+			this.ClientSize = new System.Drawing.Size(834, 526);
 			this.Controls.Add(this.sidePanel);
-			this.Controls.Add(this.checkoutLog1);
-			this.Controls.Add(this.search1);
 			this.Controls.Add(this.addItem1);
 			this.Controls.Add(this.checkin1);
-			this.Controls.Add(this.viewDB1);
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
+			this.Controls.Add(this.search1);
+			this.Controls.Add(this._ViewDB);
+			this.Controls.Add(this._CategoryPage);
+			this.Controls.Add(this.checkoutLog1);
+			this.MinimumSize = new System.Drawing.Size(850, 565);
 			this.Name = "SRIMSForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.Text = "Spartan Robotics Inventory Management System";
@@ -300,6 +312,7 @@
 			this.Load += new System.EventHandler(this.SRIMSForm_Load);
 			this.sidePanel.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
@@ -311,20 +324,20 @@
         private System.Windows.Forms.Button _BtnSearchPage;
         private System.Windows.Forms.Button _BtnViewDBPage;
         private System.Windows.Forms.Button _BtnCheckInPage;
-        private AddItem addItem1;
         private System.Windows.Forms.Panel CheckOutLogSelected;
         private System.Windows.Forms.Panel AddItemSelected;
         private System.Windows.Forms.Panel SearchSelected;
         private System.Windows.Forms.Panel ViewDatabaseSelected;
         private System.Windows.Forms.Panel CheckInSelected;
         private System.Windows.Forms.Button _BtnSettings;
-        private SearchControl search1;
         private CheckoutLog checkoutLog1;
-        private ViewDB viewDB1;
-        private Checkin checkin1;
+        private ViewDB _ViewDB;
 		private System.Windows.Forms.Panel _PanelCategoriesSelected;
 		private System.Windows.Forms.Button _BtnCategories;
 		private CategoryPage _CategoryPage;
+		private SearchControl search1;
+		private AddItem addItem1;
+		private Checkin checkin1;
 	}
 }
 

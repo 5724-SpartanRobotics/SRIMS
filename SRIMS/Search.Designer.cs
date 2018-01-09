@@ -32,6 +32,7 @@ namespace SRIMS
 			this.button2 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
+			this.SearchBox = new SRIMS.WatermarkTextbox();
 			this._ListViewResults = new SRIMS.SortableListView();
 			this.idColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.locColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,7 +40,6 @@ namespace SRIMS
 			this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.descColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.qtColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.SearchBox = new SRIMS.WatermarkTextbox();
 			this.SuspendLayout();
 			// 
 			// SearchTypeDropdown
@@ -51,7 +51,7 @@ namespace SRIMS
             "Name",
             "Location",
             "Category"});
-			this.SearchTypeDropdown.Location = new System.Drawing.Point(63, 34);
+			this.SearchTypeDropdown.Location = new System.Drawing.Point(3, 3);
 			this.SearchTypeDropdown.Name = "SearchTypeDropdown";
 			this.SearchTypeDropdown.Size = new System.Drawing.Size(142, 24);
 			this.SearchTypeDropdown.TabIndex = 6;
@@ -59,12 +59,13 @@ namespace SRIMS
 			// 
 			// button2
 			// 
+			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.button2.FlatAppearance.BorderSize = 0;
 			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button2.ForeColor = System.Drawing.Color.White;
-			this.button2.Location = new System.Drawing.Point(442, 484);
+			this.button2.Location = new System.Drawing.Point(522, 492);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(105, 31);
 			this.button2.TabIndex = 11;
@@ -74,11 +75,12 @@ namespace SRIMS
 			// 
 			// button3
 			// 
+			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.button3.FlatAppearance.BorderSize = 0;
 			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button3.ForeColor = System.Drawing.Color.White;
-			this.button3.Location = new System.Drawing.Point(184, 484);
+			this.button3.Location = new System.Drawing.Point(124, 492);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(115, 31);
 			this.button3.TabIndex = 10;
@@ -88,11 +90,12 @@ namespace SRIMS
 			// 
 			// button4
 			// 
+			this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.button4.FlatAppearance.BorderSize = 0;
 			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button4.ForeColor = System.Drawing.Color.White;
-			this.button4.Location = new System.Drawing.Point(63, 484);
+			this.button4.Location = new System.Drawing.Point(3, 492);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(115, 31);
 			this.button4.TabIndex = 9;
@@ -100,8 +103,27 @@ namespace SRIMS
 			this.button4.UseVisualStyleBackColor = false;
 			this.button4.Click += new System.EventHandler(this._Btn_Checkout_Click);
 			// 
-			// results
+			// SearchBox
 			// 
+			this.SearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.SearchBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+			this.SearchBox.ForeColor = System.Drawing.Color.Black;
+			this.SearchBox.Location = new System.Drawing.Point(151, 6);
+			this.SearchBox.Name = "SearchBox";
+			this.SearchBox.OriginalColor = System.Drawing.Color.Black;
+			this.SearchBox.Size = new System.Drawing.Size(476, 21);
+			this.SearchBox.TabIndex = 7;
+			this.SearchBox.Text = "Search Argument";
+			this.SearchBox.WatermarkColor = System.Drawing.Color.Gray;
+			this.SearchBox.WatermarkText = "Search Argument";
+			this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
+			// 
+			// _ListViewResults
+			// 
+			this._ListViewResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._ListViewResults.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idColumn,
             this.locColumn,
@@ -110,14 +132,15 @@ namespace SRIMS
             this.descColumn,
             this.qtColumn});
 			this._ListViewResults.FullRowSelect = true;
-			this._ListViewResults.Location = new System.Drawing.Point(63, 66);
+			this._ListViewResults.Location = new System.Drawing.Point(3, 33);
 			this._ListViewResults.MultiSelect = false;
-			this._ListViewResults.Name = "results";
+			this._ListViewResults.Name = "_ListViewResults";
 			this._ListViewResults.ShowItemToolTips = true;
-			this._ListViewResults.Size = new System.Drawing.Size(484, 412);
+			this._ListViewResults.Size = new System.Drawing.Size(624, 453);
 			this._ListViewResults.TabIndex = 8;
 			this._ListViewResults.UseCompatibleStateImageBehavior = false;
 			this._ListViewResults.View = System.Windows.Forms.View.Details;
+			this._ListViewResults.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this._ListViewResults_ColumnWidthChanged);
 			// 
 			// idColumn
 			// 
@@ -145,20 +168,6 @@ namespace SRIMS
 			// qtColumn
 			// 
 			this.qtColumn.Text = "Quantity";
-			// 
-			// SearchBox
-			// 
-			this.SearchBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-			this.SearchBox.ForeColor = System.Drawing.Color.Black;
-			this.SearchBox.Location = new System.Drawing.Point(211, 34);
-			this.SearchBox.Name = "SearchBox";
-			this.SearchBox.OriginalColor = System.Drawing.Color.Black;
-			this.SearchBox.Size = new System.Drawing.Size(336, 21);
-			this.SearchBox.TabIndex = 7;
-			this.SearchBox.Text = "Search Argument";
-			this.SearchBox.WatermarkColor = System.Drawing.Color.Gray;
-			this.SearchBox.WatermarkText = "Search Argument";
-			this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
 			// 
 			// SearchControl
 			// 

@@ -53,7 +53,7 @@ namespace SRIMS
 			checkout_list.Clear();
 			Depop();
 			//Read Settings for CheckOutItems
-			string checkout_list_string = Properties.Settings.Default.checkout_list;
+			string checkout_list_string = Properties.Settings.Default.CheckoutList;
 
 			if (checkout_list_string != "")
 			{
@@ -85,11 +85,11 @@ namespace SRIMS
 		public void modified()
 		{
 			string newset = "";
-			Properties.Settings.Default.checkout_list = "";
+			Properties.Settings.Default.CheckoutList = "";
 			foreach (CheckedOutItem x in checkout_list)
 				newset += LogIt(x);
 
-			Properties.Settings.Default.checkout_list = newset;
+			Properties.Settings.Default.CheckoutList = newset;
 			Properties.Settings.Default.Save();
 		}
 

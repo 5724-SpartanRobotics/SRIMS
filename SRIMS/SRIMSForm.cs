@@ -36,7 +36,7 @@ namespace SRIMS
 			bool flag = false;
 			while (!flag)
 			{
-				string chout = Settings.Default.checkout_list;
+				string chout = Settings.Default.CheckoutList;
 
 				try
 				{
@@ -67,7 +67,7 @@ namespace SRIMS
 			_PanelCategoriesSelected.Visible = false;
 
 			checkin1.Visible = false;
-			viewDB1.Visible = false;
+			_ViewDB.Visible = false;
 			addItem1.Visible = false;
 			search1.Visible = false;
 			checkoutLog1.Visible = false;
@@ -94,9 +94,9 @@ namespace SRIMS
 		{
 			DehighlightSelectors();
 			ViewDatabaseSelected.Visible = true;
-			viewDB1.Visible = true;
+			_ViewDB.Visible = true;
 
-			viewDB1.Ext();
+			_ViewDB.Ext();
 
 		}
 

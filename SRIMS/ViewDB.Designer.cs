@@ -31,7 +31,7 @@ namespace SRIMS
 			this._BtnDelItem = new System.Windows.Forms.Button();
 			this._BtnEdit = new System.Windows.Forms.Button();
 			this._BtnOpenDatabase = new System.Windows.Forms.Button();
-			this.ViewListBox = new SRIMS.SortableListView();
+			this._ListViewBox = new SRIMS.SortableListView();
 			this.idColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.locColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.catColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,6 +42,7 @@ namespace SRIMS
 			// 
 			// _BtnDelItem
 			// 
+			this._BtnDelItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this._BtnDelItem.BackColor = System.Drawing.Color.White;
 			this._BtnDelItem.FlatAppearance.BorderSize = 0;
 			this._BtnDelItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -56,6 +57,7 @@ namespace SRIMS
 			// 
 			// _BtnEdit
 			// 
+			this._BtnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this._BtnEdit.FlatAppearance.BorderSize = 0;
 			this._BtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this._BtnEdit.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,24 +82,28 @@ namespace SRIMS
 			this._BtnOpenDatabase.UseVisualStyleBackColor = true;
 			this._BtnOpenDatabase.Click += new System.EventHandler(this._BtnOpenDatabase_Click);
 			// 
-			// ViewListBox
+			// _ListViewBox
 			// 
-			this.ViewListBox.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this._ListViewBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this._ListViewBox.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idColumn,
             this.locColumn,
             this.catColumn,
             this.nameColumn,
             this.descColumn,
             this.qtColumn});
-			this.ViewListBox.FullRowSelect = true;
-			this.ViewListBox.Location = new System.Drawing.Point(3, 39);
-			this.ViewListBox.MultiSelect = false;
-			this.ViewListBox.Name = "ViewListBox";
-			this.ViewListBox.ShowItemToolTips = true;
-			this.ViewListBox.Size = new System.Drawing.Size(624, 484);
-			this.ViewListBox.TabIndex = 9;
-			this.ViewListBox.UseCompatibleStateImageBehavior = false;
-			this.ViewListBox.View = System.Windows.Forms.View.Details;
+			this._ListViewBox.FullRowSelect = true;
+			this._ListViewBox.Location = new System.Drawing.Point(3, 39);
+			this._ListViewBox.MultiSelect = false;
+			this._ListViewBox.Name = "_ListViewBox";
+			this._ListViewBox.ShowItemToolTips = true;
+			this._ListViewBox.Size = new System.Drawing.Size(624, 484);
+			this._ListViewBox.TabIndex = 9;
+			this._ListViewBox.UseCompatibleStateImageBehavior = false;
+			this._ListViewBox.View = System.Windows.Forms.View.Details;
+			this._ListViewBox.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this._ListViewBox_ColumnWidthChanged);
 			// 
 			// idColumn
 			// 
@@ -134,7 +140,7 @@ namespace SRIMS
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.Controls.Add(this.ViewListBox);
+			this.Controls.Add(this._ListViewBox);
 			this.Controls.Add(this._BtnOpenDatabase);
 			this.Controls.Add(this._BtnEdit);
 			this.Controls.Add(this._BtnDelItem);
@@ -148,7 +154,7 @@ namespace SRIMS
 		private System.Windows.Forms.Button _BtnDelItem;
 		private System.Windows.Forms.Button _BtnEdit;
 		private System.Windows.Forms.Button _BtnOpenDatabase;
-		private SRIMS.SortableListView ViewListBox;
+		private SRIMS.SortableListView _ListViewBox;
 		private System.Windows.Forms.ColumnHeader idColumn;
 		private System.Windows.Forms.ColumnHeader locColumn;
 		private System.Windows.Forms.ColumnHeader catColumn;

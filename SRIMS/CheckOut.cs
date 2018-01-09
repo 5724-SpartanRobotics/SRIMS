@@ -12,7 +12,7 @@ namespace SRIMS
 		{
 			InitializeComponent();
 			this.x = x;
-			this.lel = Properties.Settings.Default.checkout_list;
+			this.lel = Properties.Settings.Default.CheckoutList;
 		}
 
 		private void CheckOut_Load(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace SRIMS
 		{
 			if (numericUpDown1.Value != 0 && textBox1.Text != "")
 			{
-				Properties.Settings.Default.checkout_list = lel + LogIt(textBox1.Text, (int)numericUpDown1.Value);
+				Properties.Settings.Default.CheckoutList = lel + LogIt(textBox1.Text, (int)numericUpDown1.Value);
 				label4.Text = "Item Checked Out";
 				label4.Visible = true;
 			}

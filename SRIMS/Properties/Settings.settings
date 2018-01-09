@@ -5,7 +5,13 @@
     <Setting Name="dbloc" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="checkout_list" Type="System.String" Scope="User">
+    <Setting Name="CheckoutList" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ViewDBColumnSizes" Type="System.Int32[]" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SearchColumnSizes" Type="System.Int32[]" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

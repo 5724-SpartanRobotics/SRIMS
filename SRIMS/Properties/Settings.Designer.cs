@@ -38,12 +38,34 @@ namespace SRIMS.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string checkout_list {
+        public string CheckoutList {
             get {
-                return ((string)(this["checkout_list"]));
+                return ((string)(this["CheckoutList"]));
             }
             set {
-                this["checkout_list"] = value;
+                this["CheckoutList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public int[] ViewDBColumnSizes {
+            get {
+                return ((int[])(this["ViewDBColumnSizes"]));
+            }
+            set {
+                this["ViewDBColumnSizes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public int[] SearchColumnSizes {
+            get {
+                return ((int[])(this["SearchColumnSizes"]));
+            }
+            set {
+                this["SearchColumnSizes"] = value;
             }
         }
     }
