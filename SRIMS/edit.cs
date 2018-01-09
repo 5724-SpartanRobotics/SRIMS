@@ -26,6 +26,12 @@ namespace SRIMS
 
 		private void SaveBtn_Click(object sender, EventArgs e)
 		{
+			if (NameTextBox.Text == string.Empty)
+			{
+				MessageBox.Show("Name is required!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
 			_Item.Name = NameTextBox.Text;
 			_Item.Cat = (Category)_ComboBoxCat.SelectedItem;
 			_Item.Desc = DescTextBox.Text;

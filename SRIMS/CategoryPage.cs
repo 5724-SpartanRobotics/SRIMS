@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Forms;
-using static SRIMS.Category;
 
 namespace SRIMS
 {
@@ -14,6 +13,12 @@ namespace SRIMS
 
 		private void _BtnAddCategory_Click(object sender, EventArgs e)
 		{
+			if (_TextBoxCategoryName.WatermarkOn || _TextBoxCategoryName.Text == string.Empty)
+			{
+				MessageBox.Show("You must specify a name!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
 			if (SRIMSForm.Instance.Inv.TryAddCategory(_TextBoxCategoryName.Text))
 			{
 				_LabelSuccess.Visible = true;
@@ -30,6 +35,7 @@ namespace SRIMS
 		private void ResetItems()
 		{
 			_ListBoxCategories.Items.Clear();
+			_TextBoxCategoryName.Text = string.Empty;
 			SRIMSForm.Instance.Inv.Categories.ForEach(x => _ListBoxCategories.Items.Add(x));
 		}
 

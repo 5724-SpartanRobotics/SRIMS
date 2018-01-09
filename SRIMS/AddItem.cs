@@ -14,6 +14,12 @@ namespace SRIMS
 
 		private void Submit_Click(object sender, EventArgs e)
 		{
+			if (ItemName.WatermarkOn || ItemName.Text == string.Empty)
+			{
+				MessageBox.Show("Name is required!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
 			int id = 0;
 			if (SRIMSForm.Instance.Inv.Items.Count > 0)
 				id = SRIMSForm.Instance.Inv.Items.Last().Id + 1;
