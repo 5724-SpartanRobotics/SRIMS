@@ -25,7 +25,7 @@ namespace SRIMS
 					" already exists! Would you like to combine the two?",
 					"Error", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
-				if (result.HasFlag(DialogResult.Yes))
+				if (result == DialogResult.Yes)
 				{
 					SRIMSForm.Instance.Inv.TryRenameCategory(_Category, _TextBoxCategoryName.Text, true);
 					Close();

@@ -135,6 +135,7 @@ namespace SRIMS
 			this._ListBoxCategories.FormattingEnabled = true;
 			this._ListBoxCategories.Location = new System.Drawing.Point(199, 59);
 			this._ListBoxCategories.Name = "_ListBoxCategories";
+			this._ListBoxCategories.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
 			this._ListBoxCategories.Size = new System.Drawing.Size(223, 186);
 			this._ListBoxCategories.TabIndex = 18;
 			// 

@@ -190,7 +190,7 @@ namespace SRIMS
 
 				while (File.Exists(filename))
 					filename = Path.Combine(Path.GetDirectoryName(DBLoc), Path.GetFileNameWithoutExtension(DBLoc)
-					+ ".old" + (j++).ToString() + Path.GetExtension(DBLoc));
+					+ ".old" + j++.ToString() + Path.GetExtension(DBLoc));
 
 				File.Move(DBLoc, filename);
 				DBLoc = Path.Combine(Path.GetDirectoryName(DBLoc), Path.GetFileNameWithoutExtension(DBLoc) + ".json");
@@ -202,6 +202,18 @@ namespace SRIMS
 		{
 			try
 			{
+				string backupFile0 = Path.Combine(Path.GetDirectoryName(DBLoc), Path.GetFileName(DBLoc) + ".0.bak");
+				string backupFile1 = Path.Combine(Path.GetDirectoryName(DBLoc), Path.GetFileName(DBLoc) + ".1.bak");
+				string backupFile2 = Path.Combine(Path.GetDirectoryName(DBLoc), Path.GetFileName(DBLoc) + ".2.bak");
+				if (File.Exists(backupFile2))
+					File.Delete(backupFile2);
+				if (File.Exists(backupFile1))
+					File.Move(backupFile1, backupFile2);
+				if (File.Exists(backupFile0))
+					File.Move(backupFile0, backupFile1);
+				if (File.Exists(DBLoc))
+					File.Move(DBLoc, backupFile0);
+
 				using (FileStream fs = File.Open(DBLoc, FileMode.Create))
 				{
 					DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Inventory));

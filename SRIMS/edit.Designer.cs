@@ -147,6 +147,7 @@
 			// 
 			// _ComboBoxCat
 			// 
+			this._ComboBoxCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this._ComboBoxCat.FormattingEnabled = true;
 			this._ComboBoxCat.Location = new System.Drawing.Point(39, 63);
 			this._ComboBoxCat.Name = "_ComboBoxCat";

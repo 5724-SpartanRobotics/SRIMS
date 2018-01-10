@@ -22,6 +22,8 @@ namespace SRIMS
 			if (SRIMSForm.Instance.Inv.TryAddCategory(_TextBoxCategoryName.Text))
 			{
 				_LabelSuccess.Visible = true;
+				SRIMSForm.Instance.SaveInventory();
+				ResetItems();
 			}
 			else
 			{
@@ -29,7 +31,6 @@ namespace SRIMS
 				MessageBox.Show("Category " + _TextBoxCategoryName.Text + " already exists!", "Error",
 					MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			ResetItems();
 		}
 
 		private void ResetItems()
@@ -57,7 +58,7 @@ namespace SRIMS
 				}
 				else
 				{
-					string items = "";
+					string items = string.Empty;
 					foreach (ListViewItem item in _ListBoxCategories.SelectedItems)
 					{
 						items += item.Text + ", ";
@@ -69,11 +70,12 @@ namespace SRIMS
 
 				DialogResult result = MessageBox.Show(msg, "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-				if (result.HasFlag(DialogResult.Yes))
+				if (result == DialogResult.Yes)
 				{
 					foreach (object item in _ListBoxCategories.SelectedItems)
 						SRIMSForm.Instance.Inv.RemoveCategory((Category)item);
 					SRIMSForm.Instance.SaveInventory();
+					ResetItems();
 				}
 			}
 			else

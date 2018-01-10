@@ -12,20 +12,20 @@ namespace SRIMS
 		[DataMember]
 		public string Name { get; set; } = "Item";
 
-		public Category Cat { get; set; } = Category.NONE;
-
-		[DataMember]
-		private int _CatID
+		public Category Cat
 		{
 			get
 			{
-				return Cat.Id;
+				return SRIMSForm.Instance.Inv.FindCategoryById(_CatID);
 			}
 			set
 			{
-				Cat = SRIMSForm.Instance.Inv.FindCategoryById(value);
+				_CatID = value.Id;
 			}
 		}
+
+		[DataMember]
+		private int _CatID { get; set; }
 
 		[DataMember]
 		public string Loc { get; set; } = "Location";

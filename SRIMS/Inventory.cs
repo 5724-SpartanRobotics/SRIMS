@@ -50,15 +50,17 @@ namespace SRIMS
 			if (cat.Name == newName)
 				return true;
 
-			foreach (Category category in Categories)
+			foreach (Category other in Categories)
 			{
-				if (category.Name == newName)
+				if (other.Name == newName)
 				{
 					if (force)
 					{
-						RemoveCategory(cat);
 						foreach (Item item in Items)
-							item.Cat = category;
+							if (item.Cat.Equals(cat))
+								item.Cat = other;
+
+						RemoveCategory(cat);
 						return true;
 					}
 					else
@@ -77,6 +79,7 @@ namespace SRIMS
 			foreach (Category cat in Categories)
 				if (cat.Id == value)
 					return cat;
+
 			return Category.NONE;
 		}
 
@@ -91,12 +94,8 @@ namespace SRIMS
 		public void RemoveCategory(Category categoryValue)
 		{
 			foreach (Item item in Items)
-			{
 				if (item.Cat.Equals(categoryValue))
-				{
 					item.Cat = Category.NONE;
-				}
-			}
 
 			for (int i = 0; i < Categories.Count; i++)
 			{
