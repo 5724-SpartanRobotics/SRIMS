@@ -1,5 +1,6 @@
 using SRIMS.Properties;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SRIMS
@@ -65,6 +66,16 @@ namespace SRIMS
 		private void _ListViewBox_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
 		{
 			Settings.Default.ViewDBColumnSizes[e.ColumnIndex] = _ListViewBox.Columns[e.ColumnIndex].Width;
+		}
+
+		private void _ListViewBox_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			if (_ListViewBox.SelectedIndices.Count == 1)
+			{
+				Rectangle rect = _ListViewBox.GetItemRect(_ListViewBox.SelectedIndices[0]);
+				if (rect.Contains(e.Location))
+					EditItem(((Item.ItemListViewItem)_ListViewBox.SelectedItems[0]).ItemValue);
+			}
 		}
 	}
 }

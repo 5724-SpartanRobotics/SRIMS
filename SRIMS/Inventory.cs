@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -43,7 +42,6 @@ namespace SRIMS
 
 			return true;
 		}
-
 
 		public bool TryRenameCategory(Category cat, string newName, bool force = false)
 		{

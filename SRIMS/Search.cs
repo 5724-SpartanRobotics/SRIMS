@@ -1,6 +1,7 @@
 using SRIMS.Properties;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SRIMS
@@ -23,69 +24,32 @@ namespace SRIMS
 		private void Search()
 		{
 			_ResultsList.Clear();
-			_ListViewResults.Items.Clear();
-			int tp = SearchTypeDropdown.SelectedIndex;
-			string sa = SearchBox.Text;
+			string arg = SearchBox.Text.ToLower();
 
-			if (sa != string.Empty && !SearchBox.WatermarkOn && tp >= 0)
+			if (arg != string.Empty && !SearchBox.WatermarkOn)
 			{
-				sa = sa.ToLower();
-				if (tp == 0)
+				foreach (Item x in SRIMSForm.Instance.Inv.Items)
 				{
-					foreach (Item x in SRIMSForm.Instance.Inv.Items)
+					if (x.Name.ToLower().Contains(arg) || x.Desc.ToLower().Contains(arg) ||
+						x.Cat.Name.ToLower().Contains(arg) || x.Loc.ToLower().Contains(arg) ||
+						x.Id.ToString().Contains(arg))
 					{
-						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
-						if (x.Name.ToLower().Contains(sa))
-						{
-							//Console.WriteLine("bazzinga!");
-							_ResultsList.Add(x);
-						}
+						_ResultsList.Add(x);
 					}
 				}
-				else if (tp == 1)
-				{
-					//Search by Loc
-					foreach (Item x in SRIMSForm.Instance.Inv.Items)
-					{
-						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
-						if (x.Loc.ToLower().Contains(sa))
-						{
-							//Console.WriteLine("bazzinga!");
-							_ResultsList.Add(x);
-						}
-					}
-				}
-				else if (tp == 2)
-				{
-					//Search by Cat
-
-					//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Add Dropdown For Category <<<<<<<<<<<<<<<<<<<<<<<<<<<<\\
-
-					foreach (Item x in SRIMSForm.Instance.Inv.Items)
-					{
-						// Console.WriteLine("Test: "+ sa + " vs " + x.getName().ToLower());
-						if (x.Cat.Name.ToLower().Contains(sa))
-						{
-							//Console.WriteLine("bazzinga!");
-							_ResultsList.Add(x);
-						}
-					}
-				}
-
 			}
 			else
 			{
 				_ResultsList.AddRange(SRIMSForm.Instance.Inv.Items);
 			}
 
-
+			_ListViewResults.Items.Clear();
 			foreach (Item item in _ResultsList)
 				_ListViewResults.Items.Add(new Item.ItemListViewItem(item));
 		}
 
 		public void Reset()
 		{
-			SearchTypeDropdown.SelectedIndex = 0;
 			SearchBox.Text = string.Empty;
 			Search();
 		}
@@ -130,6 +94,16 @@ namespace SRIMS
 		private void _ListViewResults_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
 		{
 			Settings.Default.ViewDBColumnSizes[e.ColumnIndex] = _ListViewResults.Columns[e.ColumnIndex].Width;
+		}
+
+		private void _ListViewResults_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			if (_ListViewResults.SelectedIndices.Count == 1)
+			{
+				Rectangle rect = _ListViewResults.GetItemRect(_ListViewResults.SelectedIndices[0]);
+				if (rect.Contains(e.Location))
+					EditItem(((Item.ItemListViewItem)_ListViewResults.SelectedItems[0]).ItemValue);
+			}
 		}
 	}
 }

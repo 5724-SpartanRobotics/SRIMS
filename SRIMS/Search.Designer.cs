@@ -28,7 +28,6 @@ namespace SRIMS
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SearchTypeDropdown = new System.Windows.Forms.ComboBox();
 			this.button2 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
@@ -41,21 +40,6 @@ namespace SRIMS
 			this.descColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.qtColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
-			// 
-			// SearchTypeDropdown
-			// 
-			this.SearchTypeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.SearchTypeDropdown.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SearchTypeDropdown.FormattingEnabled = true;
-			this.SearchTypeDropdown.Items.AddRange(new object[] {
-            "Name",
-            "Location",
-            "Category"});
-			this.SearchTypeDropdown.Location = new System.Drawing.Point(3, 3);
-			this.SearchTypeDropdown.Name = "SearchTypeDropdown";
-			this.SearchTypeDropdown.Size = new System.Drawing.Size(142, 24);
-			this.SearchTypeDropdown.TabIndex = 6;
-			this.SearchTypeDropdown.SelectedValueChanged += new System.EventHandler(this.SearchTypeDropdown_SelectedValueChanged);
 			// 
 			// button2
 			// 
@@ -109,10 +93,10 @@ namespace SRIMS
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.SearchBox.Font = new System.Drawing.Font("Century Gothic", 8.25F);
 			this.SearchBox.ForeColor = System.Drawing.Color.Black;
-			this.SearchBox.Location = new System.Drawing.Point(151, 6);
+			this.SearchBox.Location = new System.Drawing.Point(3, 3);
 			this.SearchBox.Name = "SearchBox";
 			this.SearchBox.OriginalColor = System.Drawing.Color.Black;
-			this.SearchBox.Size = new System.Drawing.Size(476, 21);
+			this.SearchBox.Size = new System.Drawing.Size(624, 21);
 			this.SearchBox.TabIndex = 7;
 			this.SearchBox.Text = "Search Argument";
 			this.SearchBox.WatermarkColor = System.Drawing.Color.Gray;
@@ -132,15 +116,16 @@ namespace SRIMS
             this.descColumn,
             this.qtColumn});
 			this._ListViewResults.FullRowSelect = true;
-			this._ListViewResults.Location = new System.Drawing.Point(3, 33);
+			this._ListViewResults.Location = new System.Drawing.Point(3, 30);
 			this._ListViewResults.MultiSelect = false;
 			this._ListViewResults.Name = "_ListViewResults";
 			this._ListViewResults.ShowItemToolTips = true;
-			this._ListViewResults.Size = new System.Drawing.Size(624, 453);
+			this._ListViewResults.Size = new System.Drawing.Size(624, 456);
 			this._ListViewResults.TabIndex = 8;
 			this._ListViewResults.UseCompatibleStateImageBehavior = false;
 			this._ListViewResults.View = System.Windows.Forms.View.Details;
 			this._ListViewResults.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this._ListViewResults_ColumnWidthChanged);
+			this._ListViewResults.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this._ListViewResults_MouseDoubleClick);
 			// 
 			// idColumn
 			// 
@@ -178,7 +163,6 @@ namespace SRIMS
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.button2);
-			this.Controls.Add(this.SearchTypeDropdown);
 			this.Name = "SearchControl";
 			this.Size = new System.Drawing.Size(630, 526);
 			this.ResumeLayout(false);
@@ -187,7 +171,6 @@ namespace SRIMS
 		}
 
 		#endregion
-		private System.Windows.Forms.ComboBox SearchTypeDropdown;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button4;
