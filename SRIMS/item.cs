@@ -33,6 +33,7 @@ namespace SRIMS
 		public string Desc { get; set; } = "Item Description";
 		[DataMember]
 		public int Qt { get; set; } = 0;
+		public static Item NONE { get; } = new Item(-1, "", Category.NONE, "Unknown Item", "unknown", 0);
 
 		public Item(int id, string loc, Category cat, string name, string desc, int qt)
 		{
@@ -56,7 +57,9 @@ namespace SRIMS
 			public ItemListViewItem(Item item) : base(item.Id.ToString())
 			{
 				ItemValue = item;
-				SubItems.AddRange(new string[] { item.Loc, item.Cat.Name, item.Name, item.Desc, item.Qt.ToString() });
+				SubItems.AddRange(new string[] { item.Loc, item.Cat.Name, item.Name, item.Desc,
+					(item.Qt - SRIMSForm.Instance.CheckoutManager.QuantityCheckedOut(item)).ToString(),
+					item.Qt.ToString() });
 			}
 		}
 
@@ -69,7 +72,7 @@ namespace SRIMS
 			public ItemListViewComparer(int col, SortOrder order)
 			{
 				_Column = col;
-				_IsNumber = _Column == 0 || _Column == 5;
+				_IsNumber = _Column == 0 || _Column == 5 || _Column == 6;
 				_SortOrder = order;
 			}
 

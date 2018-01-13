@@ -115,6 +115,7 @@
     <Compile Include="CheckoutLog.Designer.cs">
       <DependentUpon>CheckoutLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckoutManager.cs" />
     <Compile Include="CSVHelper.cs" />
     <Compile Include="EditCategory.cs">
       <SubType>Form</SubType>

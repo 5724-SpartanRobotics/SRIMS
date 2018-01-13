@@ -55,6 +55,11 @@ namespace SRIMS
 			this.Quantity.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.Quantity.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Quantity.Location = new System.Drawing.Point(199, 345);
+			this.Quantity.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
 			this.Quantity.Name = "Quantity";
 			this.Quantity.Size = new System.Drawing.Size(223, 27);
 			this.Quantity.TabIndex = 11;

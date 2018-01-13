@@ -37,7 +37,8 @@ namespace SRIMS
 			this.catColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.descColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.qtColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.qtAvailableColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.qtTotalColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
 			// 
 			// _BtnDelItem
@@ -93,7 +94,8 @@ namespace SRIMS
             this.catColumn,
             this.nameColumn,
             this.descColumn,
-            this.qtColumn});
+            this.qtAvailableColumn,
+            this.qtTotalColumn});
 			this._ListViewBox.FullRowSelect = true;
 			this._ListViewBox.Location = new System.Drawing.Point(3, 39);
 			this._ListViewBox.MultiSelect = false;
@@ -131,10 +133,14 @@ namespace SRIMS
 			this.descColumn.Text = "Description";
 			this.descColumn.Width = 310;
 			// 
-			// qtColumn
+			// qtAvailableColumn
 			// 
-			this.qtColumn.Text = "Quantity";
-			this.qtColumn.Width = 51;
+			this.qtAvailableColumn.Text = "Qt. Available";
+			this.qtAvailableColumn.Width = 51;
+			// 
+			// qtTotalColumn
+			// 
+			this.qtTotalColumn.Text = "Qt. Total";
 			// 
 			// ViewDB
 			// 
@@ -161,6 +167,7 @@ namespace SRIMS
 		private System.Windows.Forms.ColumnHeader catColumn;
 		private System.Windows.Forms.ColumnHeader nameColumn;
 		private System.Windows.Forms.ColumnHeader descColumn;
-		private System.Windows.Forms.ColumnHeader qtColumn;
+		private System.Windows.Forms.ColumnHeader qtAvailableColumn;
+		private System.Windows.Forms.ColumnHeader qtTotalColumn;
 	}
 }

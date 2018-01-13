@@ -9,7 +9,11 @@ namespace SRIMS
 		public AddItem()
 		{
 			InitializeComponent();
-			SRIMSForm.Instance?.Inv?.Categories?.ForEach(x => _ComboBoxCategory.Items.Add(x));
+
+			if (SRIMSForm.Instance?.Inv?.Categories != null)
+				foreach (Category cat in SRIMSForm.Instance.Inv.Categories.Values)
+					_ComboBoxCategory.Items.Add(cat);
+
 		}
 
 		private void Submit_Click(object sender, EventArgs e)
@@ -22,13 +26,13 @@ namespace SRIMS
 
 			int id = 0;
 			if (SRIMSForm.Instance.Inv.Items.Count > 0)
-				id = SRIMSForm.Instance.Inv.Items.Last().Id + 1;
+				id = SRIMSForm.Instance.Inv.Items.Last().Key + 1;
 
 			int qt = (int)Quantity.Value;
 
 			Category cat = (Category)_ComboBoxCategory.SelectedItem;
 
-			SRIMSForm.Instance.Inv.Items.Add(new Item(id, ItemLocation.Text, cat, ItemName.Text, Description.Text, qt));
+			SRIMSForm.Instance.Inv.AddItem(new Item(id, ItemLocation.Text, cat, ItemName.Text, Description.Text, qt));
 
 			_LabelSuccess.Visible = true;
 			SRIMSForm.Instance.SaveInventory();

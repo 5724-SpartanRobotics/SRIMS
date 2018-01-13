@@ -11,7 +11,7 @@ namespace SRIMS
 		{
 			InitializeComponent();
 			_Item = itemInput;
-			foreach (Category cat in SRIMSForm.Instance.Inv.Categories)
+			foreach (Category cat in SRIMSForm.Instance.Inv.Categories.Values)
 				_ComboBoxCat.Items.Add(cat);
 		}
 

@@ -5,39 +5,35 @@ namespace SRIMS
 {
 	public partial class CheckOut : Form
 	{
-		private Item x;
-		private string lel;
+		private Item _Item;
 
-		public CheckOut(Item x)
+		public CheckOut(Item item)
 		{
 			InitializeComponent();
-			this.x = x;
-			this.lel = Properties.Settings.Default.CheckoutList;
+			_Item = item;
 		}
 
 		private void CheckOut_Load(object sender, EventArgs e)
 		{
-			textBox2.Text = x.Name;
+			textBox2.Text = _Item.Name;
 			ActiveControl = textBox1;
-			AcceptButton = button1;
+			AcceptButton = _BtnCheckout;
 			label4.Visible = false;
+			_NumericUpDown1.Maximum = _Item.Qt - SRIMSForm.Instance.CheckoutManager.QuantityCheckedOut(_Item);
 		}
 
-		private string LogIt(string Name, int quantity)
+		private void _BtnCheckout_Click(object sender, EventArgs e)
 		{
-			//          (just in case)
-			return Name.Replace(',', '.') + "," + x.Id + "," + quantity + ";";
-		}
-
-		private void button1_Click(object sender, EventArgs e)
-		{
-			if (numericUpDown1.Value != 0 && textBox1.Text != "")
+			if (_NumericUpDown1.Value != 0 && textBox1.Text != "")
 			{
-				Properties.Settings.Default.CheckoutList = lel + LogIt(textBox1.Text, (int)numericUpDown1.Value);
+				SRIMSForm.Instance.CheckoutManager
+					.CheckOutItem(new CheckedOutItem(textBox1.Text, _Item, (int)_NumericUpDown1.Value));
 				label4.Text = "Item Checked Out";
 				label4.Visible = true;
+				MessageBox.Show("Item Checkout out!", "Checked out", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				Close();
 			}
-			else if (numericUpDown1.Value == 0)
+			else if (_NumericUpDown1.Value == 0)
 			{
 				label4.Text = "Error QT = 0!";
 				label4.Visible = true;

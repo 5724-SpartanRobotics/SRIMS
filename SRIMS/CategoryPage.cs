@@ -37,7 +37,9 @@ namespace SRIMS
 		{
 			_ListBoxCategories.Items.Clear();
 			_TextBoxCategoryName.Text = string.Empty;
-			SRIMSForm.Instance?.Inv.Categories.ForEach(x => _ListBoxCategories.Items.Add(x));
+			if (SRIMSForm.Instance != null)
+				foreach (Category cat in SRIMSForm.Instance.Inv.Categories.Values)
+					_ListBoxCategories.Items.Add(cat);
 		}
 
 		public void Reload()

@@ -38,7 +38,8 @@ namespace SRIMS
 			this.catColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.descColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.qtColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.qtAvailableColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.qtTotalColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
 			// 
 			// button2
@@ -114,7 +115,8 @@ namespace SRIMS
             this.catColumn,
             this.nameColumn,
             this.descColumn,
-            this.qtColumn});
+            this.qtAvailableColumn,
+            this.qtTotalColumn});
 			this._ListViewResults.FullRowSelect = true;
 			this._ListViewResults.Location = new System.Drawing.Point(3, 30);
 			this._ListViewResults.MultiSelect = false;
@@ -150,9 +152,13 @@ namespace SRIMS
 			// 
 			this.descColumn.Text = "Description";
 			// 
-			// qtColumn
+			// qtAvailableColumn
 			// 
-			this.qtColumn.Text = "Quantity";
+			this.qtAvailableColumn.Text = "Qt. Available";
+			// 
+			// qtTotalColumn
+			// 
+			this.qtTotalColumn.Text = "Qt. Total";
 			// 
 			// SearchControl
 			// 
@@ -180,7 +186,8 @@ namespace SRIMS
 		private System.Windows.Forms.ColumnHeader catColumn;
 		private System.Windows.Forms.ColumnHeader nameColumn;
 		private System.Windows.Forms.ColumnHeader descColumn;
-		private System.Windows.Forms.ColumnHeader qtColumn;
+		private System.Windows.Forms.ColumnHeader qtAvailableColumn;
 		private WatermarkTextbox SearchBox;
+		private System.Windows.Forms.ColumnHeader qtTotalColumn;
 	}
 }

@@ -24,9 +24,8 @@ namespace SRIMS
 
 		//Real Code Begins Here:
 
-		public Inventory Inv = new Inventory();
-
-		public List<Item> CheckOutInv = new List<Item>();
+		public Inventory Inv { get; private set; } = new Inventory();
+		public CheckoutManager CheckoutManager { get; private set; } = new CheckoutManager();
 
 		public void Init()
 		{
@@ -85,7 +84,7 @@ namespace SRIMS
 			DehighlightSelectors();
 			CheckInSelected.Visible = true;
 			checkin1.Visible = true;
-			checkin1.settingsReader();
+			checkin1.Repopulate();
 
 		}
 
@@ -181,7 +180,8 @@ namespace SRIMS
 
 						// Created this CSVHelper in case some idiot decides to put a
 						// comma in a name or something and corrupt the inventory file.
-						Inv.Items.Add(CSVHelper.DeserializeItem(currentitem));
+						Item item = CSVHelper.DeserializeItem(currentitem);
+						Inv.Items.Add(item.Id, item);
 					}
 				}
 				int j = 0;
@@ -220,7 +220,7 @@ namespace SRIMS
 					serializer.WriteObject(fs, Inv);
 				}
 
-				checkin1.modified();
+				//checkin1.Modified();
 			}
 			catch (Exception e)
 			{

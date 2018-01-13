@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -9,23 +10,69 @@ namespace SRIMS
 		[DataMember]
 		public readonly int DataVersion = 0;
 
-		[DataMember]
-		public List<Category> Categories;
+		public Dictionary<int, Category> Categories;
 
-		[DataMember]
-		public List<Item> Items;
+		[DataMember(Name = "Categories")]
+		private List<Category> _Categories
+		{
+			get
+			{
+				List<Category> ret = new List<Category>(Categories.Count);
+				foreach (Category cat in Categories.Values)
+					ret.Add(cat);
+				return ret;
+			}
+			set
+			{
+				Categories = new Dictionary<int, Category>(value.Count);
+				foreach (Category cat in value)
+					Categories.Add(cat.Id, cat);
+
+			}
+		}
+
+		public Dictionary<int, Item> Items;
+
+		[DataMember(Name = "Items")]
+		private List<Item> _Items
+		{
+			get
+			{
+				List<Item> ret = new List<Item>(Items.Count);
+				foreach (Item item in Items.Values)
+					ret.Add(item);
+				return ret;
+			}
+			set
+			{
+				Items = new Dictionary<int, Item>(value.Count);
+				foreach (Item item in value)
+					Items.Add(item.Id, item);
+
+			}
+		}
+
+		public void AddItem(Item item)
+		{
+			Items.Add(item.Id, item);
+		}
+
+		public void RemoveItem(Item item)
+		{
+			Items.Remove(item.Id);
+		}
 
 		public Inventory()
 		{
-			Categories = new List<Category>() { new Category(0, "Mech"), new Category(1, "Elec"),
+			_Categories = new List<Category>() { new Category(0, "Mech"), new Category(1, "Elec"),
 				new Category(2, "Code"), new Category(3, "Bump"), new Category(4, "Misc"), new Category(5, "Part") };
-			Items = new List<Item>();
+			Items = new Dictionary<int, Item>();
 		}
 
 		public bool TryAddCategory(string name)
 		{
 			List<int> ids = new List<int>(Categories.Count);
-			foreach (Category category in Categories)
+			foreach (Category category in Categories.Values)
 				if (category.Name == name)
 					return false;
 				else
@@ -35,7 +82,7 @@ namespace SRIMS
 			{
 				if (!ids.Contains(i))
 				{
-					Categories.Add(new Category(i, name));
+					Categories.Add(i, new Category(i, name));
 					break;
 				}
 			}
@@ -48,13 +95,13 @@ namespace SRIMS
 			if (cat.Name == newName)
 				return true;
 
-			foreach (Category other in Categories)
+			foreach (Category other in Categories.Values)
 			{
 				if (other.Name == newName)
 				{
 					if (force)
 					{
-						foreach (Item item in Items)
+						foreach (Item item in Items.Values)
 							if (item.Cat.Equals(cat))
 								item.Cat = other;
 
@@ -72,45 +119,47 @@ namespace SRIMS
 			return true;
 		}
 
+		public Item FindItemById(int value)
+		{
+			if (Items.TryGetValue(value, out Item ret))
+				return ret;
+
+			return Item.NONE;
+		}
+
 		public Category FindCategoryById(int value)
 		{
-			foreach (Category cat in Categories)
-				if (cat.Id == value)
-					return cat;
+			if (Categories.TryGetValue(value, out Category ret))
+				return ret;
 
 			return Category.NONE;
 		}
 
 		public Category FindCategoryByName(string s)
 		{
-			foreach (Category cat in Categories)
+			foreach (Category cat in Categories.Values)
 				if (cat.Name == s)
 					return cat;
+
 			return Category.NONE;
 		}
 
 		public void RemoveCategory(Category categoryValue)
 		{
-			foreach (Item item in Items)
-				if (item.Cat.Equals(categoryValue))
-					item.Cat = Category.NONE;
-
-			for (int i = 0; i < Categories.Count; i++)
+			if (Categories.ContainsKey(categoryValue.Id))
 			{
-				if (Categories[i].Equals(categoryValue))
-				{
-					Categories.Remove(Categories[i]);
-					break;
-				}
+				foreach (Item item in Items.Values)
+					if (item.Cat.Equals(categoryValue))
+						item.Cat = Category.NONE;
+
+				Categories.Remove(categoryValue.Id);
 			}
 		}
 
 		public void CorrectItemErrors()
 		{
-			foreach (Item item in Items)
-			{
+			foreach (Item item in Items.Values)
 				item.Cat = FindCategoryById(item.Cat.Id);
-			}
 		}
 	}
 

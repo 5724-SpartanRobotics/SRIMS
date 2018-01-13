@@ -14,10 +14,10 @@ namespace SRIMS
 		{
 			InitializeComponent();
 
-			if (Settings.Default.SearchColumnSizes == null)
-				Settings.Default.SearchColumnSizes = new int[] { 23, 53, 73, 112, 290, 51 };
+			if (Settings.Default.SearchColumnSizes == null || Settings.Default.SearchColumnSizes.Length != 7)
+				Settings.Default.SearchColumnSizes = new int[] { 23, 53, 73, 112, 239, 51, 51 };
 
-			for (int i = 0; i < 6; i++)
+			for (int i = 0; i < 7; i++)
 				_ListViewResults.Columns[i].Width = Settings.Default.SearchColumnSizes[i];
 		}
 
@@ -28,7 +28,7 @@ namespace SRIMS
 
 			if (arg != string.Empty && !SearchBox.WatermarkOn)
 			{
-				foreach (Item x in SRIMSForm.Instance.Inv.Items)
+				foreach (Item x in SRIMSForm.Instance.Inv.Items.Values)
 				{
 					if (x.Name.ToLower().Contains(arg) || x.Desc.ToLower().Contains(arg) ||
 						x.Cat.Name.ToLower().Contains(arg) || x.Loc.ToLower().Contains(arg) ||
@@ -40,7 +40,8 @@ namespace SRIMS
 			}
 			else
 			{
-				_ResultsList.AddRange(SRIMSForm.Instance.Inv.Items);
+				foreach (Item item in SRIMSForm.Instance.Inv.Items.Values)
+					_ResultsList.Add(item);
 			}
 
 			_ListViewResults.Items.Clear();
@@ -75,10 +76,12 @@ namespace SRIMS
 		private void _Btn_Checkout_Click(object sender, EventArgs e)
 		{
 			if (_ListViewResults.SelectedItems.Count == 1)
+			{
 				using (CheckOut c = new CheckOut(((Item.ItemListViewItem)_ListViewResults.SelectedItems[0]).ItemValue))
 					c.ShowDialog();
 
-
+				Search();
+			}
 		}
 
 		private void SearchBox_TextChanged(object sender, EventArgs e)
@@ -94,6 +97,7 @@ namespace SRIMS
 		private void _ListViewResults_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
 		{
 			Settings.Default.ViewDBColumnSizes[e.ColumnIndex] = _ListViewResults.Columns[e.ColumnIndex].Width;
+			Settings.Default.Save();
 		}
 
 		private void _ListViewResults_MouseDoubleClick(object sender, MouseEventArgs e)
