@@ -34,6 +34,7 @@ namespace SRIMS
 					Console.WriteLine("There Was An Error When Parsing Settings For CheckOutItems");
 					Console.WriteLine(e);
 					Settings.Default.CheckoutList = string.Empty;
+					CheckoutList = new List<CheckedOutItem>(); 
 				}
 			}
 			else

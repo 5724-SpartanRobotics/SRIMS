@@ -18,7 +18,7 @@ namespace SRIMS
 		public void Repopulate()
 		{
 			Depop();
-			if (SRIMSForm.Instance?.CheckoutManager != null)
+			if (SRIMSForm.Instance?.CheckoutManager?.CheckoutList != null)
 			{
 				foreach (CheckedOutItem item in SRIMSForm.Instance.CheckoutManager.CheckoutList)
 					_ListBoxCheckout.Items.Add(item);

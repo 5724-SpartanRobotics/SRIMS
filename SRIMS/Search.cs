@@ -109,5 +109,16 @@ namespace SRIMS
 					EditItem(((Item.ItemListViewItem)_ListViewResults.SelectedItems[0]).ItemValue);
 			}
 		}
+
+		private void _ListViewResults_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (_ListViewResults.SelectedItems.Count == 1 && e.Control && e.KeyCode == Keys.O)
+			{
+				using (CheckOut c = new CheckOut(((Item.ItemListViewItem)_ListViewResults.SelectedItems[0]).ItemValue))
+					c.ShowDialog();
+
+				Search();
+			}
+		}
 	}
 }

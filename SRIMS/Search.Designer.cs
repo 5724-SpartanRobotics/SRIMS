@@ -127,6 +127,7 @@ namespace SRIMS
 			this._ListViewResults.UseCompatibleStateImageBehavior = false;
 			this._ListViewResults.View = System.Windows.Forms.View.Details;
 			this._ListViewResults.ColumnWidthChanged += new System.Windows.Forms.ColumnWidthChangedEventHandler(this._ListViewResults_ColumnWidthChanged);
+			this._ListViewResults.KeyDown += new System.Windows.Forms.KeyEventHandler(this._ListViewResults_KeyDown);
 			this._ListViewResults.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this._ListViewResults_MouseDoubleClick);
 			// 
 			// idColumn
