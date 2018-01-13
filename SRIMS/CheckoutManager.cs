@@ -34,7 +34,7 @@ namespace SRIMS
 					Console.WriteLine("There Was An Error When Parsing Settings For CheckOutItems");
 					Console.WriteLine(e);
 					Settings.Default.CheckoutList = string.Empty;
-					CheckoutList = new List<CheckedOutItem>(); 
+					CheckoutList = new List<CheckedOutItem>();
 				}
 			}
 			else
@@ -54,14 +54,35 @@ namespace SRIMS
 
 		public void CheckOutItem(CheckedOutItem item)
 		{
+			foreach (CheckedOutItem x in CheckoutList)
+			{
+				if (x.ItemId == item.ItemId && x.Name == item.Name)
+				{
+					x.Qt += item.Qt;
+					return;
+				}
+			}
+
 			CheckoutList.Add(item);
+			SaveData();
+		}
+
+		public void CheckInItem(CheckedOutItem item, int quantity)
+		{
+			if (quantity == 0)
+				return;
+
+			if (quantity < item.Qt)
+				item.Qt -= quantity;
+			else
+				CheckoutList.Remove(item);
+
 			SaveData();
 		}
 
 		public void CheckInItem(CheckedOutItem item)
 		{
-			CheckoutList.Remove(item);
-			SaveData();
+			CheckInItem(item, item.Qt);
 		}
 
 		public int QuantityCheckedOut(Item item)
@@ -77,7 +98,7 @@ namespace SRIMS
 	}
 
 	[DataContract]
-	public class CheckedOutItem
+	public class CheckedOutItem : IComparable<CheckedOutItem>
 	{
 		[DataMember]
 		public string Name { get; set; } = "";
@@ -97,8 +118,12 @@ namespace SRIMS
 		{
 			Item item = SRIMSForm.Instance.Inv.FindItemById(ItemId);
 
-			return Name + ": " + item.Name + "-" + item.Loc + "-Qt[" + Qt + "]";
+			return $"{Name}: {item.Name} - {item.Loc} - Qt[{Qt}]";
 		}
 
+		public int CompareTo(CheckedOutItem other)
+		{
+			return ToString().CompareTo(other.ToString());
+		}
 	}
 }

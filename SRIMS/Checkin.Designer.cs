@@ -37,12 +37,12 @@
 			this._ListBoxCheckout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this._ListBoxCheckout.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._ListBoxCheckout.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this._ListBoxCheckout.FormattingEnabled = true;
-			this._ListBoxCheckout.ItemHeight = 16;
+			this._ListBoxCheckout.ItemHeight = 17;
 			this._ListBoxCheckout.Location = new System.Drawing.Point(3, 37);
 			this._ListBoxCheckout.Name = "_ListBoxCheckout";
-			this._ListBoxCheckout.Size = new System.Drawing.Size(624, 484);
+			this._ListBoxCheckout.Size = new System.Drawing.Size(624, 480);
 			this._ListBoxCheckout.TabIndex = 0;
 			// 
 			// _BtnCheckin

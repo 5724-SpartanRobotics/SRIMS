@@ -20,6 +20,7 @@ namespace SRIMS
 			Depop();
 			if (SRIMSForm.Instance?.CheckoutManager?.CheckoutList != null)
 			{
+				SRIMSForm.Instance.CheckoutManager.CheckoutList.Sort();
 				foreach (CheckedOutItem item in SRIMSForm.Instance.CheckoutManager.CheckoutList)
 					_ListBoxCheckout.Items.Add(item);
 				_ListBoxCheckout.Refresh();
@@ -34,8 +35,9 @@ namespace SRIMS
 		private void _BtnCheckin_Click(object sender, EventArgs e)
 		{
 			if (_ListBoxCheckout.SelectedIndex != -1)
-				SRIMSForm.Instance.CheckoutManager.CheckInItem((CheckedOutItem)_ListBoxCheckout.SelectedItem);
-			
+				using (CheckinDialog dialog = new CheckinDialog(((CheckedOutItem)_ListBoxCheckout.SelectedItem)))
+					dialog.ShowDialog();
+
 			Repopulate();
 		}
 	}
