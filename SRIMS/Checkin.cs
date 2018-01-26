@@ -40,5 +40,11 @@ namespace SRIMS
 
 			Repopulate();
 		}
+
+		private void _ListBoxCheckout_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (_ListBoxCheckout.SelectedItems.Count == 1 && e.Control && e.KeyCode == Keys.I)
+				_BtnCheckin_Click(null, null);
+		}
 	}
 }

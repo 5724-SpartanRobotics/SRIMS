@@ -40,6 +40,7 @@
 			this._NumericUpDownQt.Name = "_NumericUpDownQt";
 			this._NumericUpDownQt.Size = new System.Drawing.Size(120, 20);
 			this._NumericUpDownQt.TabIndex = 0;
+			this._NumericUpDownQt.KeyDown += new System.Windows.Forms.KeyEventHandler(this._NumericUpDownQt_KeyDown);
 			// 
 			// label1
 			// 

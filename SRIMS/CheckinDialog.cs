@@ -20,5 +20,11 @@ namespace SRIMS
 			SRIMSForm.Instance.CheckoutManager.CheckInItem(_Item, (int)_NumericUpDownQt.Value);
 			Close();
 		}
+
+		private void _NumericUpDownQt_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+				_BtnCheckin_Click(null, null);
+		}
 	}
 }

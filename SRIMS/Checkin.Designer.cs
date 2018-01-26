@@ -44,6 +44,7 @@
 			this._ListBoxCheckout.Name = "_ListBoxCheckout";
 			this._ListBoxCheckout.Size = new System.Drawing.Size(624, 480);
 			this._ListBoxCheckout.TabIndex = 0;
+			this._ListBoxCheckout.KeyDown += new System.Windows.Forms.KeyEventHandler(this._ListBoxCheckout_KeyDown);
 			// 
 			// _BtnCheckin
 			// 
