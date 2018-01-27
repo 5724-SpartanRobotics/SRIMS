@@ -96,7 +96,7 @@ namespace SRIMS
 
 		private void _ListViewResults_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
 		{
-			Settings.Default.ViewDBColumnSizes[e.ColumnIndex] = _ListViewResults.Columns[e.ColumnIndex].Width;
+			Settings.Default.SearchColumnSizes[e.ColumnIndex] = _ListViewResults.Columns[e.ColumnIndex].Width;
 			Settings.Default.Save();
 		}
 

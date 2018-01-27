@@ -43,8 +43,9 @@ namespace SRIMS
 					mystream.Close();
 					// instert code here to change db location on app settings
 					dbpath.Text = op.InitialDirectory + op.FileName;
-					Properties.Settings.Default.dbloc = op.InitialDirectory + op.FileName;
+					Settings.Default.dbloc = op.InitialDirectory + op.FileName;
 					SRIMSForm.Instance.ClearInventory();
+					Close();
 				}
 
 			}
