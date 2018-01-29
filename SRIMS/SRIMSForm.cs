@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Json;
@@ -131,8 +130,9 @@ namespace SRIMS
 		// Settings
 		private void _BtnSettings_Click(object sender, EventArgs e)
 		{
-			SettingsForm settings = new SettingsForm();
-			settings.Show();
+			using (SettingsForm settings = new SettingsForm())
+				settings.ShowDialog();
+			LoadInventory();
 		}
 
 		private void _BtnCategories_Click(object sender, EventArgs e)
