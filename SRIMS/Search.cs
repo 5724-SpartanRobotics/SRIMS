@@ -120,5 +120,22 @@ namespace SRIMS
 				Search();
 			}
 		}
+
+		private void _BtnDeleteItem_Click(object sender, EventArgs e)
+		{
+			if (_ListViewResults.SelectedItems.Count == 1)
+			{
+				DialogResult res = MessageBox.Show("Are you sure you want to delete " +
+					$"{((Item.ItemListViewItem)_ListViewResults.SelectedItems[0]).ItemValue.Name}? This cannot be undone.",
+					"Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+				if (res == DialogResult.Yes)
+				{
+					SRIMSForm.Instance.Inv.RemoveItem(((Item.ItemListViewItem)_ListViewResults.SelectedItems[0]).ItemValue);
+					Search();
+					SRIMSForm.Instance.SaveInventory();
+				}
+			}
+		}
 	}
 }

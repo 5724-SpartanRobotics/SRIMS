@@ -40,6 +40,7 @@ namespace SRIMS
 			this.descColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.qtAvailableColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.qtTotalColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this._BtnDeleteItem = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// button2
@@ -161,10 +162,27 @@ namespace SRIMS
 			// 
 			this.qtTotalColumn.Text = "Qt. Total";
 			// 
+			// _BtnDeleteItem
+			// 
+			this._BtnDeleteItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this._BtnDeleteItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this._BtnDeleteItem.FlatAppearance.BorderSize = 0;
+			this._BtnDeleteItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this._BtnDeleteItem.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._BtnDeleteItem.ForeColor = System.Drawing.Color.Red;
+			this._BtnDeleteItem.Location = new System.Drawing.Point(245, 492);
+			this._BtnDeleteItem.Name = "_BtnDeleteItem";
+			this._BtnDeleteItem.Size = new System.Drawing.Size(105, 31);
+			this._BtnDeleteItem.TabIndex = 12;
+			this._BtnDeleteItem.Text = "Delete Item";
+			this._BtnDeleteItem.UseVisualStyleBackColor = false;
+			this._BtnDeleteItem.Click += new System.EventHandler(this._BtnDeleteItem_Click);
+			// 
 			// SearchControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this._BtnDeleteItem);
 			this.Controls.Add(this.SearchBox);
 			this.Controls.Add(this._ListViewResults);
 			this.Controls.Add(this.button4);
@@ -190,5 +208,6 @@ namespace SRIMS
 		private System.Windows.Forms.ColumnHeader qtAvailableColumn;
 		private WatermarkTextbox SearchBox;
 		private System.Windows.Forms.ColumnHeader qtTotalColumn;
+		private System.Windows.Forms.Button _BtnDeleteItem;
 	}
 }
